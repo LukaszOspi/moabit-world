@@ -13,11 +13,23 @@ const Links = () => {
         Flucht in Berlin-Moabit helfen können. Es fehlt ein wichtiger Link?
         Schreib an: hi@moabit.world
       </div>
-      <LinkBox
-        imageURL="./../assets/logo.svg"
-        linkURL="https://www.moabit.world"
-        text="Moabit.world"
-      />
+      <div className="links">
+        <LinkBox
+          imageURL="./../assets/logo.svg"
+          linkURL="https://www.moabit.world"
+          text="Moabit.world"
+        />
+        <LinkBox
+          imageURL="./../assets/logo.svg"
+          linkURL="https://www.moabit.world"
+          text="Moabit.world"
+        />
+        <LinkBox
+          imageURL="./../assets/logo.svg"
+          linkURL="https://www.moabit.world"
+          text="Moabit.world"
+        />
+      </div>
     </div>
   );
 };

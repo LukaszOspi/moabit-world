@@ -2,6 +2,8 @@
   width: 1130px;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
+  text-align: justify;
 }
 
 .kurzinfo {
@@ -12,4 +14,12 @@
 .mail {
   color: black;
   width: 562px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

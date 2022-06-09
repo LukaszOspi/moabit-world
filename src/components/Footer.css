@@ -1,0 +1,39 @@
+.footer {
+  background-image: url("../assets/footer_bcg.png");
+  width: 1401px;
+  height: 476px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+}
+
+.unterstuetzer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1401px;
+  font-size: 32px;
+  font-weight: bold;
+}
+.footerLeft {
+  flex-direction: column;
+  padding-left: 139px;
+  padding-top: 140px;
+}
+
+.footerRight {
+  flex-direction: column;
+  width: 280px;
+  height: 190px;
+  padding-right: 217px;
+  padding-top: 130px;
+}
+
+.socialButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: left;
+  width: 188px;
+}

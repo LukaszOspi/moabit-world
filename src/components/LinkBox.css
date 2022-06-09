@@ -4,6 +4,7 @@
   width: 365px;
   height: 400px;
   background-color: #662382;
+  border: 10px;
 }
 .box:hover {
   background-color: #0099a7;

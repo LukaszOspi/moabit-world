@@ -13,7 +13,7 @@ h1 {
   width: 1400px;
   height: 796px;
   position: relative;
-  overflow: hidden;
+
   background-image: url("./../assets/lading_page_bcg.png");
 
   transition: box-shadow 0.2s ease-in-out;

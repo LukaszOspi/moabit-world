@@ -3,6 +3,8 @@ import React from "react";
 import LandingPage from "./components/LandingPage";
 import Info from "./components/Info";
 import Links from "./components/Links";
+import Angebote from "./components/Angebote";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <LandingPage />
       <Info />
       <Links />
+      <Angebote />
+      <Footer />
     </div>
   );
 }
