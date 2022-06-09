@@ -1,0 +1,15 @@
+.info {
+  width: 1130px;
+  display: flex;
+  flex-direction: column;
+}
+
+.kurzinfo {
+  width: 676px;
+  font-size: 45px;
+}
+
+.mail {
+  color: black;
+  width: 562px;
+}

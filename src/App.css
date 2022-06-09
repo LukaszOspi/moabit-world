@@ -12,8 +12,9 @@ html {
 
 .App {
   display: flex;
-  justify-content: center;
-  text-align: center;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
 }
 
 .App-logo {

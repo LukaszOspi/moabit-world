@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 138px;
+  padding-top: 36px;
+}
+.menu {
+  display: flex;
+  justify-content: right;
+  padding-top: 57px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  padding-right: 70px;
+}

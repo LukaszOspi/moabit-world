@@ -1,0 +1,11 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 365px;
+  height: 400px;
+  background-color: #662382;
+}
+.box:hover {
+  background-color: #0099a7;
+  transform: rotate(2deg);
+}
