@@ -1,0 +1,28 @@
+.bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.bar-left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-right: 50px;
+  padding-top: 180px;
+}
+
+@media screen and (max-width: 1200px) {
+  .bar {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bar-left {
+    align-items: center;
+    padding-right: 0px;
+  }
+  .bar-img {
+    width: 80vw;
+    padding-bottom: 10vh;
+  }
+}

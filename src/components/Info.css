@@ -1,0 +1,16 @@
+.beschreibung {
+  display: flex;
+  flex-direction: column;
+  color: #7cb92c;
+  font-size: 24px;
+  width: 1130px;
+}
+@media screen and (max-width: 1200px) {
+  .beschreibung {
+    width: 100vw;
+  }
+
+  .vogel {
+    width: 100vw;
+  }
+}

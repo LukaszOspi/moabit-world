@@ -1,0 +1,19 @@
+.button {
+  background-color: #0099a7;
+  height: 58px;
+  width: 313px;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+    width: 60%;
+    font-size: 5vw;
+    padding: 0px;
+  }
+}
