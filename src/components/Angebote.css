@@ -10,3 +10,25 @@
   height: 790px;
   width: 1400px;
 }
+@media screen and (min-width: 1201px) {
+  .fussball-img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .angebote {
+    width: 100vw;
+    padding-left: 0px;
+  }
+  .fussball {
+    width: 100vw;
+    /* background-image: url("../assets/fussball_mobile.png"); */
+    background-image: none;
+    background-repeat: no-repeat;
+    height: auto;
+  }
+  .fussball-img {
+    width: 100vw;
+  }
+}

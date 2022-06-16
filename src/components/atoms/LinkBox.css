@@ -1,0 +1,44 @@
+.outside-box {
+  padding: 15px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 315px;
+  height: 400px;
+  background-color: #662382;
+  padding: 26px;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  font-size: 22px;
+}
+.box:hover {
+  background-color: #0099a7;
+  transform: rotate(2deg);
+}
+
+.pic {
+  background-color: white;
+  width: 314px;
+  height: 176px;
+  object-fit: scale-down;
+}
+.text {
+  padding-top: 16px;
+  width: 248px;
+}
+@media screen and (max-width: 1200px) {
+  .outside-box {
+    width: auto;
+    height: auto;
+  }
+
+  .vogel {
+    width: 100vw;
+  }
+  .box {
+    width: 85%;
+  }
+}

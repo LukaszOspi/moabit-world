@@ -1,0 +1,23 @@
+.enemies {
+  width: 1400px;
+  background-image: url("./../assets/enemies_bcg.png");
+  height: 627px;
+  object-fit: scale-down;
+}
+article {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+}
+@media screen and (max-width: 800px) {
+  .article {
+    object-fit: contain;
+  }
+  .enemies {
+    width: 100vw;
+    object-fit: contain;
+  }
+}

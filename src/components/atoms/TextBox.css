@@ -1,0 +1,28 @@
+.title {
+  width: 676px;
+  font-size: 45px;
+  color: black;
+  font-weight: bold;
+  padding-bottom: 60px;
+}
+
+.content {
+  color: black;
+  width: 562px;
+  padding-top: 20px;
+  padding-bottom: 56px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .title {
+    width: 100%;
+    padding: none;
+    flex-wrap: wrap;
+    font-size: 10vw;
+  }
+  .content {
+    width: 100%;
+    font-size: 5vw;
+  }
+}

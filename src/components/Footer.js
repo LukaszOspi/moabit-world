@@ -9,10 +9,10 @@ import logosFooter from "./../assets/logos_footer.png";
 
 const Footer = () => {
   return (
-    <>
+    <div>
       <div className="unterstutzer">
         <div>
-          <p
+          <div
             style={{
               textAlign: "center",
               fontSize: "32px",
@@ -20,38 +20,49 @@ const Footer = () => {
             }}
           >
             Unsere Unterstuetzer
-          </p>
+          </div>
         </div>
-        <img src={logosFooter} alt="Logos Unterstuetzer" />
+        <img
+          className="unterstutzer"
+          src={logosFooter}
+          alt="Logos Unterstuetzer"
+        />
       </div>
-      <div className="footer">
-        <div className="footerLeft">
-          <img src={logo} alt="logo" />
-          <div>Impressum | Datenschutz </div>
-        </div>
+      <div>
+        <div className="footer">
+          <div className="footerLeft">
+            <div>
+              <img className="image" src={logo} alt="logo" />
+            </div>
+            <div>Impressum | Datenschutz </div>
+          </div>
 
-        <div className="footerRight">
-          <p>
-            Kommt vorbei Sommercafé auf dem Wiclefplatz, Wiclefstraße 32, 10551
-            Berlin, Mo. bis Fr. 8-18 Uhr Schreibt uns hi@moabit.world
-          </p>
-          <div className="socialButtons">
-            <a href="https://www.facebook.com">
-              <img src={telegram} alt="facebook" />
-            </a>
-            <a href="https://www.facebook.com">
-              <img src={insta} alt="facebook" />
-            </a>
-            <a href="https://www.facebook.com">
-              <img src={facebook} alt="facebook" />
-            </a>
-            <a href="https://www.facebook.com">
-              <img src={cefo} alt="facebook" />
-            </a>
+          <div className="footerRight">
+            <p>
+              <h2> Kommt vorbei </h2>
+              Sommercafé auf dem Wiclefplatz, Wiclefstraße 32, 10551 Berlin,
+              <br></br>
+              Mo. bis Fr. 8-18 Uhr
+              <h2>Schreibt uns</h2> hi@moabit.world
+            </p>
+            <div className="socialButtons">
+              <a href="https://www.facebook.com">
+                <img src={telegram} alt="facebook" />
+              </a>
+              <a href="https://www.facebook.com">
+                <img src={insta} alt="facebook" />
+              </a>
+              <a href="https://www.facebook.com">
+                <img src={facebook} alt="facebook" />
+              </a>
+              <a href="https://www.facebook.com">
+                <img src={cefo} alt="facebook" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

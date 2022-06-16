@@ -6,20 +6,15 @@
   text-align: justify;
 }
 
-.kurzinfo {
-  width: 676px;
-  font-size: 45px;
-}
-
-.mail {
-  color: black;
-  width: 562px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 .links {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 800px) {
+  .info {
+    width: 100%;
+    padding: none;
+  }
 }

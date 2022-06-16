@@ -1,0 +1,24 @@
+.veranstaltung {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.veranstaltung-left {
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+  padding-right: 50px;
+  padding-top: 180px;
+}
+
+@media screen and (max-width: 800px) {
+  .veranstaltung {
+    width: 100vw;
+    padding: none;
+  }
+  .veranstaltung-left {
+    padding-top: 0px;
+  }
+}

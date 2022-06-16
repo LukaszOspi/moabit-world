@@ -4,14 +4,16 @@ import React from "react";
 
 const LinkBox = (props) => {
   return (
-    <a href={props.linkURL}>
+    <div className="outside-box">
       <div className="box">
-        <div className="pic">
-          <img src={props.imageURL} alt="Link" />
-        </div>
+        <a href={props.linkURL}>
+          <div>
+            <img className="pic" src={props.imageURL} alt="Link" />
+          </div>
+        </a>
         <div className="text">{props.text}</div>
       </div>
-    </a>
+    </div>
   );
 };
 

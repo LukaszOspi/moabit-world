@@ -1,0 +1,39 @@
+.carousel {
+  overflow: hidden;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators > button {
+  margin: 5px;
+  border: none;
+  background-color: white;
+  padding: 10px;
+}
+
+.indicators > button.active {
+  background-color: none;
+  color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .carousel {
+    width: 100vw;
+    height: auto;
+    padding: none;
+  }
+}

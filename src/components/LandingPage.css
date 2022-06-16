@@ -1,4 +1,4 @@
-h1 {
+.zusammen {
   font-size: 60px;
   color: black;
   font-weight: 300;
@@ -15,7 +15,8 @@ h1 {
   position: relative;
 
   background-image: url("./../assets/lading_page_bcg.png");
-
+  background-repeat: no-repeat;
+  background-size: 100%;
   transition: box-shadow 0.2s ease-in-out;
 }
 .logo {
@@ -32,4 +33,27 @@ h1 {
   font-weight: bold;
   color: white;
   padding-right: 70px;
+}
+
+@media screen and (max-width: 1200px) {
+  .intro {
+    width: 100vw;
+    padding-left: 0px;
+    /* background-image: url("./../assets/menu_bcg_mobile.png"); */
+    background-image: none;
+    height: auto;
+  }
+  .zusammen {
+    display: flex;
+    font-size: 8vw;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0px;
+  }
+  .logo {
+    padding-left: 0px;
+  }
+  .menu {
+    padding-right: 0px;
+  }
 }
