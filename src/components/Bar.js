@@ -18,13 +18,12 @@ const Bar = () => {
               Friedensaktivist*innen aus ganz Europa treffen sich zu Workshops und zur Vernetzung."
             />
           </div>
-          <div>
-            <Button url="www.telegram.com" text="Zur Online-Bar" />
-          </div>
+
+          <Button url="www.telegram.com" text="Zur Online-Bar" />
         </div>
       </div>
 
-      <img className="bar" src={bar} alt="Bar" />
+      <img className="bar-img" src={bar} alt="Bar" />
     </div>
   );
 };

@@ -19,10 +19,10 @@
     width: 100%;
     padding: none;
     flex-wrap: wrap;
-    font-size: 10vw;
+    font-size: 8vw;
   }
   .content {
     width: 100%;
-    font-size: 5vw;
+    font-size: 4vw;
   }
 }

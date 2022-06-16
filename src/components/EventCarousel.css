@@ -30,7 +30,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .carousel {
     width: 100vw;
     height: auto;

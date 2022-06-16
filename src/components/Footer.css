@@ -44,7 +44,7 @@
   padding-top: 48px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .footer {
     background-image: url("../assets/footer_bcg_mobile.png");
     background-size: cover;

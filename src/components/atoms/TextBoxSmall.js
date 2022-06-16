@@ -1,22 +1,22 @@
 import React from "react";
-import "./TextBox.css";
+import "./TextBoxSmall.css";
 
-const TextBox = (props) => {
+const TextBoxSmall = (props) => {
   return (
     <>
       <div
-        className="title"
+        className="title-small"
         style={{
           color: props.color,
         }}
       >
         {props.title}
       </div>
-      <div className="content" style={{ color: props.color }}>
+      <div className="content-small" style={{ color: props.color }}>
         {props.text}
       </div>
     </>
   );
 };
 
-export default TextBox;
+export default TextBoxSmall;
