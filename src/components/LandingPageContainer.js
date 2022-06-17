@@ -20,14 +20,14 @@ const LandingPageContainer = () => {
       <Angebote />
       <Host />
       <Veranstaltung />
-      <EventCarousel>
+      {/* <EventCarousel>
         <CarouselItem>
           <Event />
         </CarouselItem>
         <CarouselItem>
           <Event />
         </CarouselItem>
-      </EventCarousel>
+      </EventCarousel> */}
       <Enemies />
       <Bar />
       <Footer />
