@@ -34,16 +34,19 @@ const Footer = () => {
             <div>
               <img className="image" src={logo} alt="logo" />
             </div>
-            <div>Impressum | Datenschutz </div>
+            <div>
+              <a href="/impressum">Impressum</a> |
+              <a href="/datenschutz">Datenschutz</a>
+            </div>
           </div>
-
           <div className="footerRight">
             <p>
               <h2> Kommt vorbei </h2>
               Sommercafé auf dem Wiclefplatz, Wiclefstraße 32, 10551 Berlin,
               <br></br>
               Mo. bis Fr. 8-18 Uhr
-              <h2>Schreibt uns</h2> hi@moabit.world
+              <h2>Schreibt uns</h2>{" "}
+              <a href="mailto:hi@moabit.world"> hi@moabit.world</a>
             </p>
             <div className="socialButtons">
               <a href="https://www.facebook.com">

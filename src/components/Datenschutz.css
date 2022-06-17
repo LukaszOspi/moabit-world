@@ -1,0 +1,15 @@
+.datenschutz {
+  padding-bottom: 0px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1200px) {
+  .datenschutz {
+    width: 100vw;
+  }
+  .datenschutz-img {
+    width: 100vw;
+    object-fit: scale-down;
+    padding-bottom: 50px;
+  }
+}

@@ -1,0 +1,10 @@
+@media screen and (max-width: 1200px) {
+  .impressum {
+    width: 100vw;
+  }
+  .impressum-img {
+    width: 100vw;
+    object-fit: scale-down;
+    padding-bottom: 50px;
+  }
+}

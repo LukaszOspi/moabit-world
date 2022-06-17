@@ -12,7 +12,7 @@ const Menu = (props) => {
         <div className="menu_desktop" style={{ color: props.color }}>
           <a
             style={{ color: props.color, textDecoration: "none" }}
-            href="/about"
+            href="/impressum"
           >
             ÜBER UNS
           </a>
@@ -22,7 +22,10 @@ const Menu = (props) => {
 
         <div className="menu_mobile" style={{ color: props.color }}>
           <div>
-            <a style={{ color: "black", textDecoration: "none" }} href="/about">
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/impressum"
+            >
               ÜBER UNS
             </a>
           </div>
