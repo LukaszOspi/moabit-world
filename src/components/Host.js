@@ -17,7 +17,7 @@ const Host = () => {
               />
             </div>
             <div className="telegram-button">
-              <Button url="www.telegram.com" text="Zur Telegram-Gruppe" />
+              <Button url="https://t.me/moa_peace" text="Zur Telegram-Gruppe" />
             </div>
           </div>
         </div>

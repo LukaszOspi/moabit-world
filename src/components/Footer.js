@@ -44,22 +44,22 @@ const Footer = () => {
               <h2> Kommt vorbei </h2>
               Sommercafé auf dem Wiclefplatz, Wiclefstraße 32, 10551 Berlin,
               <br></br>
-              Mo. bis Fr. 8-18 Uhr
+              Mo, Do, Sa, wenn die Sonne scheint, 15:00-18:00
               <h2>Schreibt uns</h2>{" "}
               <a href="mailto:hi@moabit.world"> hi@moabit.world</a>
             </p>
             <div className="socialButtons">
-              <a href="https://www.facebook.com">
-                <img src={telegram} alt="facebook" />
+              <a href="https://t.me/moa_peace">
+                <img src={telegram} alt="telegram" />
               </a>
-              <a href="https://www.facebook.com">
-                <img src={insta} alt="facebook" />
+              <a href="https://www.instagram.com/refomoabit/?hl=enm">
+                <img src={insta} alt="instagram" />
               </a>
-              <a href="https://www.facebook.com">
+              <a href="https://www.facebook.com/RefoMoabit">
                 <img src={facebook} alt="facebook" />
               </a>
-              <a href="https://www.facebook.com">
-                <img src={cefo} alt="facebook" />
+              <a href="https://www.refo-moabit.de/">
+                <img src={cefo} alt="REFO" />
               </a>
             </div>
           </div>

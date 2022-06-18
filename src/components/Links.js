@@ -13,7 +13,7 @@ const Links = () => {
         text="Hier sind Informationen darüber gesammelt, wie wir Menschen auf der
         Flucht in Berlin-Moabit helfen können. Es fehlt ein wichtiger Link?
         Schreib an: hi@moabit.world"
-      />
+      ></TextBox>
 
       <div className="links">
         <LinkBox

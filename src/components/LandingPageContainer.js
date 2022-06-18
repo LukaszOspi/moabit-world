@@ -10,10 +10,11 @@ import EventCarousel, { CarouselItem } from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
+import "./LandingPageContainer.css";
 
 const LandingPageContainer = () => {
   return (
-    <div>
+    <div className="landing-page">
       <LandingPage />
       <Info />
       <Links />
