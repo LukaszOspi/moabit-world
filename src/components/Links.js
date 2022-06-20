@@ -4,6 +4,7 @@ import LinkBox from "./atoms/LinkBox";
 import TextBox from "./atoms/TextBox";
 import moabit from "./../assets/moabit_hilft.png";
 import krisenchat from "./../assets/krisenchat.png";
+import berlin from "./../assets/berlin.png";
 
 const Links = () => {
   return (
@@ -22,8 +23,8 @@ const Links = () => {
           text="Hier findet Ihr eine Sammlung wichtiger Infos und weiterführender Links für Geflüchtete aus der Ukraine. "
         />
         <LinkBox
-          imageURL="https://www.seekpng.com/png/full/34-341870_checkbox-png.png"
-          linkURL="https://www.moabit.world"
+          imageURL={berlin}
+          linkURL="hhttps://www.berlin.de/ukraine/"
           text="Angekommene aus der Ukraine finden hier eine Übersicht der Stadt Berlin, die über alle organisa-torischen Fragen informiert."
         />
         <LinkBox
