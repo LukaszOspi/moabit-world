@@ -11,7 +11,7 @@ const Angebote = () => {
         <TextBox
           title="Aktiv werden im Kiez? Findet Angebote in Moabit."
           text=" Ihr habt Lust auf Töpfern, wollt im Chor singen oder sucht ein
-          Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurse würden
+          Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurs würden
           euch helfen? Hier findet Ihr viele Orte und Angebote in Moabit."
         />
 

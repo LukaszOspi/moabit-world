@@ -29,7 +29,8 @@ const Links = () => {
         <LinkBox
           imageURL={krisenchat}
           linkURL="https://krisenchat.de/"
-          text="Kinder und Jugendliche können sich Soforthilfe in einem Chat oder auch Ratschlägen zu verschied-enen Themen holen."
+          text="Kinder und Jugendliche können sich Soforthilfe in einem Chat oder auch Ratschlägen zu
+           verschiedenen Themen holen."
         />
       </div>
     </div>

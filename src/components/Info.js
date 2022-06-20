@@ -13,7 +13,7 @@ const Info = () => {
           unterstützen.
         </div>
         <div>
-          Moabit.World ist auch eine Vernetzungs-plattform für Menschen auf der
+          Moabit.World ist auch eine Vernetzungsplattform für Menschen auf der
           Flucht und Unterstützende hier vor Ort, die auf dieser Website
           Informationen zum Ankommen und Leben in Moabit finden können.
         </div>
