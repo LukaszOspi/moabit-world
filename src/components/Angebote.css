@@ -7,8 +7,14 @@
   display: flex;
   justify-content: center;
   background-image: url("./../assets/fussball.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 790px;
   width: 1400px;
+  max-width: 100vw;
+}
+.fussball-img {
+  max-width: 100vw;
 }
 @media screen and (min-width: 1201px) {
   .fussball-img {

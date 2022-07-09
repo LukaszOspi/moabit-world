@@ -6,23 +6,26 @@
   padding-top: 56px;
   padding-bottom: 97px;
 }
-.arrow-left {
-}
-.picture {
+.event-wrapper {
+  max-width: 40vw;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
 }
 .event-description {
   width: 382px;
   margin-left: 64px;
   height: 564px;
-  display: flex;
+  display: block;
   flex-direction: column;
   font-size: 24px;
   text-align: left;
   overflow-x: scroll;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
-.arrow-right {
-}
 div:not(:last-child) {
   padding-bottom: 15px;
 }

@@ -13,7 +13,7 @@
   width: 1400px;
   height: 796px;
   position: relative;
-
+  max-width: 100vw;
   background-image: url("./../assets/lading_page_bcg.png");
   background-repeat: no-repeat;
   background-size: 100%;
