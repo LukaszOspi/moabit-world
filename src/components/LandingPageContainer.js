@@ -10,24 +10,25 @@ import EventCarousel, { CarouselItem } from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
+import "./LandingPageContainer.css";
 
 const LandingPageContainer = () => {
   return (
-    <div>
+    <div className="landing-page">
       <LandingPage />
       <Info />
       <Links />
       <Angebote />
       <Host />
       <Veranstaltung />
-      <EventCarousel>
+      {/* <EventCarousel>
         <CarouselItem>
           <Event />
         </CarouselItem>
         <CarouselItem>
           <Event />
         </CarouselItem>
-      </EventCarousel>
+      </EventCarousel> */}
       <Enemies />
       <Bar />
       <Footer />

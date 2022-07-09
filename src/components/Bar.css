@@ -1,6 +1,7 @@
 .bar {
   display: flex;
   flex-direction: row;
+  padding-bottom: 5vh;
 }
 
 .bar-left {

@@ -19,7 +19,10 @@ const Bar = () => {
             />
           </div>
 
-          <Button url="www.telegram.com" text="Zur Online-Bar" />
+          <Button
+            url="https://play.workadventu.re/_/global/moabitworld.github.io/moabitworld2/map.json"
+            text="Zur Online-Bar"
+          />
         </div>
       </div>
 

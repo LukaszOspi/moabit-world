@@ -13,11 +13,14 @@ const Host = () => {
             <div>
               <TextBox
                 title="Werde Host und Supporter in Moabit"
-                text="Im offenen Telegram-Kanal könnt ihr euch mit Leuten aus Moabit, die Geflüchtete unter-stützen und an Aktionen zur Überwindung von Gewalt sowie der Stärkung von Demokratie und Miteinander interessiert sind, aus-tauschen. Hier erfahrt ihr immer das Neueste a"
+                text="Im offenen Telegram Kanal könnt ihr euch mit Leuten aus Moabit, 
+                die Geflüchtete unterstützen und an Aktionen zur Überwindung von Gewalt sowie der Stärkung 
+                von Demokratie und Miteinander interessiert sind, austauschen. Hier erfahrt ihr 
+                immer das Neueste aus der Friedenskampagne Moabit.World"
               />
             </div>
             <div className="telegram-button">
-              <Button url="www.telegram.com" text="Zur Telegram-Gruppe" />
+              <Button url="https://t.me/moa_peace" text="Zur Telegram-Gruppe" />
             </div>
           </div>
         </div>

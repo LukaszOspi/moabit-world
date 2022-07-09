@@ -17,6 +17,7 @@
   width: 1401px;
   font-size: 32px;
   font-weight: bold;
+  padding-top: 5vh;
 }
 .footerLeft {
   flex-direction: column;
@@ -75,5 +76,8 @@
     padding-top: 20px;
     padding-right: 0px;
     padding-left: 10vw;
+  }
+  .unterstutzer {
+    padding-top: 0px;
   }
 }
