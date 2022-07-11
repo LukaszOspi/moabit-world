@@ -2,27 +2,27 @@ import React from "react";
 import "./Event.css";
 import placeholder from "./../../assets/event.png";
 
-const Event = () => {
+const Event = (props) => {
   return (
     <div className="event">
-      <div>
-        <img className="picture" src={placeholder} alt="event" />
-      </div>
+      <a href={props.linkUrl}>
+        <img
+          className="picture"
+          src={props.imageUrl || placeholder}
+          alt="event"
+        />
+      </a>
       <div>
         <div className="event-wrapper">
           <div className="event-description">
-            <div>Titel der Veranstaltung</div>
-            <div>
-              Text fur die Veranstaltung Text fur die Veranstaltung Text fur die
-              Veranstaltung Text fur die Veranstaltung
-            </div>
-            <div>Ort: Berlin</div>
-            <div>Datum/Zeit:</div>
+            <div>{props.title || "title"}</div>
+            <div>{props.text}</div>
+            <div>{props.location}</div>
+            <div>{props.date}</div>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default Event;

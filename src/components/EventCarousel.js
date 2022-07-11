@@ -1,88 +1,110 @@
-import React, { useEffect, useState } from "react";
-import { useSwipeable } from "react-swipeable";
-
+import React, { useState, useEffect } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Event from "./atoms/Event";
 import "./EventCarousel.css";
-import prev from "./../assets/prev.png";
-import next from "./../assets/next.png";
-/* import TextBox from "./atoms/TextBox"; */
+import axios from "axios";
+import Bar from "./Bar";
 
-export const CarouselItem = ({ children, width }) => {
-  return (
-    <div className="carousel-item" style={{ width: width }}>
-      {children}
-    </div>
-  );
-};
-
-const EventCarousel = ({ children }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
-      newIndex = 0;
-    }
-
-    setActiveIndex(newIndex);
-  };
+const EventCarousel = () => {
+  const [data, setData] = useState({ items: [] });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!paused) {
-        updateIndex(activeIndex + 1);
-      }
-    }, 10000);
+    setLoading(true);
+    axios
+      .get(
+        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=${process.env.REACT_APP_CONTENT_MGM_KEY}`
+      )
+      .then((res) => {
+        console.log(res.data.items[0].fields.imageUrl);
+        setData(res.data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  });
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => updateIndex(activeIndex + 1),
-    onSwipedRight: () => updateIndex(activeIndex - 1),
-  });
-
-  return (
-    <>
-      <div
-        {...handlers}
-        className="carousel"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div className="indicators">
-          <button
-            className="buttons"
-            onClick={() => {
-              updateIndex(activeIndex - 1);
-            }}
-          >
-            <img src={prev} alt="prev" />
-          </button>
-          <div
-            className="inner"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-          >
-            {React.Children.map(children, (child, index) => {
-              return React.cloneElement(child, { width: "100%" });
-            })}
-          </div>
-          <button
-            onClick={() => {
-              updateIndex(activeIndex + 1);
-            }}
-          >
-            <img src={next} alt="next" />
-          </button>
-        </div>
+  if (loading) {
+    return <p>Data is loading...</p>;
+  } else
+    return (
+      <div className="carousel">
+        <Carousel
+          additionalTransfrom={0}
+          arrows
+          autoPlaySpeed={3000}
+          centerMode={false}
+          className=""
+          containerClass="container-with-dots"
+          dotListClass=""
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass=""
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderButtonGroupOutside={false}
+          renderDotsOutside={false}
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 3,
+              partialVisibilityGutter: 40,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
+              items: 1,
+              partialVisibilityGutter: 30,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 2,
+              partialVisibilityGutter: 30,
+            },
+          }}
+          rewind={false}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
+        >
+          <div></div>
+          {data.items.length
+            ? data.items.map((item, index) => (
+                <div key={index}>
+                  <Event
+                    imageUrl={item.fields.imageUrl}
+                    title={item.fields.title}
+                    text={item.fields.text}
+                    linkUrl={item.fields.linkURL}
+                    location={item.fields.location}
+                    date={item.fields.date}
+                  />
+                </div>
+              ))
+            : null}
+        </Carousel>
       </div>
-    </>
-  );
+    );
 };
 
 export default EventCarousel;
