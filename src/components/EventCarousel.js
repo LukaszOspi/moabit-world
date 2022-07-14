@@ -4,7 +4,8 @@ import "react-multi-carousel/lib/styles.css";
 import Event from "./atoms/Event";
 import "./EventCarousel.css";
 import axios from "axios";
-import Bar from "./Bar";
+import leftArrow from "./../assets/prev.png";
+import rightArrow from "./../assets/next.png";
 
 const EventCarousel = () => {
   const [data, setData] = useState({ items: [] });
@@ -35,30 +36,39 @@ const EventCarousel = () => {
     return (
       <div className="carousel">
         <Carousel
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          arrows={true}
+          renderButtonGroupOutside={false}
+          // customLeftArrow={<CustomLeftArrow />}
+          // customRightArrow={<CustomRightArrow />}
           additionalTransfrom={0}
-          arrows
           autoPlaySpeed={3000}
           centerMode={false}
-          className=""
-          containerClass="container-with-dots"
-          dotListClass=""
+          containerClass="container"
           draggable
           focusOnSelect={false}
           infinite
-          itemClass=""
+          itemClass="itemCarousel"
           keyBoardControl
           minimumTouchDrag={80}
           pauseOnHover
           renderArrowsWhenDisabled={false}
-          renderButtonGroupOutside={false}
           renderDotsOutside={false}
+          rewind={true}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
           responsive={{
             desktop: {
               breakpoint: {
                 max: 3000,
                 min: 1024,
               },
-              items: 3,
+              items: 1,
               partialVisibilityGutter: 40,
             },
             mobile: {
@@ -74,18 +84,10 @@ const EventCarousel = () => {
                 max: 1024,
                 min: 464,
               },
-              items: 2,
+              items: 1,
               partialVisibilityGutter: 30,
             },
           }}
-          rewind={false}
-          rewindWithAnimation={false}
-          rtl={false}
-          shouldResetAutoplay
-          showDots={false}
-          sliderClass=""
-          slidesToSlide={1}
-          swipeable
         >
           <div></div>
           {data.items.length
@@ -95,7 +97,7 @@ const EventCarousel = () => {
                     imageUrl={item.fields.imageUrl}
                     title={item.fields.title}
                     text={item.fields.text}
-                    linkUrl={item.fields.linkURL}
+                    linkUrl={item.fields.linkUrl}
                     location={item.fields.location}
                     date={item.fields.date}
                   />

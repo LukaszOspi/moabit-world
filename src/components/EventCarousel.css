@@ -1,5 +1,12 @@
+.itemCarousel {
+  min-width: fit-content;
+  height: 100%;
+  overflow: hide;
+  white-space: wrap;
+}
+
 .carousel {
-  height: 50vh;
+  height: 800px;
   width: 1400px;
 }
 
