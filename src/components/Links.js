@@ -24,7 +24,7 @@ const Links = () => {
         />
         <LinkBox
           imageURL={berlin}
-          linkURL="hhttps://www.berlin.de/ukraine/"
+          linkURL="https://www.berlin.de/ukraine/"
           text="Angekommene aus der Ukraine finden hier eine Übersicht der Stadt Berlin, die über alle organisa-torischen Fragen informiert."
         />
         <LinkBox

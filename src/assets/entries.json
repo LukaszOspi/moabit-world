@@ -1,0 +1,52 @@
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 1,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "metadata": {
+        "tags": []
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "qqdjjpwbe10z"
+          }
+        },
+        "id": "5qEfdzDm5o2FIJhcvGzMwM",
+        "type": "Entry",
+        "createdAt": "2022-07-10T11:31:43.128Z",
+        "updatedAt": "2022-07-10T12:05:22.832Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "revision": 3,
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "events"
+          }
+        },
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "First Event",
+        "text": "This is first fetched text",
+        "imageUrl": "https://i.imgur.com/ULO8mVt.png",
+        "linkUrl": "https://www.facebook.com",
+        "location": "First location",
+        "date": "First date"
+      }
+    }
+  ]
+}
