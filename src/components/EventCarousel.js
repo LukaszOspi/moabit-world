@@ -20,7 +20,7 @@ const EventCarousel = () => {
         `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo`
       )
       .then((res) => {
-        console.log(res.data.items[0].fields.imageUrl);
+        //console.log(res.data.items[0].fields.imageUrl);
         setData(res.data);
       })
       .catch((error) => {
@@ -103,6 +103,7 @@ const EventCarousel = () => {
                     linkUrl={item.fields.linkUrl}
                     location={item.fields.location}
                     date={item.fields.date}
+                    locationUrl={item.fields.locationUrl}
                   />
                 </div>
               ))
