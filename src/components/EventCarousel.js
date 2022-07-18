@@ -36,12 +36,14 @@ const EventCarousel = () => {
     return (
       <div className="carousel">
         <Carousel
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
           arrows={true}
           renderButtonGroupOutside={false}
-          // customLeftArrow={<CustomLeftArrow />}
-          // customRightArrow={<CustomRightArrow />}
-          additionalTransfrom={0}
+          //customLeftArrow={<CustomLeftArrow />}
+          //customRightArrow={<CustomRightArrow />}
+          additionalTransfrom={
+            window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+          }
           autoPlaySpeed={3000}
           centerMode={false}
           containerClass="container"
@@ -76,8 +78,8 @@ const EventCarousel = () => {
                 max: 464,
                 min: 0,
               },
+
               items: 1,
-              partialVisibilityGutter: 30,
             },
             tablet: {
               breakpoint: {

@@ -5,24 +5,26 @@ import placeholder from "./../../assets/event.png";
 const Event = (props) => {
   return (
     <div className="event">
-      <button className="button-event" href={props.linkUrl}>
+      <a
+        className="button-event"
+        href={props.linkUrl || "https://www.moabit.world"}
+      >
         <img
           className="picture"
           src={props.imageUrl || placeholder}
           alt="event"
-          href={props.linkUrl}
+          url={props.linkUrl}
         />
-      </button>
+      </a>
       <div>
         <div className="event-wrapper">
           <div className="event-description">
             <div className="event-title">{props.title || "title"}</div>
-            <div>
-              {props.text}
-              {props.linkUrl}
-            </div>
-            <div className="event-location">{props.location}</div>
-            <div className="event-date">{props.date}</div>
+            <div>{props.text}</div>
+            <a href={props.locationUrl}>
+              <div className="event-location">Ort: {props.location}</div>
+            </a>
+            <div className="event-date">Datum/Zeit: {props.date}</div>
           </div>
         </div>
       </div>
