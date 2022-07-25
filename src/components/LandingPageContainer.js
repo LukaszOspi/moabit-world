@@ -5,8 +5,8 @@ import Links from "./Links";
 import Angebote from "./Angebote";
 import Host from "./Host";
 import Footer from "./Footer";
-import Event from "./atoms/Event";
-import EventCarousel, { CarouselItem } from "./EventCarousel";
+
+import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
@@ -21,14 +21,7 @@ const LandingPageContainer = () => {
       <Angebote />
       <Host />
       <Veranstaltung />
-      {/* <EventCarousel>
-        <CarouselItem>
-          <Event />
-        </CarouselItem>
-        <CarouselItem>
-          <Event />
-        </CarouselItem>
-      </EventCarousel> */}
+      <EventCarousel />
       <Enemies />
       <Bar />
       <Footer />

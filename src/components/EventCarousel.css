@@ -1,39 +1,25 @@
+.itemCarousel {
+  min-width: fit-content;
+  height: 100%;
+  overflow: hide;
+  white-space: wrap;
+}
+
 .carousel {
-  overflow: hidden;
+  height: 800px;
+  width: 1400px;
 }
 
-.inner {
-  white-space: nowrap;
-  transition: transform 0.3s;
-}
-
-.carousel-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.indicators {
-  display: flex;
-  justify-content: center;
-}
-
-.indicators > button {
-  margin: 5px;
-  border: none;
-  background-color: white;
-  padding: 10px;
-}
-
-.indicators > button.active {
-  background-color: none;
-  color: #fff;
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
+  .container {
+    height: fit-content;
+  }
+  .itemCarousel {
+    transform: translate3d(0px, 0px, 0px);
+    height: auto;
+  }
   .carousel {
     width: 100vw;
     height: auto;
-    padding: none;
   }
 }

@@ -1,88 +1,116 @@
-import React, { useEffect, useState } from "react";
-import { useSwipeable } from "react-swipeable";
-
+import React, { useState, useEffect } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Event from "./atoms/Event";
 import "./EventCarousel.css";
-import prev from "./../assets/prev.png";
-import next from "./../assets/next.png";
-/* import TextBox from "./atoms/TextBox"; */
+import axios from "axios";
+import leftArrow from "./../assets/prev.png";
+import rightArrow from "./../assets/next.png";
 
-export const CarouselItem = ({ children, width }) => {
-  return (
-    <div className="carousel-item" style={{ width: width }}>
-      {children}
-    </div>
-  );
-};
+const EventCarousel = () => {
+  const [data, setData] = useState({ items: [] });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-const EventCarousel = ({ children }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
-      newIndex = 0;
-    }
-
-    setActiveIndex(newIndex);
-  };
-
+  // ${process.env.REACT_APP_CONTENT_MGM_KEY}
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!paused) {
-        updateIndex(activeIndex + 1);
-      }
-    }, 10000);
+    setLoading(true);
+    axios
+      .get(
+        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo`
+      )
+      .then((res) => {
+        //console.log(res.data.items[0].fields.imageUrl);
+        setData(res.data);
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  });
+  if (loading) {
+    return <p>Data is loading...</p>;
+  } else
+    return (
+      <div className="carousel">
+        <Carousel
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
+          arrows={true}
+          renderButtonGroupOutside={false}
+          //customLeftArrow={<CustomLeftArrow />}
+          //customRightArrow={<CustomRightArrow />}
+          additionalTransfrom={
+            window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+          }
+          autoPlaySpeed={3000}
+          centerMode={false}
+          containerClass="container"
+          draggable
+          focusOnSelect={false}
+          infinite
+          itemClass="itemCarousel"
+          keyBoardControl
+          minimumTouchDrag={80}
+          pauseOnHover
+          renderArrowsWhenDisabled={false}
+          renderDotsOutside={false}
+          rewind={true}
+          rewindWithAnimation={false}
+          rtl={false}
+          shouldResetAutoplay
+          showDots={false}
+          sliderClass=""
+          slidesToSlide={1}
+          swipeable
+          responsive={{
+            desktop: {
+              breakpoint: {
+                max: 3000,
+                min: 1024,
+              },
+              items: 1,
+              partialVisibilityGutter: 40,
+            },
+            mobile: {
+              breakpoint: {
+                max: 464,
+                min: 0,
+              },
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => updateIndex(activeIndex + 1),
-    onSwipedRight: () => updateIndex(activeIndex - 1),
-  });
-
-  return (
-    <>
-      <div
-        {...handlers}
-        className="carousel"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-      >
-        <div className="indicators">
-          <button
-            className="buttons"
-            onClick={() => {
-              updateIndex(activeIndex - 1);
-            }}
-          >
-            <img src={prev} alt="prev" />
-          </button>
-          <div
-            className="inner"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-          >
-            {React.Children.map(children, (child, index) => {
-              return React.cloneElement(child, { width: "100%" });
-            })}
-          </div>
-          <button
-            onClick={() => {
-              updateIndex(activeIndex + 1);
-            }}
-          >
-            <img src={next} alt="next" />
-          </button>
-        </div>
+              items: 1,
+            },
+            tablet: {
+              breakpoint: {
+                max: 1024,
+                min: 464,
+              },
+              items: 1,
+              partialVisibilityGutter: 30,
+            },
+          }}
+        >
+          <div></div>
+          {data.items.length
+            ? data.items.map((item, index) => (
+                <div key={index}>
+                  <Event
+                    imageUrl={item.fields.imageUrl}
+                    title={item.fields.title}
+                    text={item.fields.text}
+                    linkUrl={item.fields.linkUrl}
+                    location={item.fields.location}
+                    date={item.fields.date}
+                    locationUrl={item.fields.locationUrl}
+                  />
+                </div>
+              ))
+            : null}
+        </Carousel>
       </div>
-    </>
-  );
+    );
 };
 
 export default EventCarousel;
