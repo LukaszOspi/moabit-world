@@ -7,7 +7,7 @@ import axios from "axios";
 import leftArrow from "./../assets/prev.png";
 import rightArrow from "./../assets/next.png";
 
-const EventCarousel = () => {
+const Ortstermin = () => {
   const [data, setData] = useState({ items: [] });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const EventCarousel = () => {
     setLoading(true);
     axios
       .get(
-        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo&content_type=events`
+        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo&content_type=ortstermin`
       )
       .then((res) => {
         //console.log(res.data.items[0].fields.imageUrl);
@@ -32,7 +32,7 @@ const EventCarousel = () => {
   }, []);
 
   if (loading) {
-    return <p>Data is loading...</p>;
+    return <p>Be kind to other people</p>;
   } else
     return (
       <div className="carousel">
@@ -113,4 +113,4 @@ const EventCarousel = () => {
     );
 };
 
-export default EventCarousel;
+export default Ortstermin;
