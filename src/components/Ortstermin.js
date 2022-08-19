@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./EventCarousel.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Event from "./atoms/Event";
@@ -6,6 +7,10 @@ import "./EventCarousel.css";
 import axios from "axios";
 import leftArrow from "./../assets/prev.png";
 import rightArrow from "./../assets/next.png";
+import TextBox from "./atoms/TextBox";
+import ImageResponsive from "./atoms/ImageResponsive";
+import Ortstermin1 from "./../assets/ortstermin1.jpg";
+import Ortstermin2 from "./../assets/ortstermin2.jpg";
 
 const Ortstermin = () => {
   const [data, setData] = useState({ items: [] });
@@ -35,81 +40,97 @@ const Ortstermin = () => {
     return <p>Be kind to other people</p>;
   } else
     return (
-      <div className="carousel">
-        <Carousel
-          // removeArrowOnDeviceType={["tablet", "mobile"]}
-          arrows={true}
-          renderButtonGroupOutside={false}
-          //customLeftArrow={<CustomLeftArrow />}
-          //customRightArrow={<CustomRightArrow />}
-          additionalTransfrom={
-            window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
-          }
-          autoPlaySpeed={3000}
-          centerMode={false}
-          containerClass="container"
-          draggable
-          focusOnSelect={false}
-          infinite
-          itemClass="itemCarousel"
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          renderArrowsWhenDisabled={false}
-          renderDotsOutside={false}
-          rewind={true}
-          rewindWithAnimation={false}
-          rtl={false}
-          shouldResetAutoplay
-          showDots={false}
-          sliderClass=""
-          slidesToSlide={1}
-          swipeable
-          responsive={{
-            desktop: {
-              breakpoint: {
-                max: 3000,
-                min: 1024,
+      <>
+        <div>
+          <TextBox
+            title="Ortstermin 2022: LAUT ))) Wir weigern uns, feinde zu sein"
+            text="Erkundet den Refo-Campus des diesjährigen moabitweiten Kunstfestivals Ortstermin.
+          An verschiedenen Orten stellen Kunstler:innen ihre Arbeiten zum Festival-Thema 'Wir weigern uns,
+          Feinde zu sein'. Am Bauwagen beim SommerCafé gibt es leckeren Kaffe und Limos.
+          Außerdem erwarten euch eine Konzept-Performance und die Abendveranstaltung 'PopPeacePoetry - 
+          gefällige und wiederständische Töne zu Gewalt und Liebe'. Klick euch hier jetzt durch die Verschiedenen
+          Kunstler:innen und ihre Werke. Viel Freude!"
+            color="black"
+          />
+        </div>
+        <ImageResponsive src={Ortstermin2} />
+        <ImageResponsive src={Ortstermin1} />
+        <div className="carousel">
+          <Carousel
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
+            arrows={true}
+            renderButtonGroupOutside={false}
+            //customLeftArrow={<CustomLeftArrow />}
+            //customRightArrow={<CustomRightArrow />}
+            additionalTransfrom={
+              window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+            }
+            autoPlaySpeed={3000}
+            centerMode={false}
+            containerClass="container"
+            draggable
+            focusOnSelect={false}
+            infinite
+            itemClass="itemCarousel"
+            keyBoardControl
+            minimumTouchDrag={80}
+            pauseOnHover
+            renderArrowsWhenDisabled={false}
+            renderDotsOutside={false}
+            rewind={true}
+            rewindWithAnimation={false}
+            rtl={false}
+            shouldResetAutoplay
+            showDots={false}
+            sliderClass=""
+            slidesToSlide={1}
+            swipeable
+            responsive={{
+              desktop: {
+                breakpoint: {
+                  max: 3000,
+                  min: 1024,
+                },
+                items: 1,
+                partialVisibilityGutter: 40,
               },
-              items: 1,
-              partialVisibilityGutter: 40,
-            },
-            mobile: {
-              breakpoint: {
-                max: 464,
-                min: 0,
-              },
+              mobile: {
+                breakpoint: {
+                  max: 464,
+                  min: 0,
+                },
 
-              items: 1,
-            },
-            tablet: {
-              breakpoint: {
-                max: 1024,
-                min: 464,
+                items: 1,
               },
-              items: 1,
-              partialVisibilityGutter: 30,
-            },
-          }}
-        >
-          <div></div>
-          {data.items.length
-            ? data.items.map((item, index) => (
-                <div key={index}>
-                  <Event
-                    imageUrl={item.fields.imageUrl}
-                    title={item.fields.title}
-                    text={item.fields.text}
-                    linkUrl={item.fields.linkUrl}
-                    location={item.fields.location}
-                    date={item.fields.date}
-                    locationUrl={item.fields.locationUrl}
-                  />
-                </div>
-              ))
-            : null}
-        </Carousel>
-      </div>
+              tablet: {
+                breakpoint: {
+                  max: 1024,
+                  min: 464,
+                },
+                items: 1,
+                partialVisibilityGutter: 30,
+              },
+            }}
+          >
+            <div></div>
+            {data.items.length
+              ? data.items.map((item, index) => (
+                  <div key={index}>
+                    <Event
+                      imageUrl={item.fields.imageUrl}
+                      title={item.fields.title}
+                      text={item.fields.text}
+                      linkUrl={item.fields.linkUrl}
+                      location={item.fields.location}
+                      date={item.fields.date}
+                      locationUrl={item.fields.locationUrl}
+                    />
+                  </div>
+                ))
+              : null}
+          </Carousel>
+        </div>
+      </>
     );
 };
 

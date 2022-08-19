@@ -5,7 +5,7 @@ import Links from "./Links";
 import Angebote from "./Angebote";
 import Host from "./Host";
 import Footer from "./Footer";
-
+import Ortstermin from "./Ortstermin";
 import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
@@ -16,14 +16,15 @@ const LandingPageContainer = () => {
   return (
     <div className="landing-page">
       <LandingPage />
-      <Info />
-      <Links />
-      <Angebote />
-      <Host />
+      <Ortstermin />
       <Veranstaltung />
       <EventCarousel />
       <Enemies />
       <Bar />
+      <Host />
+      <Links />
+      <Info />
+      <Angebote />
       <Footer />
     </div>
   );
