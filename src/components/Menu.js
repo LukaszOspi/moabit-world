@@ -12,26 +12,28 @@ const Menu = (props) => {
         <div className="menu_desktop" style={{ color: props.color }}>
           <a
             style={{ color: props.color, textDecoration: "none" }}
-            href="/impressum"
+            href="/about"
           >
             ÜBER UNS
           </a>
 
-          <div>DE/EN</div>
+          <div>
+            {" "}
+            <a style={{ color: props.color, textDecoration: "none" }} href="/">
+              HOME
+            </a>
+          </div>
         </div>
 
         <div className="menu_mobile" style={{ color: props.color }}>
           <div>
-            <a
-              style={{ color: "black", textDecoration: "none" }}
-              href="/impressum"
-            >
+            <a style={{ color: "black", textDecoration: "none" }} href="/about">
               ÜBER UNS
             </a>
           </div>
           <div>
-            <a style={{ color: "black", textDecoration: "none" }} href="/about">
-              DE/EN
+            <a style={{ color: "black", textDecoration: "none" }} href="/">
+              HOME
             </a>
           </div>
         </div>

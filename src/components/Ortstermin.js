@@ -9,8 +9,8 @@ import leftArrow from "./../assets/prev.png";
 import rightArrow from "./../assets/next.png";
 import TextBox from "./atoms/TextBox";
 import ImageResponsive from "./atoms/ImageResponsive";
-import Ortstermin1 from "./../assets/ortstermin1.jpg";
-import Ortstermin2 from "./../assets/ortstermin2.jpg";
+import Ortstermin1 from "./../assets/ortstermin4.jpg";
+import Ortstermin2 from "./../assets/ortstermin3.jpg";
 
 const Ortstermin = () => {
   const [data, setData] = useState({ items: [] });
@@ -43,13 +43,13 @@ const Ortstermin = () => {
       <>
         <div>
           <TextBox
-            title="Ortstermin 2022: LAUT ))) Wir weigern uns, feinde zu sein"
+            title="Ortstermin 2022: LAUT ))) Wir weigern uns, Feinde zu sein"
             text="Erkundet den Refo-Campus des diesjährigen moabitweiten Kunstfestivals Ortstermin.
-          An verschiedenen Orten stellen Kunstler:innen ihre Arbeiten zum Festival-Thema 'Wir weigern uns,
-          Feinde zu sein'. Am Bauwagen beim SommerCafé gibt es leckeren Kaffe und Limos.
+          An verschiedenen Orten stellen Künstler:innen ihre Arbeiten zum Festival-Thema 'LAUT ))) Wir weigern uns,
+          Feinde zu sein' aus. Am Bauwagen beim SommerCafé gibt es leckeren Kaffee und Limos.
           Außerdem erwarten euch eine Konzept-Performance und die Abendveranstaltung 'PopPeacePoetry - 
-          gefällige und wiederständische Töne zu Gewalt und Liebe'. Klick euch hier jetzt durch die Verschiedenen
-          Kunstler:innen und ihre Werke. Viel Freude!"
+          gefällige und wiederständische Töne zu Gewalt und Liebe'. Klickt euch hier jetzt durch die verschiedenen
+          Künstler:innen und ihre Werke. Viel Freude!"
             color="black"
           />
         </div>

@@ -16,6 +16,7 @@ const LandingPageContainer = () => {
   return (
     <div className="landing-page">
       <LandingPage />
+      <Info />
       <Ortstermin />
       <Veranstaltung />
       <EventCarousel />
@@ -23,7 +24,7 @@ const LandingPageContainer = () => {
       <Bar />
       <Host />
       <Links />
-      <Info />
+
       <Angebote />
       <Footer />
     </div>
