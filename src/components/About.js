@@ -32,12 +32,12 @@ const About = () => {
           maxwidth="600px"
           padding="20px"
         />
-        <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
       </div>
       <div className="about-desktop">
         <ImageResponsive src={uberuns} maxwidth="1400px" />
       </div>
       <Button url="/" text="Zu unseren Projekten" padding="20px"></Button>
+      <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
       <Footer />
     </>
   );
