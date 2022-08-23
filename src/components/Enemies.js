@@ -21,7 +21,7 @@ const Enemies = () => {
               title="We refuse to be enemies"
               text="Friedenskampagne und Vernetzungsplattform - die Moabit.World erkunden"
             />
-            <Button text="Erfahrt mehr" />
+            <Button url="/about" text="Erfahrt mehr" />
           </div>
           <div className="enemies-content-small">
             <TextBoxSmall
@@ -29,7 +29,6 @@ const Enemies = () => {
               title="We refuse to be enemies"
               text="Friedenskampagne und Vernetzungsplattform - die Moabit.World erkunden"
             />
-            <Button text="Erfahrt mehr" />
           </div>
         </div>
         <div className="enemies-bcg">

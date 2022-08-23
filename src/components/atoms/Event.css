@@ -15,12 +15,16 @@
 }
 .event-wrapper {
   flex-direction: row;
+  max-height: 600px;
 }
 .event-description {
   padding-left: 1vw;
   padding-right: 1vw;
   font-size: 24px;
+
+  overflow: -moz-scrollbars-vertical;
 }
+
 .event-title {
   font-size: 36px;
   font-weight: bold;
@@ -43,7 +47,7 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    padding-bottom: 10vh;
+    /* padding-bottom: 10vh; */
 
     width: 100vw;
     text-align: center;

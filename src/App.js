@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPageContainer from "./components/LandingPageContainer";
 import Impressum from "./components/Impressum";
 import Datenschutz from "./components/Datenschutz";
+import About from "./components/About";
+import ComingSoon from "./components/ComingSoon";
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
           <Route path="/" element={<LandingPageContainer />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
         </Routes>
       </Router>
     </div>

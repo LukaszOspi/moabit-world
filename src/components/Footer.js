@@ -15,11 +15,11 @@ const Footer = () => {
           <div
             style={{
               textAlign: "center",
-              fontSize: "32px",
+              fontSize: "3vh",
               fontWeight: "bold",
             }}
           >
-            Unsere Unterstuetzer
+            Unsere Unterstützer
           </div>
         </div>
         <img

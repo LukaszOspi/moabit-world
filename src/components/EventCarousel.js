@@ -17,7 +17,7 @@ const EventCarousel = () => {
     setLoading(true);
     axios
       .get(
-        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo`
+        `https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo&content_type=events`
       )
       .then((res) => {
         //console.log(res.data.items[0].fields.imageUrl);
