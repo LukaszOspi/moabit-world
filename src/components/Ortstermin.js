@@ -53,8 +53,8 @@ const Ortstermin = () => {
             color="black"
           />
         </div>
-        <ImageResponsive src={Ortstermin2} />
-        <ImageResponsive src={Ortstermin1} />
+        <ImageResponsive src={Ortstermin2} maxwidth="1000px" />
+        <ImageResponsive src={Ortstermin1} maxwidth="1000px" />
         <div className="carousel">
           <Carousel
             // removeArrowOnDeviceType={["tablet", "mobile"]}

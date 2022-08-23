@@ -36,7 +36,11 @@ const About = () => {
       <div className="about-desktop">
         <ImageResponsive src={uberuns} maxwidth="1400px" />
       </div>
-      <Button url="/" text="Zu unseren Projekten" padding="20px"></Button>
+      <Button
+        url="/comingsoon"
+        text="Zu unseren Projekten"
+        padding="20px"
+      ></Button>
       <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
       <Footer />
     </>

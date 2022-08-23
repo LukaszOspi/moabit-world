@@ -5,6 +5,7 @@ import LandingPageContainer from "./components/LandingPageContainer";
 import Impressum from "./components/Impressum";
 import Datenschutz from "./components/Datenschutz";
 import About from "./components/About";
+import ComingSoon from "./components/ComingSoon";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/about" element={<About />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/comingsoon" element={<ComingSoon />} />
         </Routes>
       </Router>
     </div>
