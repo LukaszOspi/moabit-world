@@ -5,7 +5,7 @@ const Button = (props) => {
   return (
     <div style={{ padding: props.padding }}>
       <a href={props.url} className="button">
-        <div>{props.text}</div>
+        <div>&nbsp;{props.text}&nbsp;</div>
       </a>
     </div>
   );
