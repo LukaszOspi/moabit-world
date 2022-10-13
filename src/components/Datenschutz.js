@@ -1,5 +1,5 @@
 import React from "react";
-import "./Datenschutz.css";
+import "./styles.css";
 import TriangleTitle from "./atoms/TriangleTitle";
 import Footer from "./Footer";
 import Menu from "./Menu";

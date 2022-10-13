@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./atoms/Button";
-import "./Angebote.css";
+import "./styles.css";
 import TextBox from "./atoms/TextBox";
 import fussball from "./../assets/fussball.png";
 

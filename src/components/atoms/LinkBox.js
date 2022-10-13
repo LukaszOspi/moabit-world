@@ -1,4 +1,4 @@
-import "./LinkBox.css";
+import "./styles-atoms.css";
 
 import React from "react";
 

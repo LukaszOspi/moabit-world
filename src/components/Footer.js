@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./styles.css";
 import logo from "./../assets/moabit_world_white.png";
 import facebook from "./../assets/facebook.png";
 import telegram from "././../assets/telegram.png";

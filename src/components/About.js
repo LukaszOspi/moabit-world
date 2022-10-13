@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./styles.css";
 import ImageResponsive from "./atoms/ImageResponsive";
 import Footer from "./Footer";
 import LandingPage from "./LandingPage";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ImageResponsive.css";
+import "./styles-atoms.css";
 
 const ImageResponsive = (props) => {
   return (

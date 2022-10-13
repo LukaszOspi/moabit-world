@@ -1,5 +1,5 @@
 import React from "react";
-import "./Links.css";
+import "./styles.css";
 import LinkBox from "./atoms/LinkBox";
 import TextBox from "./atoms/TextBox";
 import moabit from "./../assets/moabit_hilft.png";

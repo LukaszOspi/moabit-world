@@ -1,5 +1,5 @@
 import React from "react";
-import "./Impressum.css";
+import "./styles.css";
 import Footer from "./Footer";
 import Menu from "./Menu";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import linie from "./../../assets/linie.png";
-import "./TriangleTitle.css";
+import "./styles-atoms.css";
 
 const TriangleTitle = (props) => {
   return (

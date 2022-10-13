@@ -10,22 +10,21 @@ import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
-import "./LandingPageContainer.css";
+import "./styles.css";
 
 const LandingPageContainer = () => {
   return (
     <div className="landing-page">
       <LandingPage />
       <Info />
-      <Ortstermin />
+      <Links />
       <Veranstaltung />
       <EventCarousel />
       <Enemies />
-      <Bar />
       <Host />
-      <Links />
-
+      <Bar />
       <Angebote />
+
       <Footer />
     </div>
   );

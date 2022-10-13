@@ -1,6 +1,6 @@
 import React from "react";
 import bar from "./../assets/bar.png";
-import "./Bar.css";
+import "./styles.css";
 import TextBox from "./atoms/TextBox";
 import Button from "./atoms/Button";
 

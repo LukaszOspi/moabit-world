@@ -2,6 +2,7 @@ import React from "react";
 import LandingPage from "./LandingPage";
 import TextBox from "./atoms/TextBox";
 import Footer from "./Footer";
+import "./styles.css";
 
 const ComingSoon = () => {
   return (
