@@ -1,5 +1,5 @@
 import React from "react";
-import "./Event.css";
+import "./styles-atoms.css";
 import placeholder from "./../../assets/event.png";
 
 const Event = (props) => {
@@ -24,7 +24,8 @@ const Event = (props) => {
             <a href={props.locationUrl}>
               <div className="event-location">Ort: {props.location}</div>
             </a>
-            <div className="event-date">Datum/Zeit: {props.date}</div>
+
+            <div className="event-date">{props.date}</div>
           </div>
         </div>
       </div>

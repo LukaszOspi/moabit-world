@@ -1,11 +1,13 @@
 import React from "react";
-import "./Button.css";
+import "./styles-atoms.css";
 
 const Button = (props) => {
   return (
-    <a href={props.url} className="button">
-      <div>{props.text}</div>
-    </a>
+    <div style={{ padding: props.padding }}>
+      <a href={props.url} className="button">
+        <div>&nbsp;{props.text}&nbsp;</div>
+      </a>
+    </div>
   );
 };
 

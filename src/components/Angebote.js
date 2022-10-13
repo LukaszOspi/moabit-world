@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./atoms/Button";
-import "./Angebote.css";
+import "./styles.css";
 import TextBox from "./atoms/TextBox";
 import fussball from "./../assets/fussball.png";
 
@@ -16,7 +16,7 @@ const Angebote = () => {
         />
 
         <div className="fussball">
-          <Button url="https://www.moabit.world" text="Orte und Angebote" />
+          <Button url="/comingsoon" text="Orte und Angebote" />
         </div>
         <img className="fussball-img" src={fussball} alt="Fussball" />
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Veranstaltung.css";
+import "./styles.css";
 import TextBox from "./atoms/TextBox";
 
 const Veranstaltung = () => {

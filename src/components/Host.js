@@ -1,5 +1,5 @@
 import React from "react";
-import "./Host.css";
+import "./styles.css";
 import TextBox from "./atoms/TextBox";
 import Button from "./atoms/Button";
 import host from "./../assets/host.png";

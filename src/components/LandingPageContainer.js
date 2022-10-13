@@ -5,12 +5,12 @@ import Links from "./Links";
 import Angebote from "./Angebote";
 import Host from "./Host";
 import Footer from "./Footer";
-
+import Ortstermin from "./Ortstermin";
 import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
-import "./LandingPageContainer.css";
+import "./styles.css";
 
 const LandingPageContainer = () => {
   return (
@@ -18,12 +18,13 @@ const LandingPageContainer = () => {
       <LandingPage />
       <Info />
       <Links />
-      <Angebote />
-      <Host />
       <Veranstaltung />
       <EventCarousel />
       <Enemies />
+      <Host />
       <Bar />
+      <Angebote />
+
       <Footer />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPage.css";
+import "./styles.css";
 import Menu from "./Menu";
 
 const LandingPage = () => {

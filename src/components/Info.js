@@ -1,5 +1,5 @@
 import React from "react";
-import "./Info.css";
+import "./styles.css";
 import vogel from "./../assets/vogel.png";
 
 const Info = () => {
@@ -13,9 +13,9 @@ const Info = () => {
           unterstützen.
         </div>
         <div>
-          Moabit.World ist auch eine Vernetzungsplattform für Menschen auf der
-          Flucht und Unterstützende hier vor Ort, die auf dieser Website
-          Informationen zum Ankommen und Leben in Moabit finden können.
+          Moabit.World ist auch eine Vernetzungsplattform für unseren Kiez.
+          Menschen auf der Flucht und Unterstützende hier vor Ort können auf
+          dieser Webseite Informationen zum Ankommen und leben in Moabit finden.
         </div>
       </div>
       <div>

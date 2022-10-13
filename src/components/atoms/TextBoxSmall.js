@@ -1,5 +1,5 @@
 import React from "react";
-import "./TextBoxSmall.css";
+import "./styles-atoms.css";
 
 const TextBoxSmall = (props) => {
   return (

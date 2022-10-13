@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./styles.css";
 import logo from "./../assets/moabit_world_white.png";
 import facebook from "./../assets/facebook.png";
 import telegram from "././../assets/telegram.png";
@@ -15,11 +15,11 @@ const Footer = () => {
           <div
             style={{
               textAlign: "center",
-              fontSize: "32px",
+              fontSize: "3vh",
               fontWeight: "bold",
             }}
           >
-            Unsere Unterstuetzer
+            Unsere Unterstützer
           </div>
         </div>
         <img
