@@ -1,5 +1,5 @@
 import React from "react";
-import "./Enemies.css";
+import "./styles.css";
 import birds from "./../assets/birds.png";
 import enemiesBcg from "./../assets/enemies_bcg.png";
 import TextBox from "./atoms/TextBox";

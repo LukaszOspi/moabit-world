@@ -1,5 +1,5 @@
 import React from "react";
-import "./Info.css";
+import "./styles.css";
 import vogel from "./../assets/vogel.png";
 
 const Info = () => {

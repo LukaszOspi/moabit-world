@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Event from "./atoms/Event";
-import "./EventCarousel.css";
+import "./styles.css";
 import axios from "axios";
 import leftArrow from "./../assets/prev.png";
 import rightArrow from "./../assets/next.png";

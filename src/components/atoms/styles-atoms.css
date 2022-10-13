@@ -1,0 +1,212 @@
+/* Buttons */
+.button {
+  background-color: #0099a7;
+  height: 58px;
+  width: 313px;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .button {
+    width: auto;
+    font-size: 5vw;
+    padding: 0px;
+  }
+}
+
+/* Event */
+.picture {
+  height: 600px;
+  width: 600px;
+}
+.button-event {
+  background-color: none;
+  border: none;
+}
+.event {
+  display: flex;
+  flex-direction: row;
+  max-width: 1400px;
+  height: 100%;
+  padding-top: 56px;
+}
+.event-wrapper {
+  flex-direction: row;
+  max-height: 600px;
+}
+.event-description {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 24px;
+
+  overflow: -moz-scrollbars-vertical;
+}
+
+.event-title {
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.event-location {
+  font-size: 24px;
+  padding-top: 20px;
+}
+.event-date {
+  font-size: 24px;
+  padding-top: 20px;
+}
+@media screen and (max-width: 1200px) {
+  .picture {
+    width: 100vw;
+    height: auto;
+  }
+  .event {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    /* padding-bottom: 10vh; */
+
+    width: 100vw;
+    text-align: center;
+  }
+  .event-title {
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .event-description {
+    font-size: 16px;
+  }
+  .event-location {
+    font-size: 16px;
+  }
+  .event-date {
+    font-size: 16px;
+  }
+}
+
+/* ImageResponsive */
+.image-responsive {
+  max-width: 1400px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .image-responsive {
+    width: 80vw;
+    padding-bottom: 10vh;
+    object-fit: scale-down;
+  }
+}
+
+/* LinkBox */
+.outside-box {
+  padding: 15px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 315px;
+  height: 400px;
+  background-color: #662382;
+  padding: 26px;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  font-size: 22px;
+}
+.box:hover {
+  background-color: #0099a7;
+  transform: rotate(2deg);
+}
+
+.pic {
+  background-color: white;
+  width: 314px;
+  height: 176px;
+  object-fit: scale-down;
+}
+.text {
+  padding-top: 16px;
+  width: 248px;
+}
+@media screen and (max-width: 1200px) {
+  .outside-box {
+    height: auto;
+    padding: 5px;
+  }
+
+  .vogel {
+    width: 100vw;
+  }
+  .box {
+    width: 85%;
+  }
+}
+
+/* TextBox */
+.title {
+  width: 676px;
+  font-size: 45px;
+  color: black;
+  font-weight: bold;
+  padding-bottom: 60px;
+}
+
+.content {
+  color: black;
+  width: 562px;
+  padding-top: 20px;
+  padding-bottom: 56px;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .title {
+    width: 100%;
+    padding: none;
+    flex-wrap: wrap;
+    font-size: 8vw;
+  }
+  .content {
+    width: 100%;
+    font-size: 4vw;
+  }
+}
+
+/* TextBoxSmall */
+.title-small {
+  position: relative;
+  font-size: 4vh;
+  background: rgba(241, 163, 52, 0.6);
+}
+.content-small {
+  position: relative;
+  font-size: 2vh;
+  z-index: 2;
+  background: rgba(241, 163, 52, 0.6);
+}
+
+/* TriangleTitle */
+.triangle-title {
+  background-image: url("./../../assets/triangle.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  height: 315px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 45px;
+  font-weight: 500;
+}
+
+.triangle-linie {
+  width: 100%;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./TextBox.css";
+import "./styles-atoms.css";
 
 const TextBox = (props) => {
   return (

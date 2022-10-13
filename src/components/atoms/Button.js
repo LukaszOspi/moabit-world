@@ -1,5 +1,5 @@
 import React from "react";
-import "./Button.css";
+import "./styles-atoms.css";
 
 const Button = (props) => {
   return (

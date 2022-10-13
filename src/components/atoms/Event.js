@@ -1,5 +1,5 @@
 import React from "react";
-import "./Event.css";
+import "./styles-atoms.css";
 import placeholder from "./../../assets/event.png";
 
 const Event = (props) => {
