@@ -4,7 +4,7 @@ import TextBox from "./atoms/TextBox";
 
 const Veranstaltung = () => {
   return (
-    <div>
+    <div className="veranstaltung-container">
       <div className="veranstaltung">
         {" "}
         <div className="veranstaltung-left">
