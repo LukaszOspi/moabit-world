@@ -271,9 +271,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: left;
+  align-items: center;
+
   width: 279px;
-  padding-top: 48px;
+  padding-top: 25px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -384,7 +385,7 @@
 .zusammen {
   font-size: 60px;
   color: black;
-  font-weight: 300;
+  font-weight: 500;
   height: 210px;
   width: 502px;
   padding-left: 50px;
@@ -531,6 +532,12 @@
 }
 
 /* Veranstaltung */
+.veranstaltung-container {
+  width: 80%;
+  display: flex;
+  justify-content: left;
+}
+
 .veranstaltung {
   display: flex;
   flex-direction: row;

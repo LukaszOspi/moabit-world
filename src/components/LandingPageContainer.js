@@ -24,7 +24,6 @@ const LandingPageContainer = () => {
       <Host />
       <Bar />
       <Angebote />
-
       <Footer />
     </div>
   );
