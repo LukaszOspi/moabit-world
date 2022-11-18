@@ -12,6 +12,7 @@ import raum_diskurs from "./../assets/raum_diskurs.png";
 import lokales_handeln from "./../assets/lokales_handeln.png";
 import vogel_rose from "./../assets/vogel_rose.png";
 import uberuns from "./../assets/uberuns.png";
+import ArchiveCarousel from "./ArchiveCarousel";
 
 const About = () => {
   return (
@@ -36,11 +37,7 @@ const About = () => {
       <div className="about-desktop">
         <ImageResponsive src={uberuns} maxwidth="1400px" />
       </div>
-      <Button
-        url="/comingsoon"
-        text="Zu unseren Projekten"
-        padding="20px"
-      ></Button>
+      <ArchiveCarousel />
       <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
       <Footer />
     </>

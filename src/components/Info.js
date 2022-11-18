@@ -15,7 +15,7 @@ const Info = () => {
         <div>
           Moabit.World ist auch eine Vernetzungsplattform für unseren Kiez.
           Menschen auf der Flucht und Unterstützende hier vor Ort können auf
-          dieser Webseite Informationen zum Ankommen und leben in Moabit finden.
+          dieser Webseite Informationen zum Ankommen und Leben in Moabit finden.
         </div>
       </div>
       <div>

@@ -40,14 +40,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="footerRight">
-            <p>
-              <h2> Kommt vorbei </h2>
-              Sommercafé auf dem Wiclefplatz, Wiclefstraße 32, 10551 Berlin,
-              <br></br>
-              Mo, Do, Sa, wenn die Sonne scheint, 15:00-18:00
+            <span>
               <h2>Schreibt uns</h2>{" "}
               <a href="mailto:hi@moabit.world"> hi@moabit.world</a>
-            </p>
+            </span>
             <div className="socialButtons">
               <a href="https://t.me/moa_peace">
                 <img src={telegram} alt="telegram" />

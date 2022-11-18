@@ -11,7 +11,7 @@ const Veranstaltung = () => {
           <TextBox
             title="Aktuelle Treffpunkte zur Vernetzung in Moabit"
             text="Events und Treffs im Zusammenhang mit unserer Friedenskampagne Moabit.World entdeckt ihr hier. 
-            Euer Event passt dazu? Schreib an: hi@moabit.world"
+            Euer Event passt dazu? Schreibt an: hi@moabit.world"
           />
         </div>
       </div>

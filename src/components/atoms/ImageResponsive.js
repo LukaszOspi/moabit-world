@@ -7,7 +7,7 @@ const ImageResponsive = (props) => {
       <img
         className="image-responsive"
         src={props.src}
-        alt="Image Responsive"
+        alt="Responsive"
         style={{
           maxWidth: props.maxwidth,
           padding: props.padding,
