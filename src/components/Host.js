@@ -16,7 +16,7 @@ const Host = () => {
                 text="Im offenen Telegram Kanal könnt ihr euch mit Leuten aus Moabit, 
                 die Geflüchtete unterstützen und an Aktionen zur Überwindung von Gewalt sowie der Stärkung 
                 von Demokratie und Miteinander interessiert sind, austauschen. Hier erfahrt ihr 
-                immer das Neueste aus der Friedenskampagne Moabit.World"
+                immer das Neueste aus der Friedenskampagne Moabit.World."
               />
             </div>
             <div className="telegram-button">
