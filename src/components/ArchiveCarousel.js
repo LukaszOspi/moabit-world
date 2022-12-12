@@ -43,7 +43,7 @@ const EventCarousel = () => {
           //customLeftArrow={<CustomLeftArrow />}
           //customRightArrow={<CustomRightArrow />}
           additionalTransfrom={
-            window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+            window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
           }
           autoPlaySpeed={3000}
           centerMode={false}

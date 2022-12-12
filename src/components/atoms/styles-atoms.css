@@ -5,6 +5,7 @@
   width: 313px;
   color: white;
   font-size: 24px;
+  font-weight: bold;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -15,6 +16,7 @@
   .button {
     width: auto;
     font-size: 5vw;
+    font-weight: bold;
     padding: 0px;
   }
 }
@@ -31,7 +33,7 @@
 .event {
   display: flex;
   flex-direction: row;
-  max-width: 1400px;
+  max-width: 1120px;
   height: 100%;
   padding-top: 56px;
 }
@@ -42,7 +44,7 @@
 .event-description {
   padding-left: 1vw;
   padding-right: 1vw;
-  font-size: 24px;
+  font-size: 18px;
 
   overflow: -moz-scrollbars-vertical;
 }
@@ -53,14 +55,14 @@
   padding-bottom: 20px;
 }
 .event-location {
-  font-size: 24px;
+  font-size: 18px;
   padding-top: 20px;
 }
 .event-date {
-  font-size: 24px;
+  font-size: 18px;
   padding-top: 20px;
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1120px) {
   .picture {
     width: 100vw;
     height: auto;

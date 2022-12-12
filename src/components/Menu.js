@@ -7,7 +7,9 @@ const Menu = (props) => {
     <>
       <div className="menu">
         <div className="logo">
-          <img className="logo-img" src={logo} alt="Logo" />
+          <a href="https://moabit.world">
+            <img className="logo-img" src={logo} alt="Logo" />
+          </a>
         </div>
         <div className="menu_desktop" style={{ color: props.color }}>
           <a

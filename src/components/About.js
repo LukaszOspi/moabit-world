@@ -18,25 +18,25 @@ const About = () => {
   return (
     <>
       <LandingPage />
-      <div className="about-mobile">
-        <ImageResponsive src={friedensarbeit} maxwidth="600px" padding="20px" />
+      <div className="about">
+        <ImageResponsive src={friedensarbeit} maxwidth="400px" padding="20px" />
         <ImageResponsive
           src={menschen_flucht}
-          maxwidth="600px"
+          maxwidth="400px"
           padding="20px"
         />
-        <ImageResponsive src={vernetzung} maxwidth="600px" padding="20px" />
-        <ImageResponsive src={gewaltfreiheit} maxwidth="600px" padding="20px" />
-        <ImageResponsive src={raum_diskurs} maxwidth="600px" padding="20px" />
+        <ImageResponsive src={vernetzung} maxwidth="400px" padding="20px" />
+      </div>
+      <div className="about">
+        <ImageResponsive src={gewaltfreiheit} maxwidth="400px" padding="20px" />
+        <ImageResponsive src={raum_diskurs} maxwidth="400px" padding="20px" />
         <ImageResponsive
           src={lokales_handeln}
-          maxwidth="600px"
+          maxwidth="400px"
           padding="20px"
         />
       </div>
-      <div className="about-desktop">
-        <ImageResponsive src={uberuns} maxwidth="1400px" />
-      </div>
+
       <ArchiveCarousel />
       <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
       <Footer />

@@ -6,6 +6,7 @@ import "./styles.css";
 import axios from "axios";
 import leftArrow from "./../assets/prev.png";
 import rightArrow from "./../assets/next.png";
+import { CustomLeftArrow, CustomRightArrow } from "./CustomArrows";
 
 const EventCarousel = () => {
   const [data, setData] = useState({ items: [] });
@@ -37,13 +38,16 @@ const EventCarousel = () => {
     return (
       <div className="carousel">
         <Carousel
-          // removeArrowOnDeviceType={["tablet", "mobile"]}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
           arrows={true}
-          renderButtonGroupOutside={false}
-          //customLeftArrow={<CustomLeftArrow />}
-          //customRightArrow={<CustomRightArrow />}
+          renderButtonGroupOutside={true}
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
+          //this entry shifts the content by one width of carousel
+          //because the first entry is empty
+          //TODO
           additionalTransfrom={
-            window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+            window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
           }
           autoPlaySpeed={3000}
           centerMode={false}

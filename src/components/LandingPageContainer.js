@@ -29,7 +29,9 @@ const LandingPageContainer = () => {
 
       <Links />
       <Veranstaltung />
+
       <EventCarousel />
+
       <Enemies />
       <Host />
       <Bar />

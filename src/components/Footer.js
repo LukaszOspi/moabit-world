@@ -32,11 +32,13 @@ const Footer = () => {
         <div className="footer">
           <div className="footerLeft">
             <div>
-              <img className="image" src={logo} alt="logo" />
+              <a href="https://moabit.world">
+                <img className="image" src={logo} alt="logo" />
+              </a>
             </div>
             <div>
               <a href="/impressum">Impressum</a> |
-              <a href="/datenschutz">Datenschutz</a>
+              <a href="/datenschutz"> Datenschutz</a>
             </div>
           </div>
           <div className="footerRight">
