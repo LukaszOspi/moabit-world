@@ -5,7 +5,7 @@ import facebook from "./../assets/facebook.png";
 import telegram from "././../assets/telegram.png";
 import insta from "././../assets/insta.png";
 import cefo from "./../assets/cefo.png";
-import logosFooter from "./../assets/logos_footer.png";
+import logosFooter from "./../assets/logos_footer.jpg";
 
 const Footer = () => {
   return (
