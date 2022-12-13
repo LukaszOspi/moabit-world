@@ -35,7 +35,6 @@
   flex-direction: row;
   max-width: 1120px;
   height: 100%;
-  padding-top: 56px;
 }
 .event-wrapper {
   flex-direction: row;
@@ -153,12 +152,13 @@
 }
 
 /* TextBox */
+/* This controls the space between title and content in whole landing page */
 .title {
   width: 676px;
   font-size: 45px;
   color: black;
   font-weight: bold;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
 }
 
 .content {
@@ -179,6 +179,7 @@
   .content {
     width: 100%;
     font-size: 4vw;
+    padding-bottom: 20px;
   }
 }
 

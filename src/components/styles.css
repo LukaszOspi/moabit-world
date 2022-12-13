@@ -42,11 +42,22 @@
 }
 
 /* About */
+.about-divider {
+  padding-top: 75px;
+}
 .about {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 1400px;
+}
+@media screen and (max-width: 1200px) {
+  .about {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }
 /* Bar */
 .bar {
@@ -56,6 +67,7 @@
   padding-bottom: 5vh;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 50px;
 }
 
 .bar-left {
@@ -75,10 +87,11 @@
   .bar-left {
     align-items: center;
     padding-right: 0px;
+    padding-top: 0px;
   }
   .bar-img {
     width: 80vw;
-    padding-bottom: 10vh;
+    padding-bottom: 0px;
     object-fit: scale-down;
   }
 }
@@ -208,7 +221,7 @@
 .carousel {
   height: 800px;
   width: 1120px;
-  padding-top: 10vh;
+  padding-top: 50px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -319,6 +332,8 @@
   max-width: 100vw;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .host-left {
@@ -337,6 +352,7 @@
   .host-left {
     width: 100vw;
     padding-right: 0px;
+    padding-top: 0px;
   }
   .handy {
     height: 50vh;
@@ -367,6 +383,7 @@
   color: #7cb92c;
   font-size: 24px;
   width: 1130px;
+  padding-top: 75px;
 }
 @media screen and (max-width: 1200px) {
   .beschreibung {
@@ -433,6 +450,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 0px;
+    text-align: center;
   }
   .logo {
     padding-left: 0px;
@@ -535,6 +553,7 @@
   width: 80%;
   display: flex;
   justify-content: left;
+  padding-top: 50px;
 }
 
 .veranstaltung {
@@ -595,8 +614,9 @@
 .container {
   margin-top: 10%;
 }
+/* Has been affecting the whole mobile view, was 0 80px, is now 0 0 */
 #root {
-  padding: 0 80px;
+  padding: 0 0px;
 }
 .container-with-dots {
   margin-top: 10%;

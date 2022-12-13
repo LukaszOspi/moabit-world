@@ -11,6 +11,9 @@ import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
 
 import "./styles.css";
+
+//This is supposed to be an animation for landing page elements in the future
+/*
 import {
   ScrollContainer,
   ScrollPage,
@@ -19,6 +22,7 @@ import {
   FadeOut,
   FadeIn,
 } from "react-scroll-motion";
+*/
 
 const LandingPageContainer = () => {
   return (

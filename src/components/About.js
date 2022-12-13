@@ -3,21 +3,23 @@ import "./styles.css";
 import ImageResponsive from "./atoms/ImageResponsive";
 import Footer from "./Footer";
 import LandingPage from "./LandingPage";
-import Button from "./atoms/Button";
 import friedensarbeit from "./../assets/friedensarbeit.svg";
 import menschen_flucht from "./../assets/menschen_flucht.svg";
 import vernetzung from "./../assets/vernetzung.svg";
 import gewaltfreiheit from "./../assets/gewaltfreiheit.svg";
 import raum_diskurs from "./../assets/raum_diskurs.svg";
 import lokales_handeln from "./../assets/lokales_handeln.svg";
-import vogel_rose from "./../assets/vogel_rose.png";
-import uberuns from "./../assets/uberuns.png";
+// import vogel_rose from "./../assets/vogel_rose.png";
 import ArchiveCarousel from "./ArchiveCarousel";
+
+//This image will be used in the future as divider when content is added
+// <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
 
 const About = () => {
   return (
     <>
       <LandingPage />
+      <div className="about-divider"></div>
       <div className="about">
         <ImageResponsive src={friedensarbeit} maxwidth="400px" padding="20px" />
         <ImageResponsive
@@ -38,7 +40,7 @@ const About = () => {
       </div>
 
       <ArchiveCarousel />
-      <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
+
       <Footer />
     </>
   );

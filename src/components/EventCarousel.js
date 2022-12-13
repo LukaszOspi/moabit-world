@@ -4,13 +4,12 @@ import "react-multi-carousel/lib/styles.css";
 import Event from "./atoms/Event";
 import "./styles.css";
 import axios from "axios";
-import leftArrow from "./../assets/prev.png";
-import rightArrow from "./../assets/next.png";
 import { CustomLeftArrow, CustomRightArrow } from "./CustomArrows";
 
 const EventCarousel = () => {
   const [data, setData] = useState({ items: [] });
-  const [error, setError] = useState("");
+  const [setError] = useState("");
+  // has had error that caused warning, problem when removed?
   const [loading, setLoading] = useState(false);
 
   // ${process.env.REACT_APP_CONTENT_MGM_KEY}
