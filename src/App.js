@@ -18,6 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
+          <Route path="/moafinder" element={<ComingSoon />} />
         </Routes>
       </Router>
     </div>

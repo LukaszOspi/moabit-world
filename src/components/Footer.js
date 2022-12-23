@@ -5,7 +5,7 @@ import facebook from "./../assets/facebook.png";
 import telegram from "././../assets/telegram.png";
 import insta from "././../assets/insta.png";
 import cefo from "./../assets/cefo.png";
-import logosFooter from "./../assets/logos_footer.png";
+import logosFooter from "./../assets/logos_footer.jpg";
 
 const Footer = () => {
   return (
@@ -32,11 +32,13 @@ const Footer = () => {
         <div className="footer">
           <div className="footerLeft">
             <div>
-              <img className="image" src={logo} alt="logo" />
+              <a href="https://moabit.world">
+                <img className="image" src={logo} alt="logo" />
+              </a>
             </div>
             <div>
               <a href="/impressum">Impressum</a> |
-              <a href="/datenschutz">Datenschutz</a>
+              <a href="/datenschutz"> Datenschutz</a>
             </div>
           </div>
           <div className="footerRight">
