@@ -8,6 +8,7 @@ import { CustomLeftArrow, CustomRightArrow } from "./CustomArrows";
 
 const EventCarousel = () => {
   const [data, setData] = useState({ items: [] });
+
   const [setError] = useState("");
   // has had error that caused warning, problem when removed?
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ const EventCarousel = () => {
         //console.log(res.data.items[0].fields.imageUrl);
         setData(res.data);
       })
+
       .catch((error) => {
         setError(error.message);
       })
@@ -93,22 +95,22 @@ const EventCarousel = () => {
           }}
         >
           <div></div>
-          {data.items.length - 1
-            ? data.items.map((item, index) => (
-                <div key={index}>
-                  <Event
-                    imageUrl={item.fields.imageUrl}
-                    title={item.fields.title}
-                    text={item.fields.text}
-                    linkUrl={item.fields.linkUrl}
-                    location={item.fields.location}
-                    date={item.fields.date}
-                    locationUrl={item.fields.locationUrl}
-                    archive={item.fields.archive}
-                  />
-                </div>
-              ))
-            : null}
+          {data.items.map((item, index) =>
+            item.fields.archive === true ? (
+              <div key={index}>
+                <Event
+                  imageUrl={item.fields.imageUrl}
+                  title={item.fields.title}
+                  text={item.fields.text}
+                  linkUrl={item.fields.linkUrl}
+                  location={item.fields.location}
+                  date={item.fields.date}
+                  locationUrl={item.fields.locationUrl}
+                  archive={item.fields.archive}
+                />
+              </div>
+            ) : null
+          )}
         </Carousel>
       </div>
     );
