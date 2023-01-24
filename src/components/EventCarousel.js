@@ -96,22 +96,22 @@ const EventCarousel = () => {
           }}
         >
           <div></div>
-          {data.items.length - 1
-            ? data.items.map((item, index) => (
-                <div key={index}>
-                  <Event
-                    imageUrl={item.fields.imageUrl}
-                    title={item.fields.title}
-                    text={item.fields.text}
-                    linkUrl={item.fields.linkUrl}
-                    location={item.fields.location}
-                    date={item.fields.date}
-                    locationUrl={item.fields.locationUrl}
-                    archive={item.fields.archive}
-                  />
-                </div>
-              ))
-            : null}
+          {data.items.map((item, index) =>
+            item.fields.archive === false ? (
+              <div key={index}>
+                <Event
+                  imageUrl={item.fields.imageUrl}
+                  title={item.fields.title}
+                  text={item.fields.text}
+                  linkUrl={item.fields.linkUrl}
+                  location={item.fields.location}
+                  date={item.fields.date}
+                  locationUrl={item.fields.locationUrl}
+                  archive={item.fields.archive}
+                />
+              </div>
+            ) : null
+          )}
         </Carousel>
       </div>
     );

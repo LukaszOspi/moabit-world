@@ -11,6 +11,7 @@ import raum_diskurs from "./../assets/raum_diskurs.svg";
 import lokales_handeln from "./../assets/lokales_handeln.svg";
 // import vogel_rose from "./../assets/vogel_rose.png";
 import ArchiveCarousel from "./ArchiveCarousel";
+import TextBox from "./atoms/TextBox";
 
 //This image will be used in the future as divider when content is added
 // <ImageResponsive src={vogel_rose} width="100%" maxwidth="1400px" />
@@ -38,7 +39,16 @@ const About = () => {
           padding="20px"
         />
       </div>
-
+      <div className="about-divider" />
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "3vh",
+          fontWeight: "bold",
+        }}
+      >
+        Archiv - unsere vergangenen Veranstaltungen
+      </div>
       <ArchiveCarousel />
 
       <Footer />
