@@ -37,7 +37,7 @@ const EventCarousel = () => {
     return (
       <div className="carousel">
         <Carousel
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
           arrows={true}
           renderButtonGroupOutside={true}
           customLeftArrow={<CustomLeftArrow />}
@@ -45,9 +45,7 @@ const EventCarousel = () => {
           //this entry shifts the content by one width of carousel
           //because the first entry is empty
           //TODO
-          additionalTransfrom={
-            window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
-          }
+          // additionalTransfrom={window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120}
           autoPlaySpeed={3000}
           centerMode={false}
           containerClass="container"
@@ -56,7 +54,7 @@ const EventCarousel = () => {
           infinite
           itemClass="itemCarousel"
           keyBoardControl
-          minimumTouchDrag={80}
+          minimumTouchDrag={40}
           pauseOnHover
           renderArrowsWhenDisabled={false}
           renderDotsOutside={false}
@@ -95,7 +93,6 @@ const EventCarousel = () => {
             },
           }}
         >
-          <div></div>
           {data.items.map((item, index) =>
             item.fields.archive === false ? (
               <div key={index}>

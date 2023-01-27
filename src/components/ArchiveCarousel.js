@@ -39,14 +39,14 @@ const EventCarousel = () => {
     return (
       <div className="carousel">
         <Carousel
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // removeArrowOnDeviceType={["tablet", "mobile"]}
           arrows={true}
           renderButtonGroupOutside={true}
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
-          additionalTransfrom={
-            window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
-          }
+          //  additionalTransfrom={
+          //    window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
+          //  }
           autoPlaySpeed={3000}
           centerMode={false}
           containerClass="container"
@@ -94,23 +94,24 @@ const EventCarousel = () => {
             },
           }}
         >
-          <div></div>
-          {data.items.map((item, index) =>
-            item.fields.archive === true ? (
-              <div key={index}>
-                <Event
-                  imageUrl={item.fields.imageUrl}
-                  title={item.fields.title}
-                  text={item.fields.text}
-                  linkUrl={item.fields.linkUrl}
-                  location={item.fields.location}
-                  date={item.fields.date}
-                  locationUrl={item.fields.locationUrl}
-                  archive={item.fields.archive}
-                />
-              </div>
-            ) : null
-          )}
+          {data.items
+            // .filter((item, index) => index !== 2)
+            .map((item, index) =>
+              item.fields.archive === true ? (
+                <div key={index}>
+                  <Event
+                    imageUrl={item.fields.imageUrl}
+                    title={item.fields.title}
+                    text={item.fields.text}
+                    linkUrl={item.fields.linkUrl}
+                    location={item.fields.location}
+                    date={item.fields.date}
+                    locationUrl={item.fields.locationUrl}
+                    archive={item.fields.archive}
+                  />
+                </div>
+              ) : null
+            )}
         </Carousel>
       </div>
     );

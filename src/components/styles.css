@@ -219,9 +219,9 @@
 }
 
 .carousel {
-  height: 800px;
+  height: 700px;
   width: 1120px;
-  padding-top: 50px;
+  padding-top: 0px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -235,6 +235,7 @@
   .carousel {
     width: 100vw;
     height: auto;
+    padding-bottom: 50px;
   }
 }
 
@@ -385,10 +386,18 @@
   width: 1130px;
   padding-top: 75px;
 }
+@media screen and (min-width: 800px) {
+  .vogel-mobile {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .beschreibung {
     width: 100vw;
     flex-direction: column;
+    padding-left: 10px;
+    padding-right: 5px;
   }
 
   .vogel {
@@ -612,7 +621,7 @@
   opacity: 1;
 }
 .container {
-  margin-top: 10%;
+  margin-top: 3%;
 }
 /* Has been affecting the whole mobile view, was 0 80px, is now 0 0 */
 #root {
@@ -633,4 +642,8 @@
 }
 .container-padding-bottom {
   padding-bottom: 20px;
+}
+
+.hide {
+  display: none;
 }

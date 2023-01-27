@@ -5,6 +5,9 @@ import vogel from "./../assets/vogel.png";
 const Info = () => {
   return (
     <div>
+      <div className="vogel-mobile">
+        <img class="vogel" src={vogel} alt="Vogel"></img>
+      </div>
       <div className="beschreibung">
         <div>
           Moabit.World ist eine Friedenskampagne, in der wir in Moabit lokale
