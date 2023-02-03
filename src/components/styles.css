@@ -647,3 +647,12 @@
 .hide {
   display: none;
 }
+
+/* hides the scroll bar on IOS devices */
+
+@media screen and (max-width: 1200px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+  }
+}
