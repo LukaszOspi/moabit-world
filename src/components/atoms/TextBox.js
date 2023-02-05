@@ -10,10 +10,10 @@ const TextBox = (props) => {
           color: props.color,
         }}
       >
-        {props.title}
+        <div className="title-text">{props.title}</div>
       </div>
       <div className="content" style={{ color: props.color }}>
-        {props.text}
+        <div className="content-text">{props.text}</div>
       </div>
     </>
   );

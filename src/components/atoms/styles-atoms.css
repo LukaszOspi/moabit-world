@@ -175,15 +175,20 @@
     padding: none;
     flex-wrap: wrap;
     font-size: 8vw;
-    padding-right: 10px;
-    padding-left: 5px;
   }
   .content {
     width: 100%;
     font-size: 4vw;
     padding-bottom: 20px;
-    padding-right: 10px;
+  }
+  /*Those two control the padding of text only which is contained in .title and .content */
+  .content-text {
     padding-left: 5px;
+    padding-right: 5px;
+  }
+  .title-text {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 

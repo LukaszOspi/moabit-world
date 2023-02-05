@@ -40,7 +40,14 @@ const About = () => {
         />
       </div>
       <div className="about-divider" />
-      <div className="title">Archiv - unsere vergangenen Veranstaltungen</div>
+      <div
+        className="title"
+        style={{
+          textAlign: "center",
+        }}
+      >
+        Archiv - unsere vergangenen Veranstaltungen
+      </div>
       <ArchiveCarousel />
 
       <Footer />

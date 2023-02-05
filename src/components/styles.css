@@ -386,7 +386,7 @@
   width: 1130px;
   padding-top: 75px;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1200px) {
   .vogel-mobile {
     display: none;
   }
@@ -396,8 +396,10 @@
   .beschreibung {
     width: 100vw;
     flex-direction: column;
+    text-align: center;
     padding-left: 10px;
-    padding-right: 5px;
+    padding-right: 10px;
+    padding-top: 0px;
   }
 
   .vogel {
@@ -497,7 +499,7 @@
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .info {
     width: 100%;
     padding: none;
@@ -646,4 +648,16 @@
 
 .hide {
   display: none;
+}
+
+/* hides the scroll bar on IOS devices */
+
+@media screen and (max-width: 1200px) {
+  body ::-webkit-scrollbar {
+    display: none;
+  }
+  .App {
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+  }
 }
