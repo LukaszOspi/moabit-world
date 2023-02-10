@@ -6,6 +6,7 @@ import Impressum from "./components/Impressum";
 import Datenschutz from "./components/Datenschutz";
 import About from "./components/About";
 import ComingSoon from "./components/ComingSoon";
+import Moafinder from "./components/Moafinder";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
-          <Route path="/moafinder" element={<ComingSoon />} />
+          <Route path="/moafinder" element={<Moafinder />} />
         </Routes>
       </Router>
     </div>

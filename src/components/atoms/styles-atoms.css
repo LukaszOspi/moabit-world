@@ -29,6 +29,7 @@
 .button-event {
   background-color: none;
   border: none;
+  /*padding: 0px; */
 }
 .event {
   display: flex;
