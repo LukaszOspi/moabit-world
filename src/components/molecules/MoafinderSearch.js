@@ -5,6 +5,7 @@ import TextBox from "../atoms/TextBox";
 import searchButton from "../../assets/search_button.png";
 import filter from "../../assets/filter.png";
 import location from "../../assets/location.png";
+import AngeboteMoafinder from "./AngeboteMoafinder";
 
 const MoafinderSearch = () => {
   return (
@@ -41,6 +42,7 @@ const MoafinderSearch = () => {
           style={{ paddingTop: "20px", paddingBottom: "20px", width: "100%" }}
         />
       </div>
+      <AngeboteMoafinder />
     </>
   );
 };

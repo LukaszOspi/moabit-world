@@ -223,3 +223,48 @@
 .triangle-linie {
   width: 100%;
 }
+
+/* AngebotMoaFinder (singular) */
+.offer-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1120px;
+  height: 100%;
+  padding-top: 110px;
+}
+.offer-left {
+  flex-direction: column;
+  height: 100%;
+  width: 75%;
+  padding-right: 1vw;
+  font-size: 24px;
+}
+.title-stripe {
+  background-color: #ffa42b;
+  color: white;
+  width: 1150px;
+  height: 110px;
+  font-size: 46px;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.offer-right {
+  flex-direction: column;
+  height: 100%;
+  width: 25%;
+  padding-left: 1vw;
+  font-size: 24px;
+}
+.offer-image {
+  max-width: 200px;
+  max-height: 250px;
+  object-fit: scale-down;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.offer-divider {
+  display: flex;
+  flex-direction: row;
+}
