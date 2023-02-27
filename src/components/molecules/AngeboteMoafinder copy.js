@@ -3,18 +3,16 @@ import axios from "axios";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import "./../atoms/styles-atoms.css";
 import Angebotstyp from "../../assets/angebotstyp.png";
-import Barrierefreiheit from "../../assets/barrierefreiheit.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({ items: [] });
   const [photoMap, setPhotoMap] = useState({});
-  // eslint-disable-next-line no-unused-vars
   const [hashTagList, setHashTagList] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
-  const [angebotstypOpen, setAngebotstypOpen] = useState(false);
-  const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
 
   useEffect(() => {
@@ -57,6 +55,17 @@ const AngeboteMoaFinder = () => {
     } else {
       setSelectedValues([...selectedValues, value]);
     }
+    let filteredData = allData.items;
+    if (selectedValues.length > 0) {
+      filteredData = allData.items.filter((item) => {
+        if (item.fields.hashtag && Array.isArray(item.fields.hashtag)) {
+          const hashtags = item.fields.hashtag.map((h) => h.trim());
+          return selectedValues.every((value) => hashtags.includes(value));
+        }
+        return false;
+      });
+    }
+    setData({ items: filteredData });
   };
 
   const handleSearch = () => {
@@ -73,63 +82,42 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   };
 
-  const allHashtags = ["#THISISHASHTAG"];
+  const allHashtags = ["#THISISHASHTAG", "#THISISANOTHERHASHTAG"];
 
-  const toggleAngebotstypDropdown = () => {
-    setAngebotstypOpen((prevIsOpen) => !prevIsOpen);
+  const toggleDropdown = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
-  const toggleBarrierefreiheitDropdown = () => {
-    setBarrierefreiheitOpen((prevIsOpen) => !prevIsOpen);
-  };
-
-  const Angebote = ["#THISISANOTHERHASHTAG"];
+  const Angebote = ["option 1", "#THISISHASHTAG", "#THISISANOTHERHASHTAG"];
 
   return (
     <>
-      <div className="search-container">
-        <div onClick={toggleAngebotstypDropdown}>
-          <img src={Angebotstyp} alt="dropdown" />
-        </div>
-        {angebotstypOpen && (
-          <div className="dropdown-menu">
-            {allHashtags.map((item, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  checked={selectedValues.includes(item)}
-                  onChange={handleCheckboxChange}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
-        )}
-        <div onClick={toggleBarrierefreiheitDropdown}>
-          <img src={Barrierefreiheit} alt="dropdown" />
-        </div>
-        {barrierefreiheitOpen && (
-          <div className="dropdown-menu">
-            {Angebote.map((item, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  checked={selectedValues.includes(item)}
-                  onChange={handleCheckboxChange}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
-        )}
-        <button onClick={handleSearch}>Search</button>
-      </div>
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
         <div>
+          <div className="search-container">
+            <div onClick={toggleDropdown}>
+              <img src={Angebotstyp} alt="dropdown" />
+            </div>
+            {isOpen && (
+              <div className="dropdown-menu">
+                {allHashtags.map((item, index) => (
+                  <label key={index}>
+                    <input
+                      type="checkbox"
+                      value={item}
+                      checked={selectedValues.includes(item)}
+                      onChange={handleCheckboxChange}
+                    />
+                    {item}
+                  </label>
+                ))}
+              </div>
+            )}
+            <button onClick={handleSearch}>Search</button>
+          </div>
+          {data.items.length === 0 && <div>No results found.</div>}
           {data.items.map((item, index) => (
             <div className="offer-wrapper" key={index}>
               <div className="title-stripe">
@@ -169,9 +157,6 @@ const AngeboteMoaFinder = () => {
             </div>
           ))}
         </div>
-      )}
-      {!error && !loading && data.items.length === 0 && (
-        <div>No results found.</div>
       )}
     </>
   );
