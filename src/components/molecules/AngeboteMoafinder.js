@@ -3,6 +3,10 @@ import axios from "axios";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import "./../atoms/styles-atoms.css";
 import Angebotstyp from "../../assets/angebotstyp.png";
+import Gruppen from "../../assets/gruppen.png";
+import Orte from "../../assets/orte.png";
+import Kosten from "../../assets/kosten.png";
+import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
 
 const AngeboteMoaFinder = () => {
@@ -14,6 +18,14 @@ const AngeboteMoaFinder = () => {
   const [hashTagList, setHashTagList] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
   const [angebotstypOpen, setAngebotstypOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [orteOpen, setOrteOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [gruppenOpen, setGruppenOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [kostenOpen, setKostenOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [sprachenOpen, setSprachenOpen] = useState(false);
   const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
 
@@ -40,7 +52,6 @@ const AngeboteMoaFinder = () => {
           (item) => item.fields.hashtag
         );
         setHashTagList(hashTagList);
-        console.log(hashTagList);
       })
       .catch((error) => {
         setError(error.message);
@@ -65,6 +76,7 @@ const AngeboteMoaFinder = () => {
       filteredData = allData.items.filter((item) => {
         if (item.fields.hashtag && Array.isArray(item.fields.hashtag)) {
           const hashtags = item.fields.hashtag.map((h) => h.trim());
+          console.log(selectedValues);
           return selectedValues.every((value) => hashtags.includes(value));
         }
         return false;
@@ -76,56 +88,178 @@ const AngeboteMoaFinder = () => {
   const allHashtags = ["#THISISHASHTAG"];
 
   const toggleAngebotstypDropdown = () => {
-    setAngebotstypOpen((prevIsOpen) => !prevIsOpen);
+    console.log("Toggling Angebotstyp dropdown");
+    setAngebotstypOpen(!angebotstypOpen);
+  };
+
+  const toggleGruppenDropdown = () => {
+    console.log("Toggling Gruppen dropdown");
+    setGruppenOpen(!gruppenOpen);
+  };
+
+  const toggleOrteDropdown = () => {
+    console.log("Toggling Orte dropdown");
+    setOrteOpen(!orteOpen);
+  };
+
+  const toggleKostenDropdown = () => {
+    console.log("Toggling Kosten dropdown");
+    setKostenOpen(!kostenOpen);
+  };
+
+  const toggleSprachenDropdown = () => {
+    console.log("Toggling Sprachen dropdown");
+    setSprachenOpen(!sprachenOpen);
   };
 
   const toggleBarrierefreiheitDropdown = () => {
-    setBarrierefreiheitOpen((prevIsOpen) => !prevIsOpen);
+    console.log("Toggling Barrierefreiheit dropdown");
+    setBarrierefreiheitOpen(!barrierefreiheitOpen);
   };
 
   const Angebote = ["#THISISANOTHERHASHTAG"];
 
+  const handleAngebotstypMouseOver = () => {
+    setAngebotstypOpen(true);
+    console.log("hover works");
+  };
+
+  const handleAngebotstypMouseLeave = () => {
+    setAngebotstypOpen(false);
+  };
+
   return (
     <>
       <div className="search-container">
-        <div onClick={toggleAngebotstypDropdown}>
+        <div
+          onMouseOver={handleAngebotstypMouseOver}
+          onMouseLeave={handleAngebotstypMouseLeave}
+        >
           <img src={Angebotstyp} alt="dropdown" />
+          {angebotstypOpen && (
+            <div className="dropdown-menu-hover">
+              {Angebote.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
         </div>
-        {angebotstypOpen && (
-          <div className="dropdown-menu">
-            {allHashtags.map((item, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  checked={selectedValues.includes(item)}
-                  onChange={handleCheckboxChange}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
-        )}
-        <div onClick={toggleBarrierefreiheitDropdown}>
+
+        <div className="dropdown-container" onClick={toggleGruppenDropdown}>
+          <img src={Gruppen} alt="dropdown" />
+          {gruppenOpen && (
+            <div className="dropdown-menu">
+              {allHashtags.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown-container" onClick={toggleOrteDropdown}>
+          <img src={Orte} alt="dropdown" />
+          {orteOpen && (
+            <div className="dropdown-menu">
+              {allHashtags.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown-container" onClick={toggleKostenDropdown}>
+          <img src={Kosten} alt="dropdown" />
+          {kostenOpen && (
+            <div className="dropdown-menu">
+              {allHashtags.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="dropdown-container" onClick={toggleSprachenDropdown}>
+          <img src={Sprachen} alt="dropdown" />
+          {sprachenOpen && (
+            <div className="dropdown-menu">
+              {allHashtags.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div
+          className="dropdown-container"
+          onClick={toggleBarrierefreiheitDropdown}
+        >
           <img src={Barrierefreiheit} alt="dropdown" />
+          {barrierefreiheitOpen && (
+            <div className="dropdown-menu">
+              {allHashtags.map((item, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
         </div>
-        {barrierefreiheitOpen && (
-          <div className="dropdown-menu">
-            {Angebote.map((item, index) => (
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  value={item}
-                  checked={selectedValues.includes(item)}
-                  onChange={handleCheckboxChange}
-                />
-                {item}
-              </label>
-            ))}
-          </div>
-        )}
+
         <button onClick={handleSearch}>Search</button>
       </div>
+      <div>
+        Deine Fiter sind:{" "}
+        {selectedValues.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}{" "}
+      </div>
+
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
