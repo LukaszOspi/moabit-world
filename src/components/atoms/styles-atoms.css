@@ -381,6 +381,10 @@
   font-size: large;
 }
 
+.dropdown-menu-item {
+  display: block;
+}
+
 @media (max-width: 767px) {
   .dropdown-menu {
     top: auto;

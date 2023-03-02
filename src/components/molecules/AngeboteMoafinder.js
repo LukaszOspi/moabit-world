@@ -189,7 +189,7 @@ const AngeboteMoaFinder = () => {
           {angebotstypOpen && (
             <div className="dropdown-menu-hover">
               {HashAngebotstyp.map((item, index) => (
-                <label key={index}>
+                <label key={index} className="dropdown-menu-item">
                   <input
                     type="checkbox"
                     value={item}
