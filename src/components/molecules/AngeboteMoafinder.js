@@ -92,8 +92,28 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   };
 
-  const allHashtags = ["#THISISHASHTAG"];
-  const Angebote = ["#THISISANOTHERHASHTAG"];
+  const HashAngebotstyp = ["#Beratung", "#Musik", "#Gesang"];
+  const HashGruppen = [
+    "#Erwachsene",
+    "#Kinder",
+    "#Jugendliche",
+    "#Senior*innen",
+    "#Familien",
+    "#geflüchteteMenschen",
+  ];
+  const HashOrte = ["#RefoBeussel"];
+  const HashKosten = ["#kostenlos", "#kostenpflichtig"];
+  const HashSprachen = [
+    "#Italienisch",
+    "#Deutsch",
+    "#Arabisch",
+    "#Türkisch",
+    "#Englisch",
+    "#Bulgarisch",
+    "#Kurdisch",
+    "#Tigrinya",
+  ];
+  const HashBarrierefreiheit = ["#barrierefrei"];
 
   // this is deactivated for mouse hover
   /*
@@ -168,7 +188,7 @@ const AngeboteMoaFinder = () => {
           <img src={Angebotstyp} alt="dropdown" />
           {angebotstypOpen && (
             <div className="dropdown-menu-hover">
-              {Angebote.map((item, index) => (
+              {HashAngebotstyp.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -187,7 +207,7 @@ const AngeboteMoaFinder = () => {
           <img src={Gruppen} alt="dropdown" />
           {gruppenOpen && (
             <div className="dropdown-menu">
-              {allHashtags.map((item, index) => (
+              {HashGruppen.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -206,7 +226,7 @@ const AngeboteMoaFinder = () => {
           <img src={Orte} alt="dropdown" />
           {orteOpen && (
             <div className="dropdown-menu">
-              {allHashtags.map((item, index) => (
+              {HashOrte.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -225,7 +245,7 @@ const AngeboteMoaFinder = () => {
           <img src={Kosten} alt="dropdown" />
           {kostenOpen && (
             <div className="dropdown-menu">
-              {allHashtags.map((item, index) => (
+              {HashKosten.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -244,7 +264,7 @@ const AngeboteMoaFinder = () => {
           <img src={Sprachen} alt="dropdown" />
           {sprachenOpen && (
             <div className="dropdown-menu">
-              {allHashtags.map((item, index) => (
+              {HashSprachen.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -266,7 +286,7 @@ const AngeboteMoaFinder = () => {
           <img src={Barrierefreiheit} alt="dropdown" />
           {barrierefreiheitOpen && (
             <div className="dropdown-menu">
-              {allHashtags.map((item, index) => (
+              {HashBarrierefreiheit.map((item, index) => (
                 <label key={index}>
                   <input
                     type="checkbox"
@@ -331,7 +351,9 @@ const AngeboteMoaFinder = () => {
                   </div>
                 </div>
                 <div className="offer-right">
-                  <div>{item.fields.hashtag}</div>
+                  {item.fields.hashtag.map((hashtag, index) => (
+                    <span>{hashtag}</span>
+                  ))}
                 </div>
               </div>
             </div>
