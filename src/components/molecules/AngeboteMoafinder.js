@@ -8,6 +8,13 @@ import Orte from "../../assets/orte.png";
 import Kosten from "../../assets/kosten.png";
 import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
+import "../styles.css";
+import "../atoms/styles-atoms.css";
+import TextBox from "../atoms/TextBox";
+import searchButton from "../../assets/search_button.png";
+import filter from "../../assets/filter.png";
+import location from "../../assets/location.png";
+import AngeboteMoafinder from "./AngeboteMoafinder";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -86,11 +93,15 @@ const AngeboteMoaFinder = () => {
   };
 
   const allHashtags = ["#THISISHASHTAG"];
+  const Angebote = ["#THISISANOTHERHASHTAG"];
 
+  // this is deactivated for mouse hover
+  /*
   const toggleAngebotstypDropdown = () => {
     console.log("Toggling Angebotstyp dropdown");
     setAngebotstypOpen(!angebotstypOpen);
   };
+*/
 
   const toggleGruppenDropdown = () => {
     console.log("Toggling Gruppen dropdown");
@@ -117,8 +128,6 @@ const AngeboteMoaFinder = () => {
     setBarrierefreiheitOpen(!barrierefreiheitOpen);
   };
 
-  const Angebote = ["#THISISANOTHERHASHTAG"];
-
   const handleAngebotstypMouseOver = () => {
     setAngebotstypOpen(true);
     console.log("hover works");
@@ -130,6 +139,27 @@ const AngeboteMoaFinder = () => {
 
   return (
     <>
+      <div className="moafinder-container">
+        <div className="moafinder-info">
+          <div>
+            <button className="search-button">
+              <img
+                src={searchButton}
+                alt="searchButton"
+                className="search-button"
+                onClick={handleSearch}
+              />
+            </button>
+          </div>
+          <div>
+            <TextBox
+              title="MoaFinder: Angebote in Moabit für ein Aktives Miteinander"
+              text="Ihr habt Lust auf Töpfern, wollt im Chor singen oder sucht ein Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurs würden euch helfen? Hier findet Ihr viele Orte und Angebote in Moabit.
+"
+            ></TextBox>
+          </div>
+        </div>
+      </div>
       <div className="search-container">
         <div
           onMouseOver={handleAngebotstypMouseOver}
@@ -250,8 +280,6 @@ const AngeboteMoaFinder = () => {
             </div>
           )}
         </div>
-
-        <button onClick={handleSearch}>Search</button>
       </div>
       <div>
         Deine Fiter sind:{" "}
@@ -260,6 +288,12 @@ const AngeboteMoaFinder = () => {
         ))}{" "}
       </div>
 
+      <img
+        src={location}
+        alt="location"
+        className="image-responsive"
+        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
+      />
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (

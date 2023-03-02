@@ -224,7 +224,7 @@
   width: 100%;
 }
 
-/* AngebotMoaFinder (singular) */
+/* AngeboteMoaFinder */
 .offer-wrapper {
   display: flex;
   flex-direction: column;
@@ -275,6 +275,43 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 1150px) {
+  .offer-wrapper {
+    padding-top: 80px;
+    max-width: 100%;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .offer-left,
+  .offer-right {
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    padding: 0;
+  }
+
+  .title-stripe {
+    width: 100%;
+    font-size: 36px;
+    height: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  .offer-image {
+    max-width: 100%;
+    max-height: 100%;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+
+  .offer-divider {
+    flex-direction: column;
+  }
 }
 
 .dropdown-container {
@@ -333,4 +370,37 @@
   color: #0099a8;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   font-size: large;
+}
+
+@media (max-width: 767px) {
+  .dropdown-menu {
+    top: auto;
+    left: auto;
+    width: auto;
+    margin-top: 1rem;
+    box-shadow: none;
+  }
+
+  .dropdown-menu label {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .dropdown-menu input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+
+  .search-container img {
+    margin-right: 0.5rem;
+  }
+
+  .search-container button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
