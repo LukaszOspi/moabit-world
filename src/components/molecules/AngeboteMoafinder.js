@@ -113,45 +113,59 @@ const AngeboteMoaFinder = () => {
   const HashBarrierefreiheit = ["#barrierefrei"];
 
   // this is deactivated for mouse hover
-  /*
+  /* onClick
   const toggleAngebotstypDropdown = () => {
     console.log("Toggling Angebotstyp dropdown");
     setAngebotstypOpen(!angebotstypOpen);
   };
 */
 
-  const toggleGruppenDropdown = () => {
-    console.log("Toggling Gruppen dropdown");
-    setGruppenOpen(!gruppenOpen);
-  };
-
-  const toggleOrteDropdown = () => {
-    console.log("Toggling Orte dropdown");
-    setOrteOpen(!orteOpen);
-  };
-
-  const toggleKostenDropdown = () => {
-    console.log("Toggling Kosten dropdown");
-    setKostenOpen(!kostenOpen);
-  };
-
-  const toggleSprachenDropdown = () => {
-    console.log("Toggling Sprachen dropdown");
-    setSprachenOpen(!sprachenOpen);
-  };
-
-  const toggleBarrierefreiheitDropdown = () => {
-    console.log("Toggling Barrierefreiheit dropdown");
-    setBarrierefreiheitOpen(!barrierefreiheitOpen);
-  };
-
   const handleAngebotstypMouseOver = () => {
     setAngebotstypOpen(true);
-    console.log("hover works");
   };
 
   const handleAngebotstypMouseLeave = () => {
     setAngebotstypOpen(false);
+  };
+
+  const handleGruppenMouseOver = () => {
+    setGruppenOpen(true);
+  };
+
+  const handleGruppenMouseLeave = () => {
+    setGruppenOpen(false);
+  };
+
+  const handleOrteMouseOver = () => {
+    setOrteOpen(true);
+  };
+
+  const handleOrteMouseLeave = () => {
+    setOrteOpen(false);
+  };
+
+  const handleKostenMouseOver = () => {
+    setKostenOpen(true);
+  };
+
+  const handleKostenMouseLeave = () => {
+    setKostenOpen(false);
+  };
+
+  const handleSprachenMouseOver = () => {
+    setSprachenOpen(true);
+  };
+
+  const handleSprachenMouseLeave = () => {
+    setSprachenOpen(false);
+  };
+
+  const handleBarrierefreiheitMouseOver = () => {
+    setBarrierefreiheitOpen(true);
+  };
+
+  const handleBarrierefreiheitMouseLeave = () => {
+    setBarrierefreiheitOpen(false);
   };
 
   return (
@@ -179,14 +193,15 @@ const AngeboteMoaFinder = () => {
       </div>
       <div className="search-container">
         <div
+          className="dropdown-container"
           onMouseOver={handleAngebotstypMouseOver}
           onMouseLeave={handleAngebotstypMouseLeave}
         >
           <img src={Angebotstyp} alt="dropdown" />
           {angebotstypOpen && (
-            <div className="dropdown-menu-hover">
+            <div className="dropdown-menu">
               {HashAngebotstyp.map((item, index) => (
-                <label key={index} className="dropdown-menu-item">
+                <label key={index}>
                   <input
                     type="checkbox"
                     value={item}
@@ -200,7 +215,11 @@ const AngeboteMoaFinder = () => {
           )}
         </div>
 
-        <div className="dropdown-container" onClick={toggleGruppenDropdown}>
+        <div
+          className="dropdown-container"
+          onMouseOver={handleGruppenMouseOver}
+          onMouseLeave={handleGruppenMouseLeave}
+        >
           <img src={Gruppen} alt="dropdown" />
           {gruppenOpen && (
             <div className="dropdown-menu">
@@ -218,8 +237,11 @@ const AngeboteMoaFinder = () => {
             </div>
           )}
         </div>
-
-        <div className="dropdown-container" onClick={toggleOrteDropdown}>
+        <div
+          className="dropdown-container"
+          onMouseOver={handleOrteMouseOver}
+          onMouseLeave={handleOrteMouseLeave}
+        >
           <img src={Orte} alt="dropdown" />
           {orteOpen && (
             <div className="dropdown-menu">
@@ -238,7 +260,11 @@ const AngeboteMoaFinder = () => {
           )}
         </div>
 
-        <div className="dropdown-container" onClick={toggleKostenDropdown}>
+        <div
+          className="dropdown-container"
+          onMouseOver={handleKostenMouseOver}
+          onMouseLeave={handleKostenMouseLeave}
+        >
           <img src={Kosten} alt="dropdown" />
           {kostenOpen && (
             <div className="dropdown-menu">
@@ -257,7 +283,11 @@ const AngeboteMoaFinder = () => {
           )}
         </div>
 
-        <div className="dropdown-container" onClick={toggleSprachenDropdown}>
+        <div
+          className="dropdown-container"
+          onMouseOver={handleSprachenMouseOver}
+          onMouseLeave={handleSprachenMouseLeave}
+        >
           <img src={Sprachen} alt="dropdown" />
           {sprachenOpen && (
             <div className="dropdown-menu">
@@ -278,7 +308,8 @@ const AngeboteMoaFinder = () => {
 
         <div
           className="dropdown-container"
-          onClick={toggleBarrierefreiheitDropdown}
+          onMouseOver={handleBarrierefreiheitMouseOver}
+          onMouseLeave={handleBarrierefreiheitMouseLeave}
         >
           <img src={Barrierefreiheit} alt="dropdown" />
           {barrierefreiheitOpen && (

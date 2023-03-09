@@ -743,7 +743,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 96%;
   z-index: 1;
   background-color: white;
   color: #0099a8;
@@ -847,6 +847,9 @@
 }
 
 @media (max-width: 767px) {
+  .dropdown-container {
+    width: 100%;
+  }
   .offer-wrapper {
     width: 100%;
     padding: 0px;
@@ -861,7 +864,7 @@
   .dropdown-menu {
     top: auto;
     left: auto;
-    width: auto;
+    width: 100%;
     margin-top: 1rem;
     box-shadow: none;
   }
@@ -876,7 +879,8 @@
   }
 
   .search-container img {
-    margin-right: 0.5rem;
+    margin-right: 0rem;
+    max-width: 100%;
   }
 
   .search-container button {
