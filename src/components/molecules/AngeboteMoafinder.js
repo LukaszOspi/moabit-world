@@ -196,6 +196,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleAngebotstypMouseOver}
           onMouseLeave={handleAngebotstypMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Angebotstyp} alt="dropdown" />
           {angebotstypOpen && (
@@ -219,6 +220,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleGruppenMouseOver}
           onMouseLeave={handleGruppenMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Gruppen} alt="dropdown" />
           {gruppenOpen && (
@@ -241,6 +243,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleOrteMouseOver}
           onMouseLeave={handleOrteMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Orte} alt="dropdown" />
           {orteOpen && (
@@ -264,6 +267,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleKostenMouseOver}
           onMouseLeave={handleKostenMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Kosten} alt="dropdown" />
           {kostenOpen && (
@@ -287,6 +291,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleSprachenMouseOver}
           onMouseLeave={handleSprachenMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Sprachen} alt="dropdown" />
           {sprachenOpen && (
@@ -310,6 +315,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleBarrierefreiheitMouseOver}
           onMouseLeave={handleBarrierefreiheitMouseLeave}
+          onClick={handleAngebotstypMouseLeave}
         >
           <img src={Barrierefreiheit} alt="dropdown" />
           {barrierefreiheitOpen && (
