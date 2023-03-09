@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
+import "../styles.css";
 import "./../atoms/styles-atoms.css";
+import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import Angebotstyp from "../../assets/angebotstyp.png";
 import Gruppen from "../../assets/gruppen.png";
 import Orte from "../../assets/orte.png";
 import Kosten from "../../assets/kosten.png";
 import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
-import "../styles.css";
-import "../atoms/styles-atoms.css";
 import TextBox from "../atoms/TextBox";
 import searchButton from "../../assets/search_button.png";
-import filter from "../../assets/filter.png";
 import location from "../../assets/location.png";
-import AngeboteMoafinder from "./AngeboteMoafinder";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -317,7 +314,7 @@ const AngeboteMoaFinder = () => {
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
-        <div>
+        <>
           {data.items.map((item, index) => (
             <div className="offer-wrapper" key={index}>
               <div className="title-stripe">
@@ -358,7 +355,7 @@ const AngeboteMoaFinder = () => {
               </div>
             </div>
           ))}
-        </div>
+        </>
       )}
       {!error && !loading && data.items.length === 0 && (
         <div>No results found.</div>
