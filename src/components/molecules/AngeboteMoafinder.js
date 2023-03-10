@@ -65,15 +65,6 @@ const AngeboteMoaFinder = () => {
       });
   }, []);
 
-  const handleCheckboxChange = (event) => {
-    const value = event.target.value.trim();
-    if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((val) => val !== value));
-    } else {
-      setSelectedValues([...selectedValues, value]);
-    }
-  };
-
   const handleSearch = () => {
     let filteredData = allData.items;
     if (selectedValues.length > 0) {
@@ -87,6 +78,15 @@ const AngeboteMoaFinder = () => {
       });
     }
     setData({ items: filteredData });
+  };
+
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value.trim();
+    if (selectedValues.includes(value)) {
+      setSelectedValues(selectedValues.filter((val) => val !== value));
+    } else {
+      setSelectedValues([...selectedValues, value]);
+    }
   };
 
   const HashAngebotstyp = ["#Beratung", "#Musik", "#Gesang"];
@@ -112,60 +112,109 @@ const AngeboteMoaFinder = () => {
   ];
   const HashBarrierefreiheit = ["#barrierefrei"];
 
-  // this is deactivated for mouse hover
-  /* onClick
-  const toggleAngebotstypDropdown = () => {
-    console.log("Toggling Angebotstyp dropdown");
-    setAngebotstypOpen(!angebotstypOpen);
-  };
-*/
+  /* 
+  Those handlers take care of all search button categories seperately
+  including mobile and desktop versions
+  */
 
+  // Angebotstyp
+  // triggered only on desktop
   const handleAngebotstypMouseOver = () => {
-    setAngebotstypOpen(true);
+    if (window.innerWidth >= 768) {
+      setAngebotstypOpen(true);
+    }
   };
 
+  // triggered only on mobile / tablet
+  const handleAngebotstypClick = () => {
+    if (window.innerWidth < 768) {
+      setAngebotstypOpen(!angebotstypOpen);
+    }
+  };
+
+  // triggered only on desktop (cannot be true on mobile)
   const handleAngebotstypMouseLeave = () => {
     setAngebotstypOpen(false);
   };
 
+  // Gruppen
   const handleGruppenMouseOver = () => {
-    setGruppenOpen(true);
+    if (window.innerWidth >= 768) {
+      setGruppenOpen(true);
+    }
+  };
+  const handleGruppenClick = () => {
+    if (window.innerWidth < 768) {
+      setGruppenOpen(!gruppenOpen);
+    }
   };
 
   const handleGruppenMouseLeave = () => {
     setGruppenOpen(false);
   };
 
+  // Orte
   const handleOrteMouseOver = () => {
-    setOrteOpen(true);
+    if (window.innerWidth >= 768) {
+      setOrteOpen(true);
+    }
+  };
+  const handleOrteClick = () => {
+    if (window.innerWidth < 768) {
+      setOrteOpen(!orteOpen);
+    }
   };
 
   const handleOrteMouseLeave = () => {
     setOrteOpen(false);
   };
 
+  // Kosten
   const handleKostenMouseOver = () => {
-    setKostenOpen(true);
+    if (window.innerWidth >= 768) {
+      setKostenOpen(true);
+    }
   };
 
   const handleKostenMouseLeave = () => {
     setKostenOpen(false);
   };
+  const handleKostenClick = () => {
+    if (window.innerWidth < 768) {
+      setKostenOpen(!kostenOpen);
+    }
+  };
 
+  // Sprachen
   const handleSprachenMouseOver = () => {
-    setSprachenOpen(true);
+    if (window.innerWidth >= 768) {
+      setSprachenOpen(true);
+    }
   };
 
   const handleSprachenMouseLeave = () => {
     setSprachenOpen(false);
   };
+  const handleSprachenClick = () => {
+    if (window.innerWidth < 768) {
+      setSprachenOpen(!sprachenOpen);
+    }
+  };
 
+  // Barrierefreiheit
   const handleBarrierefreiheitMouseOver = () => {
-    setBarrierefreiheitOpen(true);
+    if (window.innerWidth >= 768) {
+      setBarrierefreiheitOpen(true);
+    }
   };
 
   const handleBarrierefreiheitMouseLeave = () => {
     setBarrierefreiheitOpen(false);
+  };
+  const handleBarrierefreiheitClick = () => {
+    if (window.innerWidth < 768) {
+      setBarrierefreiheitOpen(!barrierefreiheitOpen);
+    }
   };
 
   return (
@@ -191,12 +240,13 @@ const AngeboteMoaFinder = () => {
           </div>
         </div>
       </div>
+
       <div className="search-container">
         <div
           className="dropdown-container"
           onMouseOver={handleAngebotstypMouseOver}
           onMouseLeave={handleAngebotstypMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleAngebotstypClick}
         >
           <img src={Angebotstyp} alt="dropdown" />
           {angebotstypOpen && (
@@ -220,7 +270,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleGruppenMouseOver}
           onMouseLeave={handleGruppenMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleGruppenClick}
         >
           <img src={Gruppen} alt="dropdown" />
           {gruppenOpen && (
@@ -243,7 +293,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleOrteMouseOver}
           onMouseLeave={handleOrteMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleOrteClick}
         >
           <img src={Orte} alt="dropdown" />
           {orteOpen && (
@@ -267,7 +317,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleKostenMouseOver}
           onMouseLeave={handleKostenMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleKostenClick}
         >
           <img src={Kosten} alt="dropdown" />
           {kostenOpen && (
@@ -291,7 +341,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleSprachenMouseOver}
           onMouseLeave={handleSprachenMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleSprachenClick}
         >
           <img src={Sprachen} alt="dropdown" />
           {sprachenOpen && (
@@ -315,7 +365,7 @@ const AngeboteMoaFinder = () => {
           className="dropdown-container"
           onMouseOver={handleBarrierefreiheitMouseOver}
           onMouseLeave={handleBarrierefreiheitMouseLeave}
-          onClick={handleAngebotstypMouseLeave}
+          onClick={handleBarrierefreiheitClick}
         >
           <img src={Barrierefreiheit} alt="dropdown" />
           {barrierefreiheitOpen && (

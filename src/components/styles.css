@@ -848,7 +848,7 @@
 
 @media (max-width: 767px) {
   .dropdown-container {
-    width: 100%;
+    max-width: 100%;
   }
   .offer-wrapper {
     width: 100%;
