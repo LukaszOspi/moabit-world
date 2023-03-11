@@ -65,13 +65,23 @@ const AngeboteMoaFinder = () => {
       });
   }, []);
 
+  const handleCheckboxChange = (event) => {
+    const value = event.target.value.trim();
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      setSelectedValues([...selectedValues, value]);
+    } else {
+      setSelectedValues(selectedValues.filter((val) => val !== value));
+    }
+    handleSearch();
+  };
+
   const handleSearch = () => {
     let filteredData = allData.items;
     if (selectedValues.length > 0) {
       filteredData = allData.items.filter((item) => {
         if (item.fields.hashtag && Array.isArray(item.fields.hashtag)) {
           const hashtags = item.fields.hashtag.map((h) => h.trim());
-          console.log(selectedValues);
           return selectedValues.every((value) => hashtags.includes(value));
         }
         return false;
@@ -80,14 +90,27 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   };
 
-  const handleCheckboxChange = (event) => {
-    const value = event.target.value.trim();
-    if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((val) => val !== value));
-    } else {
-      setSelectedValues([...selectedValues, value]);
+  useEffect(() => {
+    // Filter data based on selected values
+    let filteredData = allData.items;
+    if (selectedValues.length > 0) {
+      filteredData = allData.items.filter((item) => {
+        if (selectedValues.includes(item.category)) {
+          return true;
+        }
+        if (selectedValues.includes(item)) {
+          return true;
+        }
+        if (item.fields.hashtag && Array.isArray(item.fields.hashtag)) {
+          const hashtags = item.fields.hashtag.map((h) => h.trim());
+          return selectedValues.every((value) => hashtags.includes(value));
+        }
+        return false;
+      });
     }
-  };
+    // Update state with filtered data
+    setData({ items: filteredData });
+  }, [allData, selectedValues]);
 
   const HashAngebotstyp = ["#Beratung", "#Musik", "#Gesang"];
   const HashGruppen = [
@@ -436,7 +459,7 @@ const AngeboteMoaFinder = () => {
                 </div>
                 <div className="offer-right">
                   {item.fields.hashtag.map((hashtag, index) => (
-                    <span>{hashtag}</span>
+                    <span key={index}>{hashtag}</span>
                   ))}
                 </div>
               </div>
