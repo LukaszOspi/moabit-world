@@ -195,6 +195,13 @@ const AngeboteMoaFinder = () => {
     setAngebotstypOpen(false);
   };
 
+  // handle click on dropdown item
+  const handleAngebotstypItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
+    // handle item click
+    // ...
+  };
   // Gruppen
   const handleGruppenMouseOver = () => {
     if (window.innerWidth >= 768) {
@@ -317,7 +324,10 @@ const AngeboteMoaFinder = () => {
           {HashAngebotstyp.length > 0 && angebotstypOpen && (
             <div className="dropdown-menu">
               {HashAngebotstyp.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  onClick={(e) => handleAngebotstypItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
                   <input
                     type="checkbox"
                     value={item}
@@ -436,13 +446,19 @@ const AngeboteMoaFinder = () => {
           {barrierefreiheitOpen && (
             <div className="dropdown-menu">
               {HashBarrierefreiheit.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  htmlFor={`checkbox-${index}`}
+                  className="checkbox-label"
+                >
                   <input
                     type="checkbox"
+                    id={`checkbox-${index}`}
                     value={item}
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -461,78 +477,83 @@ const AngeboteMoaFinder = () => {
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
         <>
-          {data.items.map((item, index) => (
-            <div className="offer-wrapper" key={index}>
-              <div className="title-stripe">
-                <div className="title-stripe-share">
-                  <div>{item.fields.title}</div>
-                  <div>
-                    <FacebookShareButton url={window.location.href}>
-                      <img src={Share} alt="Share on Facebook" />
-                    </FacebookShareButton>
-                  </div>
-                </div>
-
-                <div>{item.fields.subtitle}</div>
-              </div>
-              <div className="offer-divider">
-                <div className="offer-left">
-                  <div>
-                    <ReplaceLineBreakChar text={item.fields.shortDescription} />
-                    {item.fields.photo && item.fields.photo.length > 0 && (
-                      <div className="offer-images">
-                        {item.fields.photo.slice(0, 3).map((photo, index) => (
-                          <img
-                            key={index}
-                            src={photoMap[photo.sys.id]}
-                            alt="Angebot"
-                            className="offer-image"
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = "placeholder-image-url";
-                            }}
-                            onClick={() => handleImageClick(photo.sys.id)}
-                          />
-                        ))}
-                      </div>
-                    )}
-                    <div style={{ fontWeight: "bold" }}>
-                      <ReplaceLineBreakChar text={item.fields.timeLocation} />
-                      <div>{item.fields.contact}</div>
+          {data.items.map((item, index) => {
+            var sharableUrl = `${window.location.origin}/share/${item.fields.id}`;
+            return (
+              <div className="offer-wrapper" key={index}>
+                <div className="title-stripe">
+                  <div className="title-stripe-share">
+                    <div>{item.fields.title}</div>
+                    <div>
+                      <FacebookShareButton url={sharableUrl}>
+                        <img src={Share} alt="Share on Facebook" />
+                      </FacebookShareButton>
                     </div>
                   </div>
+
+                  <div>{item.fields.subtitle}</div>
                 </div>
-                <div className="offer-right">
-                  {item.fields.hashtag.map((hashtag, index) => {
-                    const category = hashtagCategories.find((c) =>
-                      c.hashtags.includes(hashtag)
-                    );
-                    return (
-                      /*
-                      marginRight controls the white gap horizontally
-                      padding (top/bottom left/right) controls the size of each hashtag incl. background color
-                      marginBottom controls the white gap vertically
-                      */
-                      <span
-                        key={index}
-                        style={{
-                          backgroundColor: category ? category.color : null,
-                          marginRight:
-                            index !== item.fields.hashtag.length - 1
-                              ? "18px"
-                              : "0px",
-                          padding: "5px 5px",
-                          marginBottom: "15px",
-                        }}
-                      >
-                        {hashtag}
-                      </span>
-                    );
-                  })}
+                <div className="offer-divider">
+                  <div className="offer-left">
+                    <div>
+                      <ReplaceLineBreakChar
+                        text={item.fields.shortDescription}
+                      />
+                      {item.fields.photo && item.fields.photo.length > 0 && (
+                        <div className="offer-images">
+                          {item.fields.photo.slice(0, 3).map((photo, index) => (
+                            <img
+                              key={index}
+                              src={photoMap[photo.sys.id]}
+                              alt="Angebot"
+                              className="offer-image"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "placeholder-image-url";
+                              }}
+                              onClick={() => handleImageClick(photo.sys.id)}
+                            />
+                          ))}
+                        </div>
+                      )}
+                      <div style={{ fontWeight: "bold" }}>
+                        <ReplaceLineBreakChar text={item.fields.timeLocation} />
+                        <div>{item.fields.contact}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="offer-right">
+                    {item.fields.hashtag.map((hashtag, index) => {
+                      const category = hashtagCategories.find((c) =>
+                        c.hashtags.includes(hashtag)
+                      );
+                      return (
+                        /*
+                        marginRight controls the white gap horizontally
+                        padding (top/bottom left/right) controls the size of each hashtag incl. background color
+                        marginBottom controls the white gap vertically
+                        */
+                        <span
+                          key={index}
+                          style={{
+                            backgroundColor: category ? category.color : null,
+                            marginRight:
+                              index !== item.fields.hashtag.length - 1
+                                ? "18px"
+                                : "0px",
+                            padding: "5px 5px",
+                            marginBottom: "15px",
+                          }}
+                        >
+                          {hashtag}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </>
       )}
       {!error && !loading && data.items.length === 0 && (
