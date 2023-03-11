@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { FacebookShareButton } from "react-share";
+
 import axios from "axios";
 import "../styles.css";
 import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
-import DataFetcher from "../atoms/DataFetcher";
 import TextBox from "../atoms/TextBox";
 import searchButton from "../../assets/search_button.png";
 import location from "../../assets/location.png";
@@ -13,6 +14,7 @@ import Orte from "../../assets/orte.png";
 import Kosten from "../../assets/kosten.png";
 import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
+import Share from "../../assets/share.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -34,6 +36,7 @@ const AngeboteMoaFinder = () => {
   const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
   const [searchHashtags, setSearchHashtags] = useState();
+  const [selectedImageId, setSelectedImageId] = useState(null);
 
   useEffect(() => {
     axios
@@ -80,6 +83,10 @@ const AngeboteMoaFinder = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
+
+  const handleImageClick = (imageId) => {
+    setSelectedImageId(imageId);
+  };
 
   const handleCheckboxChange = (event) => {
     const value = event.target.value.trim();
@@ -149,6 +156,19 @@ const AngeboteMoaFinder = () => {
     searchHashtags && searchHashtags.barrierefreiheit
       ? searchHashtags.barrierefreiheit
       : [];
+
+  const hashtagCategories = [
+    { category: "Angebotstyp", hashtags: HashAngebotstyp, color: "#ED7782" },
+    { category: "Gruppen", hashtags: HashGruppen, color: "#662382" },
+    { category: "Orte", hashtags: HashOrte, color: "green" },
+    { category: "Kosten", hashtags: HashKosten, color: "#0099A8" },
+    { category: "Sprachen", hashtags: HashSprachen, color: "#7CB92C" },
+    {
+      category: "Barrierefreiheit",
+      hashtags: HashBarrierefreiheit,
+      color: "#0099A8",
+    },
+  ];
 
   /* 
   Those handlers take care of all search button categories seperately
@@ -278,6 +298,13 @@ const AngeboteMoaFinder = () => {
           </div>
         </div>
       </div>
+
+      <img
+        src={location}
+        alt="location"
+        className="image-responsive"
+        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
+      />
 
       <div className="search-container">
         <div
@@ -430,12 +457,6 @@ const AngeboteMoaFinder = () => {
         ))}{" "}
       </div>
 
-      <img
-        src={location}
-        alt="location"
-        className="image-responsive"
-        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
-      />
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
@@ -443,7 +464,15 @@ const AngeboteMoaFinder = () => {
           {data.items.map((item, index) => (
             <div className="offer-wrapper" key={index}>
               <div className="title-stripe">
-                <div>{item.fields.title}</div>
+                <div className="title-stripe-share">
+                  <div>{item.fields.title}</div>
+                  <div>
+                    <FacebookShareButton url={window.location.href}>
+                      <img src={Share} alt="Share on Facebook" />
+                    </FacebookShareButton>
+                  </div>
+                </div>
+
                 <div>{item.fields.subtitle}</div>
               </div>
               <div className="offer-divider">
@@ -462,6 +491,7 @@ const AngeboteMoaFinder = () => {
                               e.target.onerror = null;
                               e.target.src = "placeholder-image-url";
                             }}
+                            onClick={() => handleImageClick(photo.sys.id)}
                           />
                         ))}
                       </div>
@@ -473,9 +503,32 @@ const AngeboteMoaFinder = () => {
                   </div>
                 </div>
                 <div className="offer-right">
-                  {item.fields.hashtag.map((hashtag, index) => (
-                    <span key={index}>{hashtag}</span>
-                  ))}
+                  {item.fields.hashtag.map((hashtag, index) => {
+                    const category = hashtagCategories.find((c) =>
+                      c.hashtags.includes(hashtag)
+                    );
+                    return (
+                      /*
+                      marginRight controls the white gap horizontally
+                      padding (top/bottom left/right) controls the size of each hashtag incl. background color
+                      marginBottom controls the white gap vertically
+                      */
+                      <span
+                        key={index}
+                        style={{
+                          backgroundColor: category ? category.color : null,
+                          marginRight:
+                            index !== item.fields.hashtag.length - 1
+                              ? "18px"
+                              : "0px",
+                          padding: "5px 5px",
+                          marginBottom: "15px",
+                        }}
+                      >
+                        {hashtag}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -484,6 +537,14 @@ const AngeboteMoaFinder = () => {
       )}
       {!error && !loading && data.items.length === 0 && (
         <div>No results found.</div>
+      )}
+      {selectedImageId && (
+        <div className="modal">
+          <div className="modal-content">
+            <img src={photoMap[selectedImageId]} alt="Selected Angebot" />
+            <button onClick={() => setSelectedImageId(null)}>Close</button>
+          </div>
+        </div>
       )}
     </>
   );
