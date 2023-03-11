@@ -3,15 +3,16 @@ import axios from "axios";
 import "../styles.css";
 import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
+import DataFetcher from "../atoms/DataFetcher";
+import TextBox from "../atoms/TextBox";
+import searchButton from "../../assets/search_button.png";
+import location from "../../assets/location.png";
 import Angebotstyp from "../../assets/angebotstyp.png";
 import Gruppen from "../../assets/gruppen.png";
 import Orte from "../../assets/orte.png";
 import Kosten from "../../assets/kosten.png";
 import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
-import TextBox from "../atoms/TextBox";
-import searchButton from "../../assets/search_button.png";
-import location from "../../assets/location.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -32,6 +33,7 @@ const AngeboteMoaFinder = () => {
   const [sprachenOpen, setSprachenOpen] = useState(false);
   const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
+  const [searchHashtags, setSearchHashtags] = useState();
 
   useEffect(() => {
     axios
@@ -62,6 +64,20 @@ const AngeboteMoaFinder = () => {
       })
       .finally(() => {
         setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        "https://cdn.contentful.com/spaces/qqdjjpwbe10z/environments/master/entries?access_token=ipuI0QhJrxpOc7c2Y6nK5wUOozD0vEF5_KLtKomPQjo&content_type=angeboteHashtags"
+      )
+      .then((res) => {
+        setSearchHashtags(res.data.items[0].fields);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
   }, []);
 
@@ -112,28 +128,27 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   }, [allData, selectedValues]);
 
-  const HashAngebotstyp = ["#Beratung", "#Musik", "#Gesang"];
-  const HashGruppen = [
-    "#Erwachsene",
-    "#Kinder",
-    "#Jugendliche",
-    "#Senior*innen",
-    "#Familien",
-    "#geflüchteteMenschen",
-  ];
-  const HashOrte = ["#RefoBeussel"];
-  const HashKosten = ["#kostenlos", "#kostenpflichtig"];
-  const HashSprachen = [
-    "#Italienisch",
-    "#Deutsch",
-    "#Arabisch",
-    "#Türkisch",
-    "#Englisch",
-    "#Bulgarisch",
-    "#Kurdisch",
-    "#Tigrinya",
-  ];
-  const HashBarrierefreiheit = ["#barrierefrei"];
+  const HashAngebotstyp =
+    searchHashtags && searchHashtags.angebotstyp
+      ? searchHashtags.angebotstyp
+      : [];
+
+  const HashGruppen =
+    searchHashtags && searchHashtags.gruppen ? searchHashtags.gruppen : [];
+
+  const HashOrte =
+    searchHashtags && searchHashtags.orte ? searchHashtags.orte : [];
+
+  const HashKosten =
+    searchHashtags && searchHashtags.kosten ? searchHashtags.kosten : [];
+
+  const HashSprachen =
+    searchHashtags && searchHashtags.sprachen ? searchHashtags.sprachen : [];
+
+  const HashBarrierefreiheit =
+    searchHashtags && searchHashtags.barrierefreiheit
+      ? searchHashtags.barrierefreiheit
+      : [];
 
   /* 
   Those handlers take care of all search button categories seperately
@@ -272,7 +287,7 @@ const AngeboteMoaFinder = () => {
           onClick={handleAngebotstypClick}
         >
           <img src={Angebotstyp} alt="dropdown" />
-          {angebotstypOpen && (
+          {HashAngebotstyp.length > 0 && angebotstypOpen && (
             <div className="dropdown-menu">
               {HashAngebotstyp.map((item, index) => (
                 <label key={index}>
