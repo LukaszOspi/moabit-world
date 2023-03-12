@@ -518,7 +518,7 @@ const AngeboteMoaFinder = () => {
                 <div className="title-stripe">
                   <div className="title-stripe-share">
                     <div>{item.fields.title}</div>
-                    <div>{item.sys.id}</div>
+
                     <div>
                       <FacebookShareButton url={sharableUrl}>
                         <img src={Share} alt="Share on Facebook" />

@@ -20,7 +20,7 @@ const AngeboteMoaFinderSharable = () => {
   const [searchHashtags, setSearchHashtags] = useState();
   const [filteredData, setFilteredData] = useState({ items: [] });
 
-  // URL: https://moabit.world/share?id=123
+  // URL: https://moabit.world/share/123
 
   const { id } = useParams();
 
@@ -33,7 +33,6 @@ const AngeboteMoaFinderSharable = () => {
         setAllData(res.data); // store initial data
         setData(res.data); // set data for display and filtering
         const assets = res.data.includes.Asset;
-
         // Create a map of photo IDs to URLs
         const photoMap = assets.reduce((acc, asset) => {
           const id = asset.sys.id;
@@ -47,9 +46,7 @@ const AngeboteMoaFinderSharable = () => {
           (item) => item.fields.hashtag
         );
         setHashTagList(hashTagList);
-        console.log("ID" + id);
         setFilteredData(res.data.items.filter((item) => item.sys.id === id));
-        console.log(filteredData);
       })
       .catch((error) => {
         setError(error.message);
