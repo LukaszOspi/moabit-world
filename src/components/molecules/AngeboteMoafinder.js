@@ -199,8 +199,6 @@ const AngeboteMoaFinder = () => {
   const handleAngebotstypItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
-    // handle item click
-    // ...
   };
   // Gruppen
   const handleGruppenMouseOver = () => {
@@ -216,6 +214,11 @@ const AngeboteMoaFinder = () => {
 
   const handleGruppenMouseLeave = () => {
     setGruppenOpen(false);
+  };
+  // handle click on dropdown item
+  const handleGruppenItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
   };
 
   // Orte
@@ -233,7 +236,11 @@ const AngeboteMoaFinder = () => {
   const handleOrteMouseLeave = () => {
     setOrteOpen(false);
   };
-
+  // handle click on dropdown item
+  const handleOrteItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
+  };
   // Kosten
   const handleKostenMouseOver = () => {
     if (window.innerWidth >= 768) {
@@ -249,7 +256,11 @@ const AngeboteMoaFinder = () => {
       setKostenOpen(!kostenOpen);
     }
   };
-
+  // handle click on dropdown item
+  const handleKostenItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
+  };
   // Sprachen
   const handleSprachenMouseOver = () => {
     if (window.innerWidth >= 768) {
@@ -265,7 +276,11 @@ const AngeboteMoaFinder = () => {
       setSprachenOpen(!sprachenOpen);
     }
   };
-
+  // handle click on dropdown item
+  const handleSprachenItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
+  };
   // Barrierefreiheit
   const handleBarrierefreiheitMouseOver = () => {
     if (window.innerWidth >= 768) {
@@ -280,6 +295,11 @@ const AngeboteMoaFinder = () => {
     if (window.innerWidth < 768) {
       setBarrierefreiheitOpen(!barrierefreiheitOpen);
     }
+  };
+  // handle click on dropdown item
+  const handleBarrierefreiheitItemClick = (event) => {
+    // prevent event from bubbling up to parent element
+    event.stopPropagation();
   };
 
   return (
@@ -351,7 +371,10 @@ const AngeboteMoaFinder = () => {
           {gruppenOpen && (
             <div className="dropdown-menu">
               {HashGruppen.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  onClick={(e) => handleGruppenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
                   <input
                     type="checkbox"
                     value={item}
@@ -374,7 +397,10 @@ const AngeboteMoaFinder = () => {
           {orteOpen && (
             <div className="dropdown-menu">
               {HashOrte.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  onClick={(e) => handleOrteItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
                   <input
                     type="checkbox"
                     value={item}
@@ -398,7 +424,10 @@ const AngeboteMoaFinder = () => {
           {kostenOpen && (
             <div className="dropdown-menu">
               {HashKosten.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  onClick={(e) => handleKostenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
                   <input
                     type="checkbox"
                     value={item}
@@ -422,7 +451,10 @@ const AngeboteMoaFinder = () => {
           {sprachenOpen && (
             <div className="dropdown-menu">
               {HashSprachen.map((item, index) => (
-                <label key={index}>
+                <label
+                  key={index}
+                  onClick={(e) => handleSprachenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
                   <input
                     type="checkbox"
                     value={item}
@@ -450,6 +482,7 @@ const AngeboteMoaFinder = () => {
                   key={index}
                   htmlFor={`checkbox-${index}`}
                   className="checkbox-label"
+                  onClick={(e) => handleBarrierefreiheitItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
                   <input
                     type="checkbox"
@@ -478,12 +511,14 @@ const AngeboteMoaFinder = () => {
       {!error && !loading && data.items.length > 0 && (
         <>
           {data.items.map((item, index) => {
-            var sharableUrl = `${window.location.origin}/share/${item.fields.id}`;
+            var sharableUrl = `${window.location.origin}/share/${item.sys.id}`;
+            console.log(sharableUrl);
             return (
               <div className="offer-wrapper" key={index}>
                 <div className="title-stripe">
                   <div className="title-stripe-share">
                     <div>{item.fields.title}</div>
+                    <div>{item.sys.id}</div>
                     <div>
                       <FacebookShareButton url={sharableUrl}>
                         <img src={Share} alt="Share on Facebook" />
