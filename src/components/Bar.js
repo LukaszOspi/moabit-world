@@ -12,10 +12,7 @@ const Bar = () => {
           <div>
             <TextBox
               title="Die Online-Bar für digitalen Austausch"
-              text="In unserer Moabiter Video-Call-Bar kannst du dich mit anderen verabreden oder auch
-               Online-Veranstaltungen durchführen. Jeden zweiten Dienstag im Monat um 19 Uhr findet hier die 
-               internationale Peace-Lounge statt: 
-              Friedensaktivist*innen aus ganz Europa treffen sich zu Workshops und zur Vernetzung."
+              text="In unserer Moabiter Video-Call-Bar kannst du dich mit anderen verabreden oder selbst Online-Veranstaltungen durchführen. Erkunde auch gerne die gesamte digitale Moabit World."
             />
           </div>
 

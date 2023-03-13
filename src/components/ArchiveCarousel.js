@@ -8,6 +8,7 @@ import { CustomLeftArrow, CustomRightArrow } from "./CustomArrows";
 
 const EventCarousel = () => {
   const [data, setData] = useState({ items: [] });
+
   const [setError] = useState("");
   // has had error that caused warning, problem when removed?
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,7 @@ const EventCarousel = () => {
         //console.log(res.data.items[0].fields.imageUrl);
         setData(res.data);
       })
+
       .catch((error) => {
         setError(error.message);
       })
@@ -42,10 +44,9 @@ const EventCarousel = () => {
           renderButtonGroupOutside={true}
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
-          //this entry shifts the content by one width of carousel
-          //because the first entry is empty
-          //TODO
-          // additionalTransfrom={window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120}
+          //  additionalTransfrom={
+          //    window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
+          //  }
           autoPlaySpeed={3000}
           centerMode={false}
           containerClass="container"
@@ -54,7 +55,7 @@ const EventCarousel = () => {
           infinite
           itemClass="itemCarousel"
           keyBoardControl
-          minimumTouchDrag={40}
+          minimumTouchDrag={80}
           pauseOnHover
           renderArrowsWhenDisabled={false}
           renderDotsOutside={false}
@@ -93,22 +94,24 @@ const EventCarousel = () => {
             },
           }}
         >
-          {data.items.map((item, index) =>
-            item.fields.archive === false ? (
-              <div key={index}>
-                <Event
-                  imageUrl={item.fields.imageUrl}
-                  title={item.fields.title}
-                  text={item.fields.text}
-                  linkUrl={item.fields.linkUrl}
-                  location={item.fields.location}
-                  date={item.fields.date}
-                  locationUrl={item.fields.locationUrl}
-                  archive={item.fields.archive}
-                />
-              </div>
-            ) : null
-          )}
+          {data.items
+            // .filter((item, index) => index !== 2)
+            .map((item, index) =>
+              item.fields.archive === true ? (
+                <div key={index}>
+                  <Event
+                    imageUrl={item.fields.imageUrl}
+                    title={item.fields.title}
+                    text={item.fields.text}
+                    linkUrl={item.fields.linkUrl}
+                    location={item.fields.location}
+                    date={item.fields.date}
+                    locationUrl={item.fields.locationUrl}
+                    archive={item.fields.archive}
+                  />
+                </div>
+              ) : null
+            )}
         </Carousel>
       </div>
     );

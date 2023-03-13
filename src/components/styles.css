@@ -42,17 +42,23 @@
 }
 
 /* About */
+.about-divider {
+  padding-top: 75px;
+}
+.about {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 1400px;
+}
 @media screen and (max-width: 1200px) {
-  .about-desktop {
-    display: none;
+  .about {
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 }
-@media screen and (min-width: 1201px) {
-  .about-mobile {
-    display: none;
-  }
-}
-
 /* Bar */
 .bar {
   max-width: 100vw;
@@ -61,6 +67,7 @@
   padding-bottom: 5vh;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 50px;
 }
 
 .bar-left {
@@ -80,10 +87,11 @@
   .bar-left {
     align-items: center;
     padding-right: 0px;
+    padding-top: 0px;
   }
   .bar-img {
     width: 80vw;
-    padding-bottom: 10vh;
+    padding-bottom: 0px;
     object-fit: scale-down;
   }
 }
@@ -201,16 +209,19 @@
 }
 
 /* EventCarousel */
+
 .itemCarousel {
   min-width: fit-content;
+  max-width: 1120px;
   height: 100%;
   overflow: hide;
   white-space: wrap;
 }
 
 .carousel {
-  height: 800px;
-  width: 1400px;
+  height: 700px;
+  width: 1120px;
+  padding-top: 0px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -224,6 +235,7 @@
   .carousel {
     width: 100vw;
     height: auto;
+    padding-bottom: 50px;
   }
 }
 
@@ -264,16 +276,17 @@
   width: 280px;
   height: 190px;
   padding-right: 217px;
-  padding-top: 130px;
+  padding-top: 300px;
 }
 
 .socialButtons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: left;
+  align-items: center;
+
   width: 279px;
-  padding-top: 48px;
+  padding-top: 25px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -320,6 +333,8 @@
   max-width: 100vw;
   justify-content: center;
   flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .host-left {
@@ -338,6 +353,7 @@
   .host-left {
     width: 100vw;
     padding-right: 0px;
+    padding-top: 0px;
   }
   .handy {
     height: 50vh;
@@ -368,11 +384,22 @@
   color: #7cb92c;
   font-size: 24px;
   width: 1130px;
+  padding-top: 75px;
 }
+@media screen and (min-width: 1200px) {
+  .vogel-mobile {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .beschreibung {
     width: 100vw;
     flex-direction: column;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
   }
 
   .vogel {
@@ -384,10 +411,11 @@
 .zusammen {
   font-size: 60px;
   color: black;
-  font-weight: 300;
+  font-weight: 600;
   height: 210px;
   width: 502px;
-  padding-left: 50px;
+  padding-left: 120px;
+  padding-top: 5%;
 }
 
 .intro {
@@ -433,6 +461,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 0px;
+    text-align: center;
   }
   .logo {
     padding-left: 0px;
@@ -470,7 +499,7 @@
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   .info {
     width: 100%;
     padding: none;
@@ -531,6 +560,13 @@
 }
 
 /* Veranstaltung */
+.veranstaltung-container {
+  width: 80%;
+  display: flex;
+  justify-content: left;
+  padding-top: 50px;
+}
+
 .veranstaltung {
   display: flex;
   flex-direction: row;
@@ -553,5 +589,75 @@
   }
   .veranstaltung-left {
     padding-top: 0px;
+  }
+}
+/* Custom Arrow */
+.custom-right-arrow {
+  position: absolute !important;
+  right: 5px;
+  z-index: 1;
+  border: 1px solid #0054a2;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 6px;
+  opacity: 0.8;
+  cursor: pointer;
+  transform: rotate(-45deg);
+}
+.custom-right-arrow:hover {
+  opacity: 1;
+}
+.custom-left-arrow {
+  position: absolute !important;
+  left: 5px;
+  z-index: 1;
+  border: 1px solid #0054a2;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 6px;
+  opacity: 0.8;
+  cursor: pointer;
+  transform: rotate(135deg);
+}
+.custom-left-arrow {
+  opacity: 1;
+}
+.container {
+  margin-top: 3%;
+}
+/* Has been affecting the whole mobile view, was 0 80px, is now 0 0 */
+#root {
+  padding: 0 0px;
+}
+.container-with-dots {
+  margin-top: 10%;
+  padding-bottom: 20px;
+}
+.custom-button-group {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  right: 0;
+}
+.container-padding-bottom {
+  padding-bottom: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+/* hides the scroll bar on IOS devices */
+
+@media screen and (max-width: 1200px) {
+  body ::-webkit-scrollbar {
+    display: none;
+  }
+  .App {
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
   }
 }
