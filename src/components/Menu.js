@@ -18,7 +18,15 @@ const Menu = (props) => {
           >
             ÜBER UNS
           </a>
-
+          <div>
+            {" "}
+            <a
+              style={{ color: props.color, textDecoration: "none" }}
+              href="/moafinder"
+            >
+              MOA FINDER
+            </a>
+          </div>
           <div>
             {" "}
             <a style={{ color: props.color, textDecoration: "none" }} href="/">
@@ -31,6 +39,14 @@ const Menu = (props) => {
           <div>
             <a style={{ color: "black", textDecoration: "none" }} href="/about">
               ÜBER UNS
+            </a>
+          </div>
+          <div>
+            <a
+              style={{ color: "black", textDecoration: "none" }}
+              href="/moafinder"
+            >
+              MOAFINDER
             </a>
           </div>
           <div>
