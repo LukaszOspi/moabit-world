@@ -16,7 +16,7 @@ const Angebote = () => {
         />
 
         <div className="fussball">
-          <Button url="/comingsoon" text="Orte und Angebote" />
+          <Button url="/moafinder" text="MoaFinder" />
         </div>
         <img className="fussball-img" src={fussball} alt="Fussball" />
       </div>

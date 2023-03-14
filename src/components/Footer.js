@@ -22,11 +22,7 @@ const Footer = () => {
             Unsere Unterstützer
           </div>
         </div>
-        <img
-          className="unterstutzer"
-          src={logosFooter}
-          alt="Logos Unterstuetzer"
-        />
+        <img src={logosFooter} alt="Logos Unterstuetzer" />
       </div>
       <div>
         <div className="footer">

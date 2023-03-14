@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { FacebookShareButton } from "react-share";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import axios from "axios";
 import "../styles.css";
@@ -15,6 +21,8 @@ import Kosten from "../../assets/kosten.png";
 import Sprachen from "../../assets/sprachen.png";
 import Barrierefreiheit from "../../assets/barrierefreiheit.png";
 import Share from "../../assets/share.png";
+import Placeholder from "../../assets/placeholder-moafinder.png";
+import Copy from "../../assets/copy.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -37,6 +45,8 @@ const AngeboteMoaFinder = () => {
   const [allData, setAllData] = useState({ items: [] });
   const [searchHashtags, setSearchHashtags] = useState();
   const [selectedImageId, setSelectedImageId] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     axios
@@ -302,6 +312,19 @@ const AngeboteMoaFinder = () => {
     event.stopPropagation();
   };
 
+  // controls the behaviour of social media sharing button click
+
+  const handleShareMenuToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleCopyToClipboard = () => {
+    setCopySuccess(true);
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 2000);
+  };
+
   return (
     <>
       <div className="moafinder-container">
@@ -318,7 +341,8 @@ const AngeboteMoaFinder = () => {
           </div>
           <div>
             <TextBox
-              title="MoaFinder: Angebote in Moabit für ein Aktives Miteinander"
+              titlePink="MoaFinder:"
+              title="Angebote in Moabit für ein aktives Miteinander"
               text="Ihr habt Lust auf Töpfern, wollt im Chor singen oder sucht ein Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurs würden euch helfen? Hier findet Ihr viele Orte und Angebote in Moabit.
 "
             ></TextBox>
@@ -345,6 +369,7 @@ const AngeboteMoaFinder = () => {
             <div className="dropdown-menu">
               {HashAngebotstyp.map((item, index) => (
                 <label
+                  className="checkbox-label"
                   key={index}
                   onClick={(e) => handleAngebotstypItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
@@ -354,6 +379,7 @@ const AngeboteMoaFinder = () => {
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -372,6 +398,7 @@ const AngeboteMoaFinder = () => {
             <div className="dropdown-menu">
               {HashGruppen.map((item, index) => (
                 <label
+                  className="checkbox-label"
                   key={index}
                   onClick={(e) => handleGruppenItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
@@ -381,6 +408,7 @@ const AngeboteMoaFinder = () => {
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -398,6 +426,7 @@ const AngeboteMoaFinder = () => {
             <div className="dropdown-menu">
               {HashOrte.map((item, index) => (
                 <label
+                  className="checkbox-label"
                   key={index}
                   onClick={(e) => handleOrteItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
@@ -407,6 +436,7 @@ const AngeboteMoaFinder = () => {
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -425,6 +455,7 @@ const AngeboteMoaFinder = () => {
             <div className="dropdown-menu">
               {HashKosten.map((item, index) => (
                 <label
+                  className="checkbox-label"
                   key={index}
                   onClick={(e) => handleKostenItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
@@ -434,6 +465,7 @@ const AngeboteMoaFinder = () => {
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -452,6 +484,7 @@ const AngeboteMoaFinder = () => {
             <div className="dropdown-menu">
               {HashSprachen.map((item, index) => (
                 <label
+                  className="checkbox-label"
                   key={index}
                   onClick={(e) => handleSprachenItemClick(e, item)} // this prevents menu to close when chosing an item
                 >
@@ -461,6 +494,7 @@ const AngeboteMoaFinder = () => {
                     checked={selectedValues.includes(item)}
                     onChange={handleCheckboxChange}
                   />
+                  <span className="checkbox-custom"></span>
                   {item}
                 </label>
               ))}
@@ -499,11 +533,32 @@ const AngeboteMoaFinder = () => {
           )}
         </div>
       </div>
-      <div>
-        Deine Fiter sind:{" "}
-        {selectedValues.map((item, index) => (
-          <div key={index}>{item}</div>
-        ))}{" "}
+
+      <div className="search-filter">
+        {selectedValues &&
+          selectedValues.map((hashtag, index) => {
+            const category = hashtagCategories.find((c) =>
+              c.hashtags.includes(hashtag)
+            );
+            return (
+              /*
+                        marginRight controls the white gap horizontally
+                        padding (top/bottom left/right) controls the size of each hashtag incl. background color
+                        marginBottom controls the white gap vertically
+                        */
+              <div
+                key={index}
+                style={{
+                  backgroundColor: category ? category.color : null,
+                  marginRight: index !== selectedValues - 1 ? "18px" : "0px",
+                  padding: "5px 5px",
+                  marginBottom: "15px",
+                }}
+              >
+                {hashtag}
+              </div>
+            );
+          })}
       </div>
 
       {error && <div>Error: {error}</div>}
@@ -511,18 +566,48 @@ const AngeboteMoaFinder = () => {
       {!error && !loading && data.items.length > 0 && (
         <>
           {data.items.map((item, index) => {
-            var sharableUrl = `${window.location.origin}/share/${item.sys.id}`;
-            console.log(sharableUrl);
+            var sharableUrl = `https://moabit.world/share/${item.sys.id}`;
+
             return (
               <div className="offer-wrapper" key={index}>
                 <div className="title-stripe">
                   <div className="title-stripe-share">
                     <div>{item.fields.title}</div>
 
-                    <div>
-                      <FacebookShareButton url={sharableUrl}>
-                        <img src={Share} alt="Share on Facebook" />
-                      </FacebookShareButton>
+                    <div className="share-menu-container">
+                      <div
+                        className="share-menu-toggle"
+                        onClick={handleShareMenuToggle}
+                      >
+                        <img src={Share} alt="Share" />
+                      </div>
+                      {showMenu && (
+                        <div className="share-menu">
+                          <CopyToClipboard
+                            text={sharableUrl}
+                            onCopy={handleCopyToClipboard}
+                          >
+                            <div className="share-menu-option">
+                              <img src={Copy} alt="copy" />
+                              {copySuccess && (
+                                <span className="copy-success-message">
+                                  Link copied to clipboard!
+                                </span>
+                              )}
+                            </div>
+                          </CopyToClipboard>
+                          <FacebookShareButton url={sharableUrl}>
+                            <div className="share-menu-option">
+                              <FacebookIcon size={36} round />
+                            </div>
+                          </FacebookShareButton>
+                          <WhatsappShareButton url={sharableUrl}>
+                            <div className="share-menu-option">
+                              <WhatsappIcon size={36} round />
+                            </div>
+                          </WhatsappShareButton>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -534,6 +619,11 @@ const AngeboteMoaFinder = () => {
                       <ReplaceLineBreakChar
                         text={item.fields.shortDescription}
                       />
+                      <br />
+                      <ReplaceLineBreakChar
+                        text={item.fields.furtherInformation}
+                      />
+
                       {item.fields.photo && item.fields.photo.length > 0 && (
                         <div className="offer-images">
                           {item.fields.photo.slice(0, 3).map((photo, index) => (
@@ -544,46 +634,54 @@ const AngeboteMoaFinder = () => {
                               className="offer-image"
                               onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src = "placeholder-image-url";
+                                e.target.src = { Placeholder };
                               }}
                               onClick={() => handleImageClick(photo.sys.id)}
                             />
                           ))}
                         </div>
                       )}
-                      <div style={{ fontWeight: "bold" }}>
+
+                      <div
+                        className="time-location"
+                        style={{ fontWeight: "bold" }}
+                      >
+                        <ReplaceLineBreakChar text={item.fields.placeAddress} />
+                        <br />
                         <ReplaceLineBreakChar text={item.fields.timeLocation} />
+
                         <div>{item.fields.contact}</div>
                       </div>
                     </div>
                   </div>
                   <div className="offer-right">
-                    {item.fields.hashtag.map((hashtag, index) => {
-                      const category = hashtagCategories.find((c) =>
-                        c.hashtags.includes(hashtag)
-                      );
-                      return (
-                        /*
+                    {item.fields.hashtag &&
+                      item.fields.hashtag.map((hashtag, index) => {
+                        const category = hashtagCategories.find((c) =>
+                          c.hashtags.includes(hashtag)
+                        );
+                        return (
+                          /*
                         marginRight controls the white gap horizontally
                         padding (top/bottom left/right) controls the size of each hashtag incl. background color
                         marginBottom controls the white gap vertically
                         */
-                        <span
-                          key={index}
-                          style={{
-                            backgroundColor: category ? category.color : null,
-                            marginRight:
-                              index !== item.fields.hashtag.length - 1
-                                ? "18px"
-                                : "0px",
-                            padding: "5px 5px",
-                            marginBottom: "15px",
-                          }}
-                        >
-                          {hashtag}
-                        </span>
-                      );
-                    })}
+                          <span
+                            key={index}
+                            style={{
+                              backgroundColor: category ? category.color : null,
+                              marginRight:
+                                index !== item.fields.hashtag.length - 1
+                                  ? "18px"
+                                  : "0px",
+                              padding: "5px 5px",
+                              marginBottom: "15px",
+                            }}
+                          >
+                            {hashtag}
+                          </span>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
@@ -592,7 +690,9 @@ const AngeboteMoaFinder = () => {
         </>
       )}
       {!error && !loading && data.items.length === 0 && (
-        <div>No results found.</div>
+        <div style={{ color: "#0099A8", fontSize: "2rem", marginTop: "2rem" }}>
+          Nichts gefunden!
+        </div>
       )}
       {selectedImageId && (
         <div className="modal">

@@ -192,7 +192,11 @@
     padding-right: 5px;
   }
 }
-
+/* This is made only for MoaFinder pink text */
+.title-text p {
+  display: inline;
+  margin-right: 1rem;
+}
 /* TextBoxSmall */
 .title-small {
   position: relative;

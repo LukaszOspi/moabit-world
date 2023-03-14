@@ -11,7 +11,7 @@ const Menu = (props) => {
             <img className="logo-img" src={logo} alt="Logo" />
           </a>
         </div>
-        <div className="menu_desktop" style={{ color: props.color }}>
+        <div className="menu-desktop" style={{ color: props.color }}>
           <a
             style={{ color: props.color, textDecoration: "none" }}
             href="/about"
@@ -19,16 +19,15 @@ const Menu = (props) => {
             ÜBER UNS
           </a>
           <div>
-            {" "}
             <a
               style={{ color: props.color, textDecoration: "none" }}
               href="/moafinder"
             >
-              MOA FINDER
+              &nbsp; &nbsp; MoaFinder
             </a>
           </div>
           <div>
-            {" "}
+            &nbsp; &nbsp;
             <a style={{ color: props.color, textDecoration: "none" }} href="/">
               HOME
             </a>
@@ -46,7 +45,7 @@ const Menu = (props) => {
               style={{ color: "black", textDecoration: "none" }}
               href="/moafinder"
             >
-              MOAFINDER
+              MoaFinder
             </a>
           </div>
           <div>
