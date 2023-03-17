@@ -1065,3 +1065,25 @@
     opacity: 0;
   }
 }
+
+.search-input {
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  background-color: #ed7782;
+  border: 2px solid #ed7782;
+  border-radius: 5px;
+  width: 14rem;
+  height: 4rem;
+  font-size: 2rem;
+
+  margin-bottom: 2rem;
+}
+
+.search-input.focused {
+  outline: none;
+  border: 2px solid #0099a8;
+  background-color: white;
+
+  /* Add styles specific to the focused state here, e.g., border color, background color, etc. */
+}

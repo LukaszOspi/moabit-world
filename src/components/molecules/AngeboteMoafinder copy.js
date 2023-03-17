@@ -6,14 +6,12 @@ import {
   WhatsappIcon,
 } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+
 import axios from "axios";
 import "../styles.css";
 import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import TextBox from "../atoms/TextBox";
-import Dropdown from "../atoms/Dropdown";
-
-// graphics imports
 import searchButton from "../../assets/search_button.png";
 import location from "../../assets/location.png";
 import Angebotstyp from "../../assets/Angebotstyp.svg";
@@ -34,13 +32,21 @@ const AngeboteMoaFinder = () => {
   // eslint-disable-next-line no-unused-vars
   const [hashTagList, setHashTagList] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
+  const [angebotstypOpen, setAngebotstypOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [orteOpen, setOrteOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [gruppenOpen, setGruppenOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [kostenOpen, setKostenOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [sprachenOpen, setSprachenOpen] = useState(false);
+  const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
   const [searchHashtags, setSearchHashtags] = useState();
   const [selectedImageId, setSelectedImageId] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const [inputFocused, setInputFocused] = useState(false);
 
   useEffect(() => {
     axios
@@ -174,13 +180,51 @@ const AngeboteMoaFinder = () => {
     },
   ];
 
+  /* 
+  Those handlers take care of all search button categories seperately
+  including mobile and desktop versions
+  */
+
+  // Angebotstyp
+  // triggered only on desktop
+  const handleAngebotstypMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setAngebotstypOpen(true);
+    }
+  };
+
+  // triggered only on mobile / tablet
+  const handleAngebotstypClick = () => {
+    if (window.innerWidth < 768) {
+      setAngebotstypOpen(!angebotstypOpen);
+    }
+  };
+
+  // triggered only on desktop (cannot be true on mobile)
+  const handleAngebotstypMouseLeave = () => {
+    setAngebotstypOpen(false);
+  };
+
   // handle click on dropdown item
   const handleAngebotstypItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
-
   // Gruppen
+  const handleGruppenMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setGruppenOpen(true);
+    }
+  };
+  const handleGruppenClick = () => {
+    if (window.innerWidth < 768) {
+      setGruppenOpen(!gruppenOpen);
+    }
+  };
+
+  const handleGruppenMouseLeave = () => {
+    setGruppenOpen(false);
+  };
   // handle click on dropdown item
   const handleGruppenItemClick = (event) => {
     // prevent event from bubbling up to parent element
@@ -188,24 +232,80 @@ const AngeboteMoaFinder = () => {
   };
 
   // Orte
+  const handleOrteMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setOrteOpen(true);
+    }
+  };
+  const handleOrteClick = () => {
+    if (window.innerWidth < 768) {
+      setOrteOpen(!orteOpen);
+    }
+  };
+
+  const handleOrteMouseLeave = () => {
+    setOrteOpen(false);
+  };
   // handle click on dropdown item
   const handleOrteItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Kosten
+  const handleKostenMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setKostenOpen(true);
+    }
+  };
+
+  const handleKostenMouseLeave = () => {
+    setKostenOpen(false);
+  };
+  const handleKostenClick = () => {
+    if (window.innerWidth < 768) {
+      setKostenOpen(!kostenOpen);
+    }
+  };
   // handle click on dropdown item
   const handleKostenItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Sprachen
+  const handleSprachenMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setSprachenOpen(true);
+    }
+  };
+
+  const handleSprachenMouseLeave = () => {
+    setSprachenOpen(false);
+  };
+  const handleSprachenClick = () => {
+    if (window.innerWidth < 768) {
+      setSprachenOpen(!sprachenOpen);
+    }
+  };
   // handle click on dropdown item
   const handleSprachenItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Barrierefreiheit
+  const handleBarrierefreiheitMouseOver = () => {
+    if (window.innerWidth >= 768) {
+      setBarrierefreiheitOpen(true);
+    }
+  };
+
+  const handleBarrierefreiheitMouseLeave = () => {
+    setBarrierefreiheitOpen(false);
+  };
+  const handleBarrierefreiheitClick = () => {
+    if (window.innerWidth < 768) {
+      setBarrierefreiheitOpen(!barrierefreiheitOpen);
+    }
+  };
   // handle click on dropdown item
   const handleBarrierefreiheitItemClick = (event) => {
     // prevent event from bubbling up to parent element
@@ -225,33 +325,20 @@ const AngeboteMoaFinder = () => {
     }, 2000);
   };
 
-  // Controls the text search input element
-  const handleSearchTextChange = (event) => {
-    const inputText = event.target.value;
-    setSearchText(inputText);
-
-    let filteredData = allData.items.filter((item) => {
-      const fields = Object.values(item.fields);
-      const textToSearch = fields.join(" ").toLowerCase();
-      return textToSearch.includes(inputText.toLowerCase());
-    });
-
-    setData({ items: filteredData });
-  };
-
-  // Control search field background
-  const handleInputFocus = () => {
-    setInputFocused(true);
-  };
-
-  const handleInputBlur = () => {
-    setInputFocused(false);
-  };
-
   return (
     <>
       <div className="moafinder-container">
         <div className="moafinder-info">
+          <div>
+            <button className="search-button">
+              <img
+                src={searchButton}
+                alt="searchButton"
+                className="search-button"
+                onClick={handleSearch}
+              />
+            </button>
+          </div>
           <div>
             <TextBox
               titlePink="MoaFinder:"
@@ -271,72 +358,181 @@ const AngeboteMoaFinder = () => {
       />
 
       <div className="search-container">
-        <Dropdown
-          name={HashAngebotstyp}
-          onItemSelect={selectedValues}
-          onItemClick={handleAngebotstypItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+        <div
+          className="dropdown-container"
+          onMouseOver={handleAngebotstypMouseOver}
+          onMouseLeave={handleAngebotstypMouseLeave}
+          onClick={handleAngebotstypClick}
         >
           <img src={Angebotstyp} alt="dropdown" />
-        </Dropdown>
-        <Dropdown
-          name={HashGruppen}
-          onItemSelect={selectedValues}
-          onItemClick={handleGruppenItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+          {HashAngebotstyp.length > 0 && angebotstypOpen && (
+            <div className="dropdown-menu">
+              {HashAngebotstyp.map((item, index) => (
+                <label
+                  className="checkbox-label"
+                  key={index}
+                  onClick={(e) => handleAngebotstypItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div
+          className="dropdown-container"
+          onMouseOver={handleGruppenMouseOver}
+          onMouseLeave={handleGruppenMouseLeave}
+          onClick={handleGruppenClick}
         >
           <img src={Gruppen} alt="dropdown" />
-        </Dropdown>
-
-        <Dropdown
-          name={HashOrte}
-          onItemSelect={selectedValues}
-          onItemClick={handleOrteItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+          {gruppenOpen && (
+            <div className="dropdown-menu">
+              {HashGruppen.map((item, index) => (
+                <label
+                  className="checkbox-label"
+                  key={index}
+                  onClick={(e) => handleGruppenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+        <div
+          className="dropdown-container"
+          onMouseOver={handleOrteMouseOver}
+          onMouseLeave={handleOrteMouseLeave}
+          onClick={handleOrteClick}
         >
           <img src={Orte} alt="dropdown" />
-        </Dropdown>
+          {orteOpen && (
+            <div className="dropdown-menu">
+              {HashOrte.map((item, index) => (
+                <label
+                  className="checkbox-label"
+                  key={index}
+                  onClick={(e) => handleOrteItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
-        <Dropdown
-          name={HashKosten}
-          onItemSelect={selectedValues}
-          onItemClick={handleKostenItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+        <div
+          className="dropdown-container"
+          onMouseOver={handleKostenMouseOver}
+          onMouseLeave={handleKostenMouseLeave}
+          onClick={handleKostenClick}
         >
           <img src={Kosten} alt="dropdown" />
-        </Dropdown>
+          {kostenOpen && (
+            <div className="dropdown-menu">
+              {HashKosten.map((item, index) => (
+                <label
+                  className="checkbox-label"
+                  key={index}
+                  onClick={(e) => handleKostenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
-        <Dropdown
-          name={HashSprachen}
-          onItemSelect={selectedValues}
-          onItemClick={handleSprachenItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+        <div
+          className="dropdown-container"
+          onMouseOver={handleSprachenMouseOver}
+          onMouseLeave={handleSprachenMouseLeave}
+          onClick={handleSprachenClick}
         >
           <img src={Sprachen} alt="dropdown" />
-        </Dropdown>
+          {sprachenOpen && (
+            <div className="dropdown-menu">
+              {HashSprachen.map((item, index) => (
+                <label
+                  className="checkbox-label"
+                  key={index}
+                  onClick={(e) => handleSprachenItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
 
-        <Dropdown
-          name={HashBarrierefreiheit}
-          onItemSelect={selectedValues}
-          onItemClick={handleBarrierefreiheitItemClick}
-          handleCheckboxChange={handleCheckboxChange}
+        <div
+          className="dropdown-container"
+          onMouseOver={handleBarrierefreiheitMouseOver}
+          onMouseLeave={handleBarrierefreiheitMouseLeave}
+          onClick={handleBarrierefreiheitClick}
         >
           <img src={Barrierefreiheit} alt="dropdown" />
-        </Dropdown>
+          {barrierefreiheitOpen && (
+            <div className="dropdown-menu">
+              {HashBarrierefreiheit.map((item, index) => (
+                <label
+                  key={index}
+                  htmlFor={`checkbox-${index}`}
+                  className="checkbox-label"
+                  onClick={(e) => handleBarrierefreiheitItemClick(e, item)} // this prevents menu to close when chosing an item
+                >
+                  <input
+                    type="checkbox"
+                    id={`checkbox-${index}`}
+                    value={item}
+                    checked={selectedValues.includes(item)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span className="checkbox-custom"></span>
+                  {item}
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-
-      <input
-        type="text"
-        className={`search-input ${inputFocused ? "focused" : ""}`}
-        placeholder=""
-        value={searchText}
-        onChange={handleSearchTextChange}
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}
-        style={{
-          backgroundImage: inputFocused ? "" : `url(${searchButton})`,
-        }}
-      />
 
       <div className="search-filter">
         {selectedValues &&
