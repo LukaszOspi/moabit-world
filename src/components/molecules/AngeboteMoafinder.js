@@ -248,6 +248,17 @@ const AngeboteMoaFinder = () => {
     setInputFocused(false);
   };
 
+  // Indicates the search engine
+  const handleMouseEnter = () => {
+    setInputFocused(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!searchText) {
+      setInputFocused(false);
+    }
+  };
+
   return (
     <>
       <div className="moafinder-container">
@@ -332,6 +343,8 @@ const AngeboteMoaFinder = () => {
         value={searchText}
         onChange={handleSearchTextChange}
         onFocus={handleInputFocus}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         onBlur={handleInputBlur}
         style={{
           backgroundImage: inputFocused ? "" : `url(${searchButton})`,
