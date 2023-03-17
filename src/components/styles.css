@@ -533,6 +533,7 @@
     width: 100%;
     padding-top: 30px;
     flex-direction: column-reverse;
+    padding-right: 0px;
   }
   .menu_mobile {
     width: 100%;

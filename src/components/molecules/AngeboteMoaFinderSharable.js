@@ -11,6 +11,8 @@ import axios from "axios";
 import "../styles.css";
 import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
+import Menu from "./../Menu";
+import Footer from "./../Footer";
 import Share from "../../assets/share.png";
 import Copy from "../../assets/copy.png";
 
@@ -157,6 +159,7 @@ const AngeboteMoaFinderSharable = () => {
 
   return (
     <>
+      <Menu />
       {!error && loading && <div>Loading...</div>}
       {!error && !loading && filteredData && filteredData.length === 0 && (
         <div>No results found.</div>
@@ -281,6 +284,7 @@ const AngeboteMoaFinderSharable = () => {
               </div>
             );
           })}
+          <Footer />
         </>
       )}
       {error && <div>Error: {error}</div>}
