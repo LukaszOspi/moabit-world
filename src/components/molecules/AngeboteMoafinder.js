@@ -14,7 +14,7 @@ import TextBox from "../atoms/TextBox";
 import Dropdown from "../atoms/Dropdown";
 
 // graphics imports
-import searchButton from "../../assets/search_button.png";
+import searchButton from "../../assets/Suche.svg";
 import location from "../../assets/location.png";
 import Angebotstyp from "../../assets/Angebotstyp.svg";
 import Gruppen from "../../assets/Gruppen.svg";
