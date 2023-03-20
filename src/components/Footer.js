@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles.css";
-import logo from "./../assets/moabit_world_white.png";
-import facebook from "./../assets/facebook.png";
-import telegram from "././../assets/telegram.png";
-import insta from "././../assets/insta.png";
-import cefo from "./../assets/cefo.png";
-import logosFooter from "./../assets/logos_footer.jpg";
+import logoBird from "./../assets/rf-logo-footer.svg";
+import facebook from "./../assets/facebook.svg";
+import telegram from "././../assets/telegram.svg";
+import insta from "././../assets/instagram.svg";
+import refo from "./../assets/refo.svg";
+import logoSponsors from "./../assets/logos_footer.jpg";
 
 const Footer = () => {
   return (
@@ -22,14 +22,14 @@ const Footer = () => {
             Unsere Unterstützer
           </div>
         </div>
-        <img src={logosFooter} alt="Logos Unterstuetzer" />
+        <img src={logoSponsors} alt="Logos Unterstuetzer" />
       </div>
       <div>
         <div className="footer">
           <div className="footerLeft">
             <div>
               <a href="https://moabit.world">
-                <img className="image" src={logo} alt="logo" />
+                <img className="image" src={logoBird} alt="logo" />
               </a>
             </div>
             <div>
@@ -53,7 +53,7 @@ const Footer = () => {
                 <img src={facebook} alt="facebook" />
               </a>
               <a href="https://www.refo-moabit.de/">
-                <img src={cefo} alt="REFO" />
+                <img src={refo} alt="REFO" />
               </a>
             </div>
           </div>

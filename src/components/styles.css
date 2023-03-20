@@ -672,7 +672,7 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-  width: 1130px;
+  /*width: 1130px;*/
 }
 .offer-wrapper {
   display: flex;

@@ -4,6 +4,8 @@ import {
   FacebookIcon,
   WhatsappShareButton,
   WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
 } from "react-share";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import axios from "axios";
@@ -37,10 +39,10 @@ const AngeboteMoaFinder = () => {
   const [allData, setAllData] = useState({ items: [] });
   const [searchHashtags, setSearchHashtags] = useState();
   const [selectedImageId, setSelectedImageId] = useState(null);
-  const [showMenu, setShowMenu] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [inputFocused, setInputFocused] = useState(false);
+  const [activeShareMenu, setActiveShareMenu] = useState(null);
 
   useEffect(() => {
     axios
@@ -64,6 +66,7 @@ const AngeboteMoaFinder = () => {
         const hashTagList = res.data.items.flatMap(
           (item) => item.fields.hashtag
         );
+
         setHashTagList(hashTagList);
       })
       .catch((error) => {
@@ -139,6 +142,21 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   }, [allData, selectedValues]);
 
+  // close the sharing menu by clicking somewhere on the screen
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".share-menu-container")) {
+        setActiveShareMenu(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const HashAngebotstyp =
     searchHashtags && searchHashtags.angebotstyp
       ? searchHashtags.angebotstyp
@@ -212,12 +230,6 @@ const AngeboteMoaFinder = () => {
     event.stopPropagation();
   };
 
-  // controls the behaviour of social media sharing button click
-
-  const handleShareMenuToggle = () => {
-    setShowMenu(!showMenu);
-  };
-
   const handleCopyToClipboard = () => {
     setCopySuccess(true);
     setTimeout(() => {
@@ -259,6 +271,15 @@ const AngeboteMoaFinder = () => {
     }
   };
 
+  // controls the behaviour of social media sharing button click
+  const handleShareMenuToggle = (index) => {
+    if (activeShareMenu === index) {
+      setActiveShareMenu(null);
+    } else {
+      setActiveShareMenu(index);
+    }
+  };
+
   return (
     <>
       <div className="moafinder-container">
@@ -278,7 +299,7 @@ const AngeboteMoaFinder = () => {
         src={location}
         alt="location"
         className="image-responsive"
-        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
+        style={{ paddingTop: "20px", paddingBottom: "20px" }}
       />
 
       <div className="search-container">
@@ -394,12 +415,16 @@ const AngeboteMoaFinder = () => {
                     <div className="share-menu-container">
                       <div
                         className="share-menu-toggle"
-                        onClick={handleShareMenuToggle}
+                        onMouseEnter={() => handleShareMenuToggle(index)} // Pass the index here
+                        onClick={() => handleShareMenuToggle(index)}
                       >
                         <img src={Share} alt="Share" />
                       </div>
-                      {showMenu && (
-                        <div className="share-menu">
+                      {activeShareMenu === index && ( // Check if the active share menu is equal to the current index
+                        <div
+                          className="share-menu"
+                          onMouseLeave={() => handleShareMenuToggle(index)} // Pass the index here
+                        >
                           <CopyToClipboard
                             text={sharableUrl}
                             onCopy={handleCopyToClipboard}
@@ -423,6 +448,11 @@ const AngeboteMoaFinder = () => {
                               <WhatsappIcon size={36} round />
                             </div>
                           </WhatsappShareButton>
+                          <TelegramShareButton>
+                            <div className="share-menu-option">
+                              <TelegramIcon size={36} round />
+                            </div>
+                          </TelegramShareButton>
                         </div>
                       )}
                     </div>

@@ -23,27 +23,24 @@ const Dropdown = ({
     };
   }, []);
 
-  /* 
-  Those handlers take care of all search button categories seperately
-  including mobile and desktop versions
-  */
-
-  // triggered only on desktop
   const handleMouseOver = () => {
     if (window.innerWidth >= 768) {
       setIsOpen(true);
     }
   };
-  // triggered only on mobile / tablet
+
   const handleClick = () => {
     if (window.innerWidth < 768) {
       setIsOpen(!isOpen);
     }
   };
-  // triggered only on desktop (cannot be true on mobile)
+
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
+
+  // Function to remove '#' from the beginning of a string
+  const removeHash = (str) => (str.startsWith("#") ? str.substring(1) : str);
 
   return (
     <div
@@ -68,7 +65,7 @@ const Dropdown = ({
                 onChange={handleCheckboxChange}
               />
               <span className="checkbox-custom"></span>
-              {item}
+              {removeHash(item)} {/* Using the removeHash function here */}
             </label>
           ))}
         </div>
