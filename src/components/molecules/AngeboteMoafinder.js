@@ -448,7 +448,7 @@ const AngeboteMoaFinder = () => {
                               <WhatsappIcon size={36} round />
                             </div>
                           </WhatsappShareButton>
-                          <TelegramShareButton>
+                          <TelegramShareButton url={sharableUrl}>
                             <div className="share-menu-option">
                               <TelegramIcon size={36} round />
                             </div>
