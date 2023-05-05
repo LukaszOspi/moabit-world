@@ -52,17 +52,21 @@ const AngeboteMoaFinder = () => {
       .then((res) => {
         setAllData(res.data); // store initial data
         setData(res.data); // set data for display and filtering
-        const assets = res.data.includes.Asset;
+        const assets = res.data.includes && res.data.includes.Asset;
 
-        // Create a map of photo IDs to URLs
-        const photoMap = assets.reduce((acc, asset) => {
-          const id = asset.sys.id;
-          const url = asset.fields.file.url;
-          acc[id] = url;
-          return acc;
-        }, {});
+        // If there are assets, create a map of photo IDs to URLs
+        // Otherwise, set photoMap to an empty object
+        const photoMap = assets
+          ? assets.reduce((acc, asset) => {
+              const id = asset.sys.id;
+              const url = asset.fields.file.url;
+              acc[id] = url;
+              return acc;
+            }, {})
+          : {};
 
         setPhotoMap(photoMap);
+
         const hashTagList = res.data.items.flatMap(
           (item) => item.fields.hashtag
         );
@@ -260,7 +264,7 @@ const AngeboteMoaFinder = () => {
     setInputFocused(false);
   };
 
-  // Indicates the search engine
+  // Indicates the search engine existence
   const handleMouseEnter = () => {
     setInputFocused(true);
   };
@@ -273,10 +277,11 @@ const AngeboteMoaFinder = () => {
 
   // controls the behaviour of social media sharing button click
   const handleShareMenuToggle = (index) => {
+    // takes index as an argument
     if (activeShareMenu === index) {
       setActiveShareMenu(null);
     } else {
-      setActiveShareMenu(index);
+      setActiveShareMenu(index); // opens modal only on correct element
     }
   };
 
