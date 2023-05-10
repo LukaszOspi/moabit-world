@@ -167,7 +167,8 @@ const AngeboteMoaFinderSharable = () => {
       {!error && !loading && data.items && data.items.length > 0 && (
         <>
           {filteredData.map((item, index) => {
-            var sharableUrl = `https://moabit.world/share/${item.fields.id}`;
+            var sharableUrl = `https://${window.location.hostname}/share/${item.fields.id}`;
+
             return (
               <div className="offer-wrapper" key={index}>
                 <div className="title-stripe">
