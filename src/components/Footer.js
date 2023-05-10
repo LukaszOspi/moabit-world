@@ -5,8 +5,8 @@ import facebook from "./../assets/facebook.svg";
 import telegram from "././../assets/telegram.svg";
 import insta from "././../assets/instagram.svg";
 import refo from "./../assets/refo.svg";
-import logoSponsors from "./../assets/logos_footer.jpg";
-
+import logoSponsors from "./../assets/Logos1.jpg";
+import logoSponsorsMobile from "./../assets/Logos2.jpg";
 const Footer = () => {
   return (
     <div>
@@ -19,10 +19,19 @@ const Footer = () => {
               fontWeight: "bold",
             }}
           >
-            Unsere Unterstützer
+            In Kooperation mit
           </div>
         </div>
-        <img src={logoSponsors} alt="Logos Unterstuetzer" />
+        <img
+          className="logos-desktop"
+          src={logoSponsors}
+          alt="Logos Unterstuetzer"
+        />
+        <img
+          className="logos-mobile"
+          src={logoSponsorsMobile}
+          alt="Logos Unterstuetzer"
+        />
       </div>
       <div>
         <div className="footer">

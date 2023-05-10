@@ -1,9 +1,15 @@
 /* Angebote */
 .angebote {
-  /* width: 1130px; */
-  width: 1400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+.angebote-text {
+  width: 1130px;
 }
 .fussball {
   display: flex;
@@ -288,7 +294,17 @@
   width: 279px;
   padding-top: 25px;
 }
+@media screen and (min-width: 801px) {
+  .logos-mobile {
+    display: none;
+  }
+}
 
+@media screen and (max-width: 800px) {
+  .logos-desktop {
+    display: none;
+  }
+}
 @media screen and (max-width: 1200px) {
   .footer {
     background-image: url("../assets/footer_bcg_mobile.png");
@@ -497,6 +513,7 @@
   }
   .links {
     justify-content: center;
+    align-items: center;
   }
 }
 
@@ -663,6 +680,7 @@
 }
 
 /* AngeboteMoaFinder */
+
 .moafinder-container {
   display: flex;
   flex-direction: column;

@@ -304,7 +304,7 @@ const AngeboteMoaFinder = () => {
         src={location}
         alt="location"
         className="image-responsive"
-        style={{ paddingTop: "20px", paddingBottom: "20px" }}
+        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
       />
 
       <div className="search-container">
