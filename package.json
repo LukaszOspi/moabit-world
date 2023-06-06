@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
+    "node": "^20.2.0",
     "node-pre-gyp": "^0.17.0",
     "react": "^18.1.0",
     "react-copy-to-clipboard": "^5.1.0",
@@ -46,6 +47,6 @@
     ]
   },
   "engines": {
-    "node": "^16.19.1"
+    "node": "16.19.1"
   }
 }
