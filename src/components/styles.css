@@ -688,8 +688,9 @@
 }
 .moafinder-info {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   /*width: 1130px;*/
 }
 .offer-wrapper {
@@ -736,6 +737,7 @@
   font-size: 24px;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  color: white;
 }
 .time-location {
   margin-top: 1rem;
@@ -871,6 +873,7 @@
 .dropdown-menu-item {
   display: block;
 }
+
 @media (max-width: 1150px) {
   .moafinder-info {
     padding-top: 50px;
@@ -1095,6 +1098,7 @@
   width: 14rem;
   height: 4rem;
   font-size: 2rem;
+  margin-left: 2rem;
 
   margin-bottom: 2rem;
 }

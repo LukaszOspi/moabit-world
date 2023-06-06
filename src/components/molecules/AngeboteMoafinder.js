@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -43,6 +43,7 @@ const AngeboteMoaFinder = () => {
   const [searchText, setSearchText] = useState("");
   const [inputFocused, setInputFocused] = useState(false);
   const [activeShareMenu, setActiveShareMenu] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     axios
@@ -285,27 +286,55 @@ const AngeboteMoaFinder = () => {
     }
   };
 
+  // scroll down after search input was complete with enter key
+  const myRef = useRef(null);
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Check if the ref exists in the DOM before scrolling to it
+      if (myRef.current) {
+        myRef.current.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Handle the case when the ref does not exist in the DOM
+        console.log("Target element not loaded yet");
+        // You may add other actions here based on your needs
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <div className="moafinder-container">
         <div className="moafinder-info">
           <div>
             <TextBox
-              titlePink="MoaFinder:"
-              title="Angebote in Moabit für ein aktives Miteinander"
+              title="Angebote in Moabit - für ein aktives Miteinander im Kiez"
               text="Ihr habt Lust auf Töpfern, wollt im Chor singen oder sucht ein Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurs würden euch helfen? Hier findet Ihr viele Orte und Angebote in Moabit.
 "
             ></TextBox>
           </div>
+          <input
+            type="text"
+            className={`search-input ${inputFocused ? "focused" : ""}`}
+            placeholder=""
+            value={searchText}
+            onChange={handleSearchTextChange}
+            onFocus={handleInputFocus}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onBlur={handleInputBlur}
+            onKeyDown={handleKeyDown}
+            style={{
+              backgroundImage: inputFocused ? "" : `url(${searchButton})`,
+            }}
+          />
         </div>
       </div>
-
-      <img
-        src={location}
-        alt="location"
-        className="image-responsive"
-        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
-      />
 
       <div className="search-container">
         <Dropdown
@@ -361,19 +390,14 @@ const AngeboteMoaFinder = () => {
           <img src={Barrierefreiheit} alt="dropdown" />
         </Dropdown>
       </div>
-
-      <input
-        type="text"
-        className={`search-input ${inputFocused ? "focused" : ""}`}
-        placeholder=""
-        value={searchText}
-        onChange={handleSearchTextChange}
-        onFocus={handleInputFocus}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onBlur={handleInputBlur}
+      <img
+        src={location}
+        alt="location"
+        className="image-responsive location-map"
         style={{
-          backgroundImage: inputFocused ? "" : `url(${searchButton})`,
+          paddingTop: "20px",
+          paddingBottom: "20px",
+          width: windowWidth < 600 ? "80%" : "50%",
         }}
       />
 
@@ -403,7 +427,7 @@ const AngeboteMoaFinder = () => {
             );
           })}
       </div>
-
+      <div ref={myRef}></div>
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
