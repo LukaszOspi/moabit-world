@@ -447,6 +447,7 @@
   transition: box-shadow 0.2s ease-in-out;
   padding-bottom: 100px;
 }
+
 .logo {
   display: flex;
   justify-content: space-between;
@@ -462,6 +463,7 @@
     height: auto;
     padding-bottom: 0px;
   }
+
   .zusammen {
     display: flex;
     font-size: 8vw;
@@ -561,7 +563,7 @@
     justify-content: space-around;
     padding-right: 0px;
   }
-  .menu_desktop {
+  .menu-desktop {
     display: none;
   }
   .logo {
@@ -681,6 +683,37 @@
 
 /* AngeboteMoaFinder */
 
+.intro-moafinder {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1400px;
+  height: 800px;
+
+  position: relative;
+
+  background-image: url("./../assets/moafinder_background.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition: box-shadow 0.2s ease-in-out;
+  padding-bottom: 100px;
+}
+
+@media screen and (max-width: 1000px) {
+  .intro-moafinder {
+    height: 50vh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .intro-moafinder {
+    height: 25vh;
+  }
+  .search-input {
+    width: 10rem !important;
+    height: 2.5rem !important;
+  }
+}
 .moafinder-container {
   display: flex;
   flex-direction: column;

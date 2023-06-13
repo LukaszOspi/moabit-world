@@ -7,11 +7,8 @@ import Menu from "./Menu";
 const Moafinder = () => {
   return (
     <>
-      <div className="intro intro-moafinder">
-        <Menu color="white" />
-        <div className="zusammen">
-          <div style={{ color: "#7CB92C" }}>MoaFinder</div>
-        </div>
+      <div className="intro-moafinder">
+        <Menu color="#7CB92C" colorDesktop="black" moafinder="true" />
       </div>
       <MoafinderSearch />
       <Footer />
