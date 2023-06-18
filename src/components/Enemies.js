@@ -4,7 +4,6 @@ import birds from "./../assets/birds.png";
 import enemiesBcg from "./../assets/enemies_bcg.png";
 import TextBox from "./atoms/TextBox";
 import Button from "./atoms/Button";
-import TextBoxSmall from "./atoms/TextBoxSmall";
 
 const Enemies = () => {
   return (
@@ -23,13 +22,7 @@ const Enemies = () => {
             />
             <Button url="/about" text="Erfahrt mehr" />
           </div>
-          <div className="enemies-content-small">
-            <TextBoxSmall
-              color="white"
-              title="We refuse to be enemies"
-              text="Friedenskampagne und Vernetzungsplattform - die Moabit.World erkunden"
-            />
-          </div>
+          <div className="enemies-content-small"></div>
         </div>
         <div className="enemies-bcg">
           <img className="background" src={enemiesBcg} alt="Background"></img>

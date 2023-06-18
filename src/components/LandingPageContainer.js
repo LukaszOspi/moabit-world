@@ -30,16 +30,15 @@ const LandingPageContainer = () => {
       <LandingPage />
 
       <Info />
-
-      <Links />
+      <Angebote />
       <Veranstaltung />
-
       <EventCarousel />
+      <Links />
 
       <Enemies />
       <Host />
       <Bar />
-      <Angebote />
+
       <Footer />
     </div>
   );
