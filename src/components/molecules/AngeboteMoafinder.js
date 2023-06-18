@@ -14,6 +14,7 @@ import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import TextBox from "../atoms/TextBox";
 import Dropdown from "../atoms/Dropdown";
+import ImageResponsive from "../atoms/ImageResponsive";
 
 // graphics imports
 import searchButton from "../../assets/Suche.svg";
@@ -27,6 +28,7 @@ import Barrierefreiheit from "../../assets/Barrierefreiheit.svg";
 import Share from "../../assets/share.png";
 import Placeholder from "../../assets/placeholder-moafinder.png";
 import Copy from "../../assets/copy.png";
+import Missing from "./../../assets/fehlt.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -187,7 +189,7 @@ const AngeboteMoaFinder = () => {
   const hashtagCategories = [
     { category: "Angebotstyp", hashtags: HashAngebotstyp, color: "#ED7782" },
     { category: "Gruppen", hashtags: HashGruppen, color: "#662382" },
-    { category: "Orte", hashtags: HashOrte, color: "green" },
+    { category: "Orte", hashtags: HashOrte, color: "#0255A2" },
     { category: "Kosten", hashtags: HashKosten, color: "#0099A8" },
     { category: "Sprachen", hashtags: HashSprachen, color: "#7CB92C" },
     {
@@ -318,21 +320,35 @@ const AngeboteMoaFinder = () => {
 "
             ></TextBox>
           </div>
-          <input
-            type="text"
-            className={`search-input ${inputFocused ? "focused" : ""}`}
-            placeholder=""
-            value={searchText}
-            onChange={handleSearchTextChange}
-            onFocus={handleInputFocus}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onBlur={handleInputBlur}
-            onKeyDown={handleKeyDown}
+          <div
             style={{
-              backgroundImage: inputFocused ? "" : `url(${searchButton})`,
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
             }}
-          />
+          >
+            <input
+              type="text"
+              className={`search-input ${inputFocused ? "focused" : ""}`}
+              placeholder=""
+              value={searchText}
+              onChange={handleSearchTextChange}
+              onFocus={handleInputFocus}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onBlur={handleInputBlur}
+              onKeyDown={handleKeyDown}
+              style={{
+                backgroundImage: inputFocused ? "" : `url(${searchButton})`,
+              }}
+            />
+            <ImageResponsive
+              src={Missing}
+              alt="Angebot fehlt? moafinder@moabit.world"
+              width="15rem"
+              padding="2rem"
+            />
+          </div>
         </div>
       </div>
 
@@ -418,7 +434,7 @@ const AngeboteMoaFinder = () => {
                 style={{
                   backgroundColor: category ? category.color : null,
                   marginRight: index !== selectedValues - 1 ? "18px" : "0px",
-                  padding: "5px 5px",
+                  padding: "12px 12px",
                   marginBottom: "15px",
                 }}
               >
