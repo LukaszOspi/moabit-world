@@ -5,7 +5,6 @@
   justify-content: center;
 
   padding-top: 50px;
-  padding-bottom: 50px;
 }
 
 .angebote-text {
@@ -506,6 +505,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding-bottom: 5rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -583,7 +583,6 @@
   width: 80%;
   display: flex;
   justify-content: left;
-  padding-top: 50px;
 }
 
 .veranstaltung {
@@ -598,7 +597,6 @@
 
   text-align: left;
   padding-right: 50px;
-  padding-top: 80px;
 }
 
 @media screen and (max-width: 800px) {
@@ -797,6 +795,7 @@
   margin-bottom: 2rem;
 }
 .search-filter {
+  color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -1131,7 +1130,8 @@
   width: 14rem;
   height: 4rem;
   font-size: 2rem;
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 
   margin-bottom: 2rem;
 }
