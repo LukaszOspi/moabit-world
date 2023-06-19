@@ -46,14 +46,21 @@ const AngeboteMoaFinderSharable = () => {
       .then((res) => {
         setAllData(res.data); // store initial data
         setData(res.data); // set data for display and filtering
-        const assets = res.data.includes.Asset;
+        const assets = res.data && res.data.includes && res.data.includes.Asset;
+
         // Create a map of photo IDs to URLs
-        const photoMap = assets.reduce((acc, asset) => {
-          const id = asset.sys.id;
-          const url = asset.fields.file.url;
-          acc[id] = url;
-          return acc;
-        }, {});
+        let photoMap = {};
+
+        if (assets && Array.isArray(assets)) {
+          photoMap = assets.reduce((acc, asset) => {
+            const id = asset.sys.id;
+            const url = asset.fields.file.url;
+            acc[id] = url;
+            return acc;
+          }, {});
+        } else {
+          console.warn("No assets found or assets is not an array.");
+        }
 
         setPhotoMap(photoMap);
         const hashTagList = res.data.items.flatMap(
