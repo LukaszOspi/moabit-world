@@ -5,8 +5,8 @@ import facebook from "./../assets/facebook.svg";
 import telegram from "././../assets/telegram.svg";
 import insta from "././../assets/instagram.svg";
 import refo from "./../assets/refo.svg";
-import logoSponsors from "./../assets/Logos1.jpg";
-import logoSponsorsMobile from "./../assets/Logos2.jpg";
+import logoSponsors from "./../assets/Logos1.png";
+import logoSponsorsMobile from "./../assets/Logos2.png";
 const Footer = () => {
   return (
     <div>
