@@ -1,12 +1,15 @@
 import React from "react";
 import MoafinderSearch from "./molecules/MoafinderSearch";
-import LandingPage from "./LandingPage";
+
 import Footer from "./Footer";
+import Menu from "./Menu";
 
 const Moafinder = () => {
   return (
     <>
-      <LandingPage />
+      <div className="intro-moafinder">
+        <Menu color="#7CB92C" colorDesktop="black" moafinder="true" />
+      </div>
       <MoafinderSearch />
       <Footer />
     </>

@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="intro">
-        <Menu color="white" />
+        <Menu colorDesktop="white" />
         <div className="zusammen">
           <div>Zusammen sind wir stark für den Frieden.</div>
         </div>

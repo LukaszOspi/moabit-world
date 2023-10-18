@@ -1,20 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { FacebookShareButton } from "react-share";
-
+import React, { useState, useEffect, useRef } from "react";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TelegramShareButton,
+  TelegramIcon,
+} from "react-share";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import axios from "axios";
 import "../styles.css";
 import "./../atoms/styles-atoms.css";
 import ReplaceLineBreakChar from "../atoms/ReplaceLineBreakChar";
 import TextBox from "../atoms/TextBox";
-import searchButton from "../../assets/search_button.png";
+import Dropdown from "../atoms/Dropdown";
+import ImageResponsive from "../atoms/ImageResponsive";
+
+// graphics imports
+import searchButton from "../../assets/Suche.svg";
 import location from "../../assets/location.png";
-import Angebotstyp from "../../assets/angebotstyp.png";
-import Gruppen from "../../assets/gruppen.png";
-import Orte from "../../assets/orte.png";
-import Kosten from "../../assets/kosten.png";
-import Sprachen from "../../assets/sprachen.png";
-import Barrierefreiheit from "../../assets/barrierefreiheit.png";
+import Angebotstyp from "../../assets/Angebotstyp.svg";
+import Gruppen from "../../assets/Gruppen.svg";
+import Orte from "../../assets/Orte.svg";
+import Kosten from "../../assets/Kosten.svg";
+import Sprachen from "../../assets/Sprachen.svg";
+import Barrierefreiheit from "../../assets/Barrierefreiheit.svg";
 import Share from "../../assets/share.png";
+import Placeholder from "../../assets/placeholder-moafinder.png";
+import Copy from "../../assets/copy.png";
+import Missing from "./../../assets/fehlt.png";
 
 const AngeboteMoaFinder = () => {
   const [error, setError] = useState("");
@@ -24,19 +38,14 @@ const AngeboteMoaFinder = () => {
   // eslint-disable-next-line no-unused-vars
   const [hashTagList, setHashTagList] = useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
-  const [angebotstypOpen, setAngebotstypOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [orteOpen, setOrteOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [gruppenOpen, setGruppenOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [kostenOpen, setKostenOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [sprachenOpen, setSprachenOpen] = useState(false);
-  const [barrierefreiheitOpen, setBarrierefreiheitOpen] = useState(false);
   const [allData, setAllData] = useState({ items: [] });
   const [searchHashtags, setSearchHashtags] = useState();
   const [selectedImageId, setSelectedImageId] = useState(null);
+  const [copySuccess, setCopySuccess] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [inputFocused, setInputFocused] = useState(false);
+  const [activeShareMenu, setActiveShareMenu] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     axios
@@ -46,20 +55,25 @@ const AngeboteMoaFinder = () => {
       .then((res) => {
         setAllData(res.data); // store initial data
         setData(res.data); // set data for display and filtering
-        const assets = res.data.includes.Asset;
+        const assets = res.data.includes && res.data.includes.Asset;
 
-        // Create a map of photo IDs to URLs
-        const photoMap = assets.reduce((acc, asset) => {
-          const id = asset.sys.id;
-          const url = asset.fields.file.url;
-          acc[id] = url;
-          return acc;
-        }, {});
+        // If there are assets, create a map of photo IDs to URLs
+        // Otherwise, set photoMap to an empty object
+        const photoMap = assets
+          ? assets.reduce((acc, asset) => {
+              const id = asset.sys.id;
+              const url = asset.fields.file.url;
+              acc[id] = url;
+              return acc;
+            }, {})
+          : {};
 
         setPhotoMap(photoMap);
+
         const hashTagList = res.data.items.flatMap(
           (item) => item.fields.hashtag
         );
+
         setHashTagList(hashTagList);
       })
       .catch((error) => {
@@ -135,6 +149,21 @@ const AngeboteMoaFinder = () => {
     setData({ items: filteredData });
   }, [allData, selectedValues]);
 
+  // close the sharing menu by clicking somewhere on the screen
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest(".share-menu-container")) {
+        setActiveShareMenu(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const HashAngebotstyp =
     searchHashtags && searchHashtags.angebotstyp
       ? searchHashtags.angebotstyp
@@ -160,7 +189,7 @@ const AngeboteMoaFinder = () => {
   const hashtagCategories = [
     { category: "Angebotstyp", hashtags: HashAngebotstyp, color: "#ED7782" },
     { category: "Gruppen", hashtags: HashGruppen, color: "#662382" },
-    { category: "Orte", hashtags: HashOrte, color: "green" },
+    { category: "Orte", hashtags: HashOrte, color: "#0255A2" },
     { category: "Kosten", hashtags: HashKosten, color: "#0099A8" },
     { category: "Sprachen", hashtags: HashSprachen, color: "#7CB92C" },
     {
@@ -170,51 +199,13 @@ const AngeboteMoaFinder = () => {
     },
   ];
 
-  /* 
-  Those handlers take care of all search button categories seperately
-  including mobile and desktop versions
-  */
-
-  // Angebotstyp
-  // triggered only on desktop
-  const handleAngebotstypMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setAngebotstypOpen(true);
-    }
-  };
-
-  // triggered only on mobile / tablet
-  const handleAngebotstypClick = () => {
-    if (window.innerWidth < 768) {
-      setAngebotstypOpen(!angebotstypOpen);
-    }
-  };
-
-  // triggered only on desktop (cannot be true on mobile)
-  const handleAngebotstypMouseLeave = () => {
-    setAngebotstypOpen(false);
-  };
-
   // handle click on dropdown item
   const handleAngebotstypItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
-  // Gruppen
-  const handleGruppenMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setGruppenOpen(true);
-    }
-  };
-  const handleGruppenClick = () => {
-    if (window.innerWidth < 768) {
-      setGruppenOpen(!gruppenOpen);
-    }
-  };
 
-  const handleGruppenMouseLeave = () => {
-    setGruppenOpen(false);
-  };
+  // Gruppen
   // handle click on dropdown item
   const handleGruppenItemClick = (event) => {
     // prevent event from bubbling up to parent element
@@ -222,307 +213,293 @@ const AngeboteMoaFinder = () => {
   };
 
   // Orte
-  const handleOrteMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setOrteOpen(true);
-    }
-  };
-  const handleOrteClick = () => {
-    if (window.innerWidth < 768) {
-      setOrteOpen(!orteOpen);
-    }
-  };
-
-  const handleOrteMouseLeave = () => {
-    setOrteOpen(false);
-  };
   // handle click on dropdown item
   const handleOrteItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Kosten
-  const handleKostenMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setKostenOpen(true);
-    }
-  };
-
-  const handleKostenMouseLeave = () => {
-    setKostenOpen(false);
-  };
-  const handleKostenClick = () => {
-    if (window.innerWidth < 768) {
-      setKostenOpen(!kostenOpen);
-    }
-  };
   // handle click on dropdown item
   const handleKostenItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Sprachen
-  const handleSprachenMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setSprachenOpen(true);
-    }
-  };
-
-  const handleSprachenMouseLeave = () => {
-    setSprachenOpen(false);
-  };
-  const handleSprachenClick = () => {
-    if (window.innerWidth < 768) {
-      setSprachenOpen(!sprachenOpen);
-    }
-  };
   // handle click on dropdown item
   const handleSprachenItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
   // Barrierefreiheit
-  const handleBarrierefreiheitMouseOver = () => {
-    if (window.innerWidth >= 768) {
-      setBarrierefreiheitOpen(true);
-    }
-  };
-
-  const handleBarrierefreiheitMouseLeave = () => {
-    setBarrierefreiheitOpen(false);
-  };
-  const handleBarrierefreiheitClick = () => {
-    if (window.innerWidth < 768) {
-      setBarrierefreiheitOpen(!barrierefreiheitOpen);
-    }
-  };
   // handle click on dropdown item
   const handleBarrierefreiheitItemClick = (event) => {
     // prevent event from bubbling up to parent element
     event.stopPropagation();
   };
 
+  const handleCopyToClipboard = () => {
+    setCopySuccess(true);
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 2000);
+  };
+
+  // Controls the text search input element
+  const handleSearchTextChange = (event) => {
+    const inputText = event.target.value;
+    setSearchText(inputText);
+
+    let filteredData = allData.items.filter((item) => {
+      const fields = Object.values(item.fields);
+      const textToSearch = fields.join(" ").toLowerCase();
+      return textToSearch.includes(inputText.toLowerCase());
+    });
+
+    setData({ items: filteredData });
+  };
+
+  // Control search field background
+  const handleInputFocus = () => {
+    setInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setInputFocused(false);
+  };
+
+  // Indicates the search engine existence
+  const handleMouseEnter = () => {
+    setInputFocused(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (!searchText) {
+      setInputFocused(false);
+    }
+  };
+
+  // controls the behaviour of social media sharing button click
+  const handleShareMenuToggle = (index) => {
+    // takes index as an argument
+    if (activeShareMenu === index) {
+      setActiveShareMenu(null);
+    } else {
+      setActiveShareMenu(index); // opens modal only on correct element
+    }
+  };
+
+  // scroll down after search input was complete with enter key
+  const myRef = useRef(null);
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Check if the ref exists in the DOM before scrolling to it
+      if (myRef.current) {
+        myRef.current.scrollIntoView({ behavior: "smooth" });
+      } else {
+        // Handle the case when the ref does not exist in the DOM
+        console.log("Target element not loaded yet");
+        // You may add other actions here based on your needs
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
       <div className="moafinder-container">
         <div className="moafinder-info">
           <div>
-            <button className="search-button">
-              <img
-                src={searchButton}
-                alt="searchButton"
-                className="search-button"
-                onClick={handleSearch}
-              />
-            </button>
-          </div>
-          <div>
             <TextBox
-              title="MoaFinder: Angebote in Moabit für ein Aktives Miteinander"
+              title="Angebote in Moabit - für ein aktives Miteinander im Kiez"
               text="Ihr habt Lust auf Töpfern, wollt im Chor singen oder sucht ein Beratungscafé? Sport, ein Friedensgebet und ein Sprachkurs würden euch helfen? Hier findet Ihr viele Orte und Angebote in Moabit.
 "
             ></TextBox>
           </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <input
+              type="text"
+              className={`search-input ${inputFocused ? "focused" : ""}`}
+              placeholder=""
+              value={searchText}
+              onChange={handleSearchTextChange}
+              onFocus={handleInputFocus}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onBlur={handleInputBlur}
+              onKeyDown={handleKeyDown}
+              style={{
+                backgroundImage: inputFocused ? "" : `url(${searchButton})`,
+              }}
+            />
+            <ImageResponsive
+              src={Missing}
+              alt="Angebot fehlt? moafinder@moabit.world"
+              width="15rem"
+              padding="2rem"
+            />
+          </div>
         </div>
       </div>
 
+      <div className="search-container">
+        <Dropdown
+          name={HashAngebotstyp}
+          onItemSelect={selectedValues}
+          onItemClick={handleAngebotstypItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Angebotstyp} alt="dropdown" />
+        </Dropdown>
+        <Dropdown
+          name={HashGruppen}
+          onItemSelect={selectedValues}
+          onItemClick={handleGruppenItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Gruppen} alt="dropdown" />
+        </Dropdown>
+
+        <Dropdown
+          name={HashOrte}
+          onItemSelect={selectedValues}
+          onItemClick={handleOrteItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Orte} alt="dropdown" />
+        </Dropdown>
+
+        <Dropdown
+          name={HashKosten}
+          onItemSelect={selectedValues}
+          onItemClick={handleKostenItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Kosten} alt="dropdown" />
+        </Dropdown>
+
+        <Dropdown
+          name={HashSprachen}
+          onItemSelect={selectedValues}
+          onItemClick={handleSprachenItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Sprachen} alt="dropdown" />
+        </Dropdown>
+
+        <Dropdown
+          name={HashBarrierefreiheit}
+          onItemSelect={selectedValues}
+          onItemClick={handleBarrierefreiheitItemClick}
+          handleCheckboxChange={handleCheckboxChange}
+        >
+          <img src={Barrierefreiheit} alt="dropdown" />
+        </Dropdown>
+      </div>
       <img
         src={location}
         alt="location"
-        className="image-responsive"
-        style={{ paddingTop: "20px", paddingBottom: "20px", width: "50%" }}
+        className="image-responsive location-map"
+        style={{
+          paddingTop: "20px",
+          paddingBottom: "20px",
+          width: windowWidth < 600 ? "80%" : "50%",
+        }}
       />
 
-      <div className="search-container">
-        <div
-          className="dropdown-container"
-          onMouseOver={handleAngebotstypMouseOver}
-          onMouseLeave={handleAngebotstypMouseLeave}
-          onClick={handleAngebotstypClick}
-        >
-          <img src={Angebotstyp} alt="dropdown" />
-          {HashAngebotstyp.length > 0 && angebotstypOpen && (
-            <div className="dropdown-menu">
-              {HashAngebotstyp.map((item, index) => (
-                <label
-                  key={index}
-                  onClick={(e) => handleAngebotstypItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown-container"
-          onMouseOver={handleGruppenMouseOver}
-          onMouseLeave={handleGruppenMouseLeave}
-          onClick={handleGruppenClick}
-        >
-          <img src={Gruppen} alt="dropdown" />
-          {gruppenOpen && (
-            <div className="dropdown-menu">
-              {HashGruppen.map((item, index) => (
-                <label
-                  key={index}
-                  onClick={(e) => handleGruppenItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-        <div
-          className="dropdown-container"
-          onMouseOver={handleOrteMouseOver}
-          onMouseLeave={handleOrteMouseLeave}
-          onClick={handleOrteClick}
-        >
-          <img src={Orte} alt="dropdown" />
-          {orteOpen && (
-            <div className="dropdown-menu">
-              {HashOrte.map((item, index) => (
-                <label
-                  key={index}
-                  onClick={(e) => handleOrteItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown-container"
-          onMouseOver={handleKostenMouseOver}
-          onMouseLeave={handleKostenMouseLeave}
-          onClick={handleKostenClick}
-        >
-          <img src={Kosten} alt="dropdown" />
-          {kostenOpen && (
-            <div className="dropdown-menu">
-              {HashKosten.map((item, index) => (
-                <label
-                  key={index}
-                  onClick={(e) => handleKostenItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown-container"
-          onMouseOver={handleSprachenMouseOver}
-          onMouseLeave={handleSprachenMouseLeave}
-          onClick={handleSprachenClick}
-        >
-          <img src={Sprachen} alt="dropdown" />
-          {sprachenOpen && (
-            <div className="dropdown-menu">
-              {HashSprachen.map((item, index) => (
-                <label
-                  key={index}
-                  onClick={(e) => handleSprachenItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div
-          className="dropdown-container"
-          onMouseOver={handleBarrierefreiheitMouseOver}
-          onMouseLeave={handleBarrierefreiheitMouseLeave}
-          onClick={handleBarrierefreiheitClick}
-        >
-          <img src={Barrierefreiheit} alt="dropdown" />
-          {barrierefreiheitOpen && (
-            <div className="dropdown-menu">
-              {HashBarrierefreiheit.map((item, index) => (
-                <label
-                  key={index}
-                  htmlFor={`checkbox-${index}`}
-                  className="checkbox-label"
-                  onClick={(e) => handleBarrierefreiheitItemClick(e, item)} // this prevents menu to close when chosing an item
-                >
-                  <input
-                    type="checkbox"
-                    id={`checkbox-${index}`}
-                    value={item}
-                    checked={selectedValues.includes(item)}
-                    onChange={handleCheckboxChange}
-                  />
-                  <span className="checkbox-custom"></span>
-                  {item}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
+      <div className="search-filter">
+        {selectedValues &&
+          selectedValues.map((hashtag, index) => {
+            const category = hashtagCategories.find((c) =>
+              c.hashtags.includes(hashtag)
+            );
+            return (
+              /*
+                        marginRight controls the white gap horizontally
+                        padding (top/bottom left/right) controls the size of each hashtag incl. background color
+                        marginBottom controls the white gap vertically
+                        */
+              <div
+                key={index}
+                style={{
+                  backgroundColor: category ? category.color : null,
+                  marginRight: index !== selectedValues - 1 ? "18px" : "0px",
+                  padding: "12px 12px",
+                  marginBottom: "15px",
+                }}
+              >
+                {hashtag}
+              </div>
+            );
+          })}
       </div>
-      <div>
-        Deine Fiter sind:{" "}
-        {selectedValues.map((item, index) => (
-          <div key={index}>{item}</div>
-        ))}{" "}
-      </div>
-
+      <div ref={myRef}></div>
       {error && <div>Error: {error}</div>}
       {loading && <div>Loading...</div>}
       {!error && !loading && data.items.length > 0 && (
         <>
           {data.items.map((item, index) => {
-            var sharableUrl = `${window.location.origin}/share/${item.sys.id}`;
-            console.log(sharableUrl);
+            var sharableUrl = `https://moabit.world/share/${item.sys.id}`;
+
             return (
               <div className="offer-wrapper" key={index}>
                 <div className="title-stripe">
                   <div className="title-stripe-share">
                     <div>{item.fields.title}</div>
 
-                    <div>
-                      <FacebookShareButton url={sharableUrl}>
-                        <img src={Share} alt="Share on Facebook" />
-                      </FacebookShareButton>
+                    <div className="share-menu-container">
+                      <div
+                        className="share-menu-toggle"
+                        onMouseEnter={() => handleShareMenuToggle(index)} // Pass the index here
+                        onClick={() => handleShareMenuToggle(index)}
+                      >
+                        <img src={Share} alt="Share" />
+                      </div>
+                      {activeShareMenu === index && ( // Check if the active share menu is equal to the current index
+                        <div
+                          className="share-menu"
+                          onMouseLeave={() => handleShareMenuToggle(index)} // Pass the index here
+                        >
+                          <CopyToClipboard
+                            text={sharableUrl}
+                            onCopy={handleCopyToClipboard}
+                          >
+                            <div className="share-menu-option">
+                              <img src={Copy} alt="copy" />
+                              {copySuccess && (
+                                <span className="copy-success-message">
+                                  Link copied to clipboard!
+                                </span>
+                              )}
+                            </div>
+                          </CopyToClipboard>
+                          <FacebookShareButton url={sharableUrl}>
+                            <div className="share-menu-option">
+                              <FacebookIcon size={36} round />
+                            </div>
+                          </FacebookShareButton>
+                          <WhatsappShareButton url={sharableUrl}>
+                            <div className="share-menu-option">
+                              <WhatsappIcon size={36} round />
+                            </div>
+                          </WhatsappShareButton>
+                          <TelegramShareButton url={sharableUrl}>
+                            <div className="share-menu-option">
+                              <TelegramIcon size={36} round />
+                            </div>
+                          </TelegramShareButton>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -534,6 +511,11 @@ const AngeboteMoaFinder = () => {
                       <ReplaceLineBreakChar
                         text={item.fields.shortDescription}
                       />
+                      <br />
+                      <ReplaceLineBreakChar
+                        text={item.fields.furtherInformation}
+                      />
+
                       {item.fields.photo && item.fields.photo.length > 0 && (
                         <div className="offer-images">
                           {item.fields.photo.slice(0, 3).map((photo, index) => (
@@ -544,46 +526,54 @@ const AngeboteMoaFinder = () => {
                               className="offer-image"
                               onError={(e) => {
                                 e.target.onerror = null;
-                                e.target.src = "placeholder-image-url";
+                                e.target.src = { Placeholder };
                               }}
                               onClick={() => handleImageClick(photo.sys.id)}
                             />
                           ))}
                         </div>
                       )}
-                      <div style={{ fontWeight: "bold" }}>
+
+                      <div
+                        className="time-location"
+                        style={{ fontWeight: "bold" }}
+                      >
+                        <ReplaceLineBreakChar text={item.fields.placeAddress} />
+                        <br />
                         <ReplaceLineBreakChar text={item.fields.timeLocation} />
+                        <br />
                         <div>{item.fields.contact}</div>
                       </div>
                     </div>
                   </div>
                   <div className="offer-right">
-                    {item.fields.hashtag.map((hashtag, index) => {
-                      const category = hashtagCategories.find((c) =>
-                        c.hashtags.includes(hashtag)
-                      );
-                      return (
-                        /*
+                    {item.fields.hashtag &&
+                      item.fields.hashtag.map((hashtag, index) => {
+                        const category = hashtagCategories.find((c) =>
+                          c.hashtags.includes(hashtag)
+                        );
+                        return (
+                          /*
                         marginRight controls the white gap horizontally
                         padding (top/bottom left/right) controls the size of each hashtag incl. background color
                         marginBottom controls the white gap vertically
                         */
-                        <span
-                          key={index}
-                          style={{
-                            backgroundColor: category ? category.color : null,
-                            marginRight:
-                              index !== item.fields.hashtag.length - 1
-                                ? "18px"
-                                : "0px",
-                            padding: "5px 5px",
-                            marginBottom: "15px",
-                          }}
-                        >
-                          {hashtag}
-                        </span>
-                      );
-                    })}
+                          <span
+                            key={index}
+                            style={{
+                              backgroundColor: category ? category.color : null,
+                              marginRight:
+                                index !== item.fields.hashtag.length - 1
+                                  ? "18px"
+                                  : "0px",
+                              padding: "5px 5px",
+                              marginBottom: "15px",
+                            }}
+                          >
+                            {hashtag}
+                          </span>
+                        );
+                      })}
                   </div>
                 </div>
               </div>
@@ -592,7 +582,9 @@ const AngeboteMoaFinder = () => {
         </>
       )}
       {!error && !loading && data.items.length === 0 && (
-        <div>No results found.</div>
+        <div style={{ color: "#0099A8", fontSize: "2rem", marginTop: "2rem" }}>
+          Nichts gefunden!
+        </div>
       )}
       {selectedImageId && (
         <div className="modal">

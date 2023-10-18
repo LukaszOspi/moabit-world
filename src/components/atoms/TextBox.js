@@ -10,7 +10,10 @@ const TextBox = (props) => {
           color: props.color,
         }}
       >
-        <div className="title-text">{props.title}</div>
+        <div className="title-text">
+          <p style={{ color: "#ED7782" }}>{props.titlePink}</p>
+          {props.title}
+        </div>
       </div>
       <div className="content" style={{ color: props.color }}>
         <div className="content-text">{props.text}</div>

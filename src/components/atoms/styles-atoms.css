@@ -138,6 +138,18 @@
   padding-top: 16px;
   width: 248px;
 }
+@media screen and (max-width: 350px) {
+  .box {
+    width: 100%;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .pic {
+    width: 80vw;
+    height: auto;
+  }
+}
 @media screen and (max-width: 1200px) {
   .outside-box {
     height: auto;
@@ -146,9 +158,6 @@
 
   .vogel {
     width: 100vw;
-  }
-  .box {
-    width: 85%;
   }
 }
 
@@ -192,7 +201,11 @@
     padding-right: 5px;
   }
 }
-
+/* This is made only for MoaFinder pink text */
+.title-text p {
+  display: inline;
+  margin-right: 1rem;
+}
 /* TextBoxSmall */
 .title-small {
   position: relative;
