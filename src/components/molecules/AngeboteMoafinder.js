@@ -541,7 +541,7 @@ const AngeboteMoaFinder = () => {
                         <ReplaceLineBreakChar text={item.fields.placeAddress} />
                         <br />
                         <ReplaceLineBreakChar text={item.fields.timeLocation} />
-
+                        <br />
                         <div>{item.fields.contact}</div>
                       </div>
                     </div>
