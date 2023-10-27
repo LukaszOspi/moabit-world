@@ -9,6 +9,7 @@ import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
+import Ortstermin from "./Ortstermin";
 
 import "./styles.css";
 
@@ -30,6 +31,7 @@ const LandingPageContainer = () => {
       <LandingPage />
 
       <Info />
+      <Ortstermin />
       <Angebote />
       <Veranstaltung />
       <EventCarousel />

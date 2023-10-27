@@ -42,18 +42,12 @@ const Ortstermin = () => {
       <>
         <div>
           <TextBox
-            title="Ortstermin 2022: LAUT ))) Wir weigern uns, Feinde zu sein"
-            text="Erkundet den Refo-Campus des diesjährigen moabitweiten Kunstfestivals Ortstermin.
-          An verschiedenen Orten stellen Künstler:innen ihre Arbeiten zum Festival-Thema 'LAUT ))) Wir weigern uns,
-          Feinde zu sein' aus. Am Bauwagen beim SommerCafé gibt es leckeren Kaffee und Limos.
-          Außerdem erwarten euch eine Konzept-Performance und die Abendveranstaltung 'PopPeacePoetry - 
-          gefällige und wiederständische Töne zu Gewalt und Liebe'. Klickt euch hier jetzt durch die verschiedenen
-          Künstler:innen und ihre Werke. Viel Freude!"
+            title="Erinnern heißt kämpfen: Ottilie Pohl Aktionsmonat"
+            text=" Das Netzwerk Ottilie lädt ein zum Aktionsmonat, in dessen Rahmen an Ottilie Pohl und andere Widerständige gegen den Hitlerfaschismus erinnert wird. Wir verstehen dies als Auftrag, uns auch heute entschieden faschistischen Strömungen in der Gesellschaft entgegenzustellen. Klickt euch links oder rechts durch das Karussell, um mehr Infos zum Aktionsmonat, dem Netzwerk und den einzelnen Veranstaltungen zu bekommen."
             color="black"
           />
         </div>
-        <ImageResponsive src={Ortstermin2} maxwidth="1000px" />
-        <ImageResponsive src={Ortstermin1} maxwidth="1000px" />
+
         <div className="carousel">
           <Carousel
             // removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -62,7 +56,7 @@ const Ortstermin = () => {
             //customLeftArrow={<CustomLeftArrow />}
             //customRightArrow={<CustomRightArrow />}
             additionalTransfrom={
-              window.innerWidth <= 1400 ? 2 * window.innerWidth : 1400
+              window.innerWidth <= 1120 ? 2 * window.innerWidth : 1120
             }
             autoPlaySpeed={3000}
             centerMode={false}
