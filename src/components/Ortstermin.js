@@ -42,8 +42,7 @@ const Ortstermin = () => {
       <>
         <div>
           <TextBox
-            title="Erinnern heißt kämpfen: Ottilie Pohl Aktionsmonat"
-            text=" Das Netzwerk Ottilie lädt ein zum Aktionsmonat, in dessen Rahmen an Ottilie Pohl und andere Widerständige gegen den Hitlerfaschismus erinnert wird. Wir verstehen dies als Auftrag, uns auch heute entschieden faschistischen Strömungen in der Gesellschaft entgegenzustellen. Klickt euch links oder rechts durch das Karussell, um mehr Infos zum Aktionsmonat, dem Netzwerk und den einzelnen Veranstaltungen zu bekommen."
+            title="Erinnern heißt kämpfen: Netzwerk Ottilie Pohl"
             color="black"
           />
         </div>
