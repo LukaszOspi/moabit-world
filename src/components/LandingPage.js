@@ -8,7 +8,7 @@ const LandingPage = () => {
       <div className="intro">
         <Menu colorDesktop="white" />
         <div className="zusammen">
-          <div>Zusammen sind wir stark für den Frieden.</div>
+          <div>Meine Mitte ist Moabit.</div>
         </div>
       </div>
     </>

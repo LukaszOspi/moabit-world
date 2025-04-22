@@ -10,15 +10,10 @@ const Info = () => {
       </div>
       <div className="beschreibung">
         <div>
-          Moabit.World ist eine Friedenskampagne, in der wir in Moabit lokale
-          Lösungsansätze für globale Probleme finden und entwickeln, um weltweit
-          Gewalt zu überwinden und ein demokratisches Miteinander zu
-          unterstützen.
+        Under Construction: Der MoaFinder wird größer und besser. Wir sind große Fans von unserem Kiez und allem was hier passiert. Das wollen wir noch besser sichtbar machen. Ab September 2026 findet ihr hier den neuen MoaFinder.
         </div>
         <div>
-          Moabit.World ist auch eine Vernetzungsplattform für unseren Kiez.
-          Menschen auf der Flucht und Unterstützende hier vor Ort können auf
-          dieser Webseite Informationen zum Ankommen und Leben in Moabit finden.
+        Moabit.World wird eine interaktive Vernetzungsplattform für unseren Kiez. Hier findet ihr in Zukunft Informationen zu Kampagnen, Aktionen und Mitmachformaten in unserem Kiez. 
         </div>
       </div>
       <div>
