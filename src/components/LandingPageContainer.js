@@ -31,15 +31,14 @@ const LandingPageContainer = () => {
       <LandingPage />
 
       <Info />
-     
+      <EventCarousel />
       <Angebote />
       <Veranstaltung />
-      <EventCarousel />
-      <Links />
+
 
       <Enemies />
       <Ortstermin />
-      <Host />
+
       <Bar />
 
       <Footer />
