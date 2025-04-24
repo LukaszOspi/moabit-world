@@ -396,10 +396,13 @@
 .beschreibung {
   display: flex;
   flex-direction: row;
+  justify-content: space-between; /* Distribute items with space between them */
+  gap: 40px; /* Optional: adds fixed spacing between the divs */
   color: #7cb92c;
   font-size: 24px;
   width: 1130px;
   padding-top: 75px;
+
 }
 @media screen and (min-width: 1200px) {
   .vogel-mobile {
