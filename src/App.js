@@ -7,6 +7,7 @@ import Datenschutz from "./components/Datenschutz";
 import About from "./components/About";
 import ComingSoon from "./components/ComingSoon";
 import Moafinder from "./components/Moafinder";
+import Festival from "./components/Festival";
 import AngeboteMoaFinderSharable from "./components/molecules/AngeboteMoaFinderSharable";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="/comingsoon" element={<ComingSoon />} />
           <Route path="/moafinder" element={<Moafinder />} />
+          <Route path="/festival" element={<Festival />} />
           <Route path="/share/:id" element={<AngeboteMoaFinderSharable />} />
         </Routes>
       </Router>
