@@ -1,0 +1,66 @@
+:root {
+  /* Brand palette */
+  --color-primary: #0099a7;
+  --color-primary-dark: #0054a2;
+  --color-secondary: #662583;
+  --color-secondary-dark: #662382;
+  --color-accent: #ffa42b;
+  --color-accent-rose: #ed7782;
+  --color-highlight: #7cb92c;
+  --color-text: #111111;
+  --color-text-muted: #4f4f4f;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8f8f8;
+  --color-footer-background: #662583;
+
+  /* Typography */
+  --font-family-base: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-display: clamp(2.5rem, 6vw, 3.75rem);
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3.125rem; /* 50px */
+  --space-4xl: 4rem;
+  --space-4xl-plus: 4.6875rem; /* 75px */
+  --space-5xl: 5rem;
+  --space-5xl-plus: 5.625rem; /* 90px */
+  --space-6xl: 6rem;
+
+  /* Radii and shadows */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 16px 32px rgba(0, 0, 0, 0.12);
+
+  /* Motion */
+  --transition-base: 0.2s ease-in-out;
+
+  /* Layout */
+  --layout-max-width: 1400px;
+  --layout-content-width: 1130px;
+  --layout-carousel-width: 1120px;
+  --app-horizontal-padding: clamp(1.25rem, 4vw, 3.5rem);
+
+  /* Breakpoints */
+  --bp-xl: 1400px;
+  --bp-lg: 1200px;
+  --bp-md: 1000px;
+  --bp-sm: 800px;
+  --bp-xs: 600px;
+}
