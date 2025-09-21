@@ -5,7 +5,6 @@ import Links from "./Links";
 import Angebote from "./Angebote";
 import Host from "./Host";
 import Footer from "./Footer";
-import EventCarousel from "./EventCarousel";
 import Enemies from "./Enemies";
 import Bar from "./Bar";
 import Veranstaltung from "./Veranstaltung";
@@ -31,7 +30,7 @@ const LandingPageContainer = () => {
       <LandingPage />
 
       <Info />
-      <EventCarousel />
+      {/* Temporarily hidden carousel */}
       <Angebote />
       <Veranstaltung />
 
