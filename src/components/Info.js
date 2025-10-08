@@ -4,7 +4,7 @@ import vogel from "./../assets/vogel.png";
 
 const Info = () => {
   return (
-    <div>
+    <>
       <div className="vogel-mobile">
         <img className="vogel" src={vogel} alt="Vogel" />
       </div>
@@ -24,7 +24,7 @@ const Info = () => {
       <div>
         <img className="vogel" src={vogel} alt="Vogel" />
       </div>
-    </div>
+      </>
   );
 };
 

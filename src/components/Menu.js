@@ -16,6 +16,8 @@ const Menu = (props) => {
             />
           </a>
         </div>
+
+        {/* Desktop Menu */}
         <div className="menu-desktop" style={{ color: props.color }}>
           <a
             style={{ color: props.colorDesktop, textDecoration: "none" }}
@@ -23,41 +25,41 @@ const Menu = (props) => {
           >
             ÜBER UNS
           </a>
-          <div>
-            <a
-              style={{ color: props.colorDesktop, textDecoration: "none" }}
-              href="/moafinder"
-            >
-              &nbsp; &nbsp; MoaFinder
-            </a>
-          </div>
-          <div>
-            &nbsp; &nbsp;
-            <a
-              style={{ color: props.colorDesktop, textDecoration: "none" }}
-              href="/"
-            >
-              HOME
-            </a>
-          </div>
+          <a
+            style={{ color: props.colorDesktop, textDecoration: "none", marginLeft: "20px" }}
+            href="/moafinder"
+          >
+            MoaFinder
+          </a>
+          <a
+            style={{ color: props.colorDesktop, textDecoration: "none", marginLeft: "20px" }}
+            href="/festival"
+          >
+            Festival
+          </a>
+          <a
+            style={{ color: props.colorDesktop, textDecoration: "none", marginLeft: "20px" }}
+            href="/"
+          >
+            HOME
+          </a>
         </div>
 
+        {/* Mobile Menu */}
         <div
           className="menu_mobile"
           style={{
-            color: props.color ? props.color : "black",
+            color: props.color || "black",
             textDecoration: "none",
           }}
         >
           <div>
-            <a style={{}} href="/about">
-              ÜBER UNS
-            </a>
+            <a href="/about">ÜBER UNS</a>
           </div>
           <div>
             <a
               style={{
-                color: props.color ? props.color : "black",
+                color: props.color || "black",
                 textDecoration: "none",
               }}
               href="/moafinder"
@@ -68,7 +70,18 @@ const Menu = (props) => {
           <div>
             <a
               style={{
-                color: props.color ? props.color : "black",
+                color: props.color || "black",
+                textDecoration: "none",
+              }}
+              href="/festival"
+            >
+              Festival
+            </a>
+          </div>
+          <div>
+            <a
+              style={{
+                color: props.color || "black",
                 textDecoration: "none",
               }}
               href="/"
