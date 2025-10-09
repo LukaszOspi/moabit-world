@@ -33,12 +33,6 @@ const Menu = (props) => {
           </a>
           <a
             style={{ color: props.colorDesktop, textDecoration: "none", marginLeft: "20px" }}
-            href="/festival"
-          >
-            Festival
-          </a>
-          <a
-            style={{ color: props.colorDesktop, textDecoration: "none", marginLeft: "20px" }}
             href="/"
           >
             HOME
@@ -65,17 +59,6 @@ const Menu = (props) => {
               href="/moafinder"
             >
               MoaFinder
-            </a>
-          </div>
-          <div>
-            <a
-              style={{
-                color: props.color || "black",
-                textDecoration: "none",
-              }}
-              href="/festival"
-            >
-              Festival
             </a>
           </div>
           <div>
